@@ -279,6 +279,61 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
   button.nv{width:auto;flex:none;white-space:nowrap;margin:0;padding:8px 11px;font-size:13px}
   #kpis,#newsCard,#companies,#plansCard,#srcCard{scroll-margin-top:136px}
 }
+.tl-more{display:none}
+@media (max-width:980px){
+  .nav{background:#F2F8FF;backdrop-filter:none}
+  .rv,.fs{opacity:1!important;transform:none!important;transition:none!important}
+  .app .side{position:static}
+  #kpis,#newsCard,#companies,#plansCard,#srcCard{scroll-margin-top:80px}
+  .tools{width:auto;margin-left:auto}
+
+  /* story: plain top-to-bottom reading */
+  .story-grid{display:block}
+  .stage{display:none}
+  .story .step{min-height:0;opacity:1;display:block;padding:0 0 36px}
+  .story .step h3{margin-bottom:12px}
+  .step .panel{position:static;inset:auto;opacity:1;transform:none;pointer-events:auto;display:flex;flex-direction:column;justify-content:flex-start;gap:12px;margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,#fff,#E4F1FF)}
+  .step .panel>.eyebrow,.step .panel>h4{display:none}
+  .step .panel .chips{margin-top:0}
+  .step .panel>.cap{margin-top:0}
+
+  /* timeline: a vertical list */
+  .hs{height:auto!important;margin-top:20px;padding:20px 0}
+  .hs-in{position:static;height:auto;overflow:visible;display:block}
+  .hs-head{margin-bottom:20px}
+  .hs-track{display:flex;flex-direction:column;gap:14px;padding:0 16px;transform:none!important}
+  .hs-line{display:none}
+  .tl{width:auto;padding-top:0}
+  .tl::before{display:none}
+  .tlc{min-height:0;flex:none}
+  .tl.extra{display:none}
+  .hs.all .tl.extra{display:flex}
+  .tl-more{display:flex;margin:18px auto 0;justify-content:center}
+
+  /* news table becomes a list of cards */
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:auto}
+  .tbl thead{display:none}
+  .tbl tr.rw{border:1px solid var(--line);border-radius:14px;background:#fff;padding:12px 14px;margin-top:10px}
+  .tbl td{border:0;padding:0}
+  .tbl td+td{margin-top:8px}
+  .tbl .ttl{max-width:none;font-size:14px;line-height:1.45}
+  .tbl td:nth-child(2) div{display:inline;margin-left:8px}
+  .tbl tr.detail{display:none}
+  .tbl tr.detail[style*="table-row"]{display:block!important}
+  .tbl tr.detail td{padding:14px;border-radius:14px}
+}
+@media (max-width:600px){
+  .step .grid2{grid-template-columns:minmax(0,1fr)}
+  .rowitem{display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:12px;row-gap:2px;align-items:start}
+  .rowitem .r{grid-column:2;margin:4px 0 0;text-align:left}
+}
+.cv{min-width:0}
+.cv canvas{max-width:100%!important}
+@media (max-width:980px){
+  .side-in{flex-wrap:wrap;overflow:visible;justify-content:center}
+  .tools{display:none}
+  .kpi span{display:block;line-height:1.35}
+}
 </style>
 </head>
 <body>
@@ -324,7 +379,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
       <div class="main">
         <div class="topbar">
           <div><h3>Payments Radar</h3><p id="dwin"></p></div>
-          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtarın..." aria-label="Xəbər axtarışı"></label><button type="button" class="bell" data-go="plans" aria-label="Qarşıdakı planlar" title="Qarşıdakı planlar"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></button><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Daxili panel</small></div></div></div>
+          <div class="tools"><button type="button" class="bell" data-go="plans" aria-label="Qarşıdakı planlar" title="Qarşıdakı planlar"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></button><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Daxili panel</small></div></div></div>
         </div>
         <div class="kpis" id="kpis"></div>
         <div class="row2">
@@ -363,6 +418,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
   <div class="hs-in">
     <div class="hs-head"><span class="eyebrow">Avqust – noyabr 2026</span><h2>Son üç ayın xronologiyası</h2></div>
     <div class="hs-track" id="hsTrack"><div class="hs-line"></div></div>
+    <button type="button" class="btn tl-more" id="tlMore">Bütün xronologiyanı göstər</button>
   </div>
 </section>
 
@@ -508,6 +564,7 @@ const CO={Visa:{c:"#1E6FE8",code:"VI"},Mastercard:{c:"#D9622B",code:"MC"},Stripe
 const MON=["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"];
 const fd=s=>{const p=s.split("-").map(Number);return p.length===2?MON[p[1]-1]+" "+p[0]:p[2]+" "+MON[p[1]-1]+" "+p[0]};
 const nf=(n,d=0)=>n.toFixed(d).replace(".",",");
+const mq=matchMedia("(max-width:980px)");
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const days=(a,b)=>{const p=s=>{const[y,m,d]=s.split("-").map(Number);return Date.UTC(y,m-1,d)};return Math.round((p(b)-p(a))/864e5)};
 const IC={grid:'<rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>',pulse:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',sliders:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',ext:'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>',check:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>'};
@@ -573,9 +630,13 @@ function countUp(el){const to=+el.dataset.count,dec=+(el.dataset.dec||0),t0=perf
 function runPanel(p){$$("[data-count]",p).forEach(countUp);setTimeout(()=>$$("[data-w]",p).forEach(b=>b.style.width=b.dataset.w+"%"),120)}
 function resetPanel(p){$$("[data-w]",p).forEach(b=>b.style.width="0")}
 let activeK=-1;
-function activate(k){if(k===activeK)return;activeK=k;
+function activate(k){if(mq.matches||k===activeK)return;activeK=k;
   $$(".step").forEach(s=>s.classList.toggle("on",+s.dataset.k===k));
   $$(".panel").forEach(p=>{const on=+p.dataset.k===k;if(on&&!p.classList.contains("on")){p.classList.add("on");runPanel(p)}else if(!on){p.classList.remove("on");resetPanel(p)}})}
+/* on phones each card sits under its own text instead of floating over it */
+function layoutStory(){const m=mq.matches;$$(".panel").forEach(p=>{(m?$(`.step[data-k="${p.dataset.k}"]`):stage).appendChild(p);p.classList.remove("on");
+  if(m)$$("[data-count]",p).forEach(el=>el.textContent=nf(+el.dataset.count,+(el.dataset.dec||0)))});activeK=-1}
+layoutStory();
 const stepIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)activate(+e.target.dataset.k)}),{rootMargin:innerWidth<980?"-68% 0px -18% 0px":"-45% 0px -45% 0px"});
 $$(".step").forEach(s=>stepIO.observe(s));
 const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}}),{threshold:.12});
@@ -594,8 +655,11 @@ const tr=$("#hsTrack");
 tr.insertAdjacentHTML("beforeend",tl.map(t=>{const r=CO[t.co],cls=t.today?"today":(t.past?"past":"");
   return `<div class="tl ${cls}" style="--c:${r.c}"><div class="tlc"><div class="tlt"><span class="regtag" style="--c:${r.c}">${t.today?"Bu gün":t.co}</span>${t.future?'<span class="badge bg-b">Plan</span>':""}</div><div class="when">${t.when}</div><h5>${t.title}</h5><p>${t.what}</p>${t.why?`<div class="why"><b>Bir Ekosistem üçün</b>${t.why}</div>`:""}${t.url?`<small><a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbəyə baxın</a></small>`:""}</div></div>`}).join(""));
 const hs=$("#timeline");
-function hsLayout(){const max=Math.max(0,tr.scrollWidth-innerWidth);hs.style.height=(innerHeight+max)+"px";$(".hs-line").style.width=tr.scrollWidth+"px"}
-function hsUpdate(){const r=hs.getBoundingClientRect(),total=hs.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,-r.top/total)),max=Math.max(0,tr.scrollWidth-innerWidth);tr.style.transform=`translateX(${-p*max}px)`}
+$$(".tl",tr).forEach((el,i)=>el.classList.toggle("extra",i>=6));
+$("#tlMore").addEventListener("click",()=>{const all=hs.classList.toggle("all");$("#tlMore").textContent=all?"Siyahını qısalt":"Bütün xronologiyanı göstər";if(!all)hs.scrollIntoView({block:"start"})});
+mq.addEventListener("change",()=>{layoutStory();hsLayout()});
+function hsLayout(){if(mq.matches){hs.style.height="";tr.style.transform="";return}const max=Math.max(0,tr.scrollWidth-innerWidth);hs.style.height=(innerHeight+max)+"px";$(".hs-line").style.width=tr.scrollWidth+"px"}
+function hsUpdate(){if(mq.matches)return;const r=hs.getBoundingClientRect(),total=hs.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,-r.top/total)),max=Math.max(0,tr.scrollWidth-innerWidth);tr.style.transform=`translateX(${-p*max}px)`}
 
 /* dashboard */
 $$(".nv[data-ic]").forEach(el=>el.insertAdjacentHTML("afterbegin",ico(el.dataset.ic)));
@@ -605,16 +669,15 @@ $("#kpis").innerHTML=K.map((k,i)=>`<div class="kpi rv" style="--d:${i*.08}s"><di
 $$("#kpis .rv").forEach(el=>{rvIO.observe(el);new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){countUp(el.querySelector("[data-count]"));o.disconnect()}}),{threshold:.4}).observe(el)});
 
 const cats=[...new Set(DATA.items.map(i=>i.cat))];
-const st={cat:"all",q:"",co:"all"},open=new Set();
+const st={cat:"all",co:"all"},open=new Set();
 $("#fchips").innerHTML=[["all","Hamısı"],...cats.map(c=>[c,c])].map(([k,l])=>`<span class="chip ${k==="all"?"on":""}" data-k="${k}" role="button" tabindex="0" style="cursor:pointer">${l}</span>`).join("");
 function renderTable(){
-  const rows=items.filter(i=>(st.co==="all"||i.co===st.co)&&(st.cat==="all"||i.cat===st.cat)&&(st.q===""||(i.title+i.what+i.summary+i.cat+i.co+i.source.name).toLowerCase().includes(st.q)));
+  const rows=items.filter(i=>(st.co==="all"||i.co===st.co)&&(st.cat==="all"||i.cat===st.cat));
   $("#tb").innerHTML=rows.length?rows.map(i=>`<tr class="rw" data-id="${i.id}"><td class="ttl">${i.title}<div style="font-weight:400;font-size:12px;color:var(--muted);margin-top:4px">${i.source.name} · <span class="badge bg-n" style="font-size:10px;padding:1px 8px">${i.source.type}</span></div></td><td><span class="badge" style="background:${CO[i.co].c}1F;color:${CO[i.co].c}">${i.co}</span><div style="font-size:12px;color:var(--muted);margin-top:6px">${i.cat}</div></td><td class="dt">${fd(i.date)}</td></tr>
-  <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="3"><p><b>Nə baş verib?</b> ${i.what}</p><p><b>Ətraflı:</b> ${i.summary}</p><p><b>Bir Ekosistem üçün əhəmiyyəti</b> (dərəcə: ${LV[i.level]}): ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="3" style="padding:24px;color:var(--muted)">Axtarışa uyğun xəbər tapılmadı.</td></tr>`}
+  <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="3"><p><b>Nə baş verib?</b> ${i.what}</p><p><b>Ətraflı:</b> ${i.summary}</p><p><b>Bir Ekosistem üçün əhəmiyyəti</b> (dərəcə: ${LV[i.level]}): ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="3" style="padding:24px;color:var(--muted)">Uyğun xəbər tapılmadı.</td></tr>`}
 renderTable();
 $("#tb").addEventListener("click",e=>{if(e.target.closest("a"))return;const r=e.target.closest("tr.rw");if(!r)return;const id=r.dataset.id,d=$(`tr.detail[data-for="${id}"]`);const show=d.style.display==="none";d.style.display=show?"table-row":"none";show?open.add(id):open.delete(id)});
 $("#fchips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;st.cat=c.dataset.k;$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x===c));if(st.cat==="all"&&st.co!=="all")setCompany("all");else renderTable()});
-$("#q").addEventListener("input",e=>{st.q=e.target.value.trim().toLowerCase();renderTable()});
 
 /* panel menu */
 const GO={panel:"#kpis",news:"#newsCard",companies:"#companies",plans:"#plansCard",sources:"#srcCard"};
@@ -626,7 +689,7 @@ $$("[data-go]").forEach(b=>b.addEventListener("click",()=>goTo(b.dataset.go)));
 /* company filter */
 $("#cos").innerHTML=companies.map(c=>`<button type="button" class="cob" data-co="${c}" aria-pressed="false"><span class="av" style="background:${CO[c].c}">${CO[c].code}</span><span><b>${c}</b><small>${DATA.items.filter(i=>i.co===c).length} xəbər</small></span></button>`).join("");
 function setCompany(co){st.co=co;
-  if(co!=="all"){st.cat="all";st.q="";$("#q").value="";$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x.dataset.k==="all"))}
+  if(co!=="all"){st.cat="all";$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x.dataset.k==="all"))}
   $$(".cob").forEach(b=>{const on=b.dataset.co===co;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
   const f=$("#cofilter");f.hidden=co==="all";f.innerHTML=co==="all"?"":`<span>Seçilmiş şirkət: <b>${co}</b></span><button type="button">Filtri ləğv edin</button>`;
   renderTable()}
@@ -644,7 +707,8 @@ function initCharts(){if(chartsDone)return;chartsDone=true;
   if(!window.Chart){$$(".cv").forEach(c=>c.innerHTML='<p class="cap">Qrafik yüklənmədi. Səhifəni yeniləyin.</p>');return}
   Chart.defaults.font.family='"IBM Plex Sans",sans-serif';Chart.defaults.color="#52667F";
   const g=[{l:["Stripe: stablecoin ilə","pul göndərmə (bazar)"],v:F.payoutsStable,c:"#6D5BD0"},{l:["Stripe: adi valyuta ilə","pul göndərmə (bazar, 100+)"],v:F.payoutsFiat,c:"#6D5BD0"},{l:["Stripe: stablecoin","kartları (ölkə, 65+)"],v:F.issuing,c:"#6D5BD0"},{l:["Tencent: qoşulmuş xarici","pul kisəsi (60+)"],v:F.tencentWallets,c:"#B0568F"},{l:["Alipay+: qoşulmuş pul kisəsi","və bank tətbiqi (50+)"],v:F.alipayWallets,c:"#D9622B"}];
-  new Chart($("#c1"),{type:"bar",data:{labels:g.map(x=>x.l),datasets:[{data:g.map(x=>x.v),backgroundColor:g.map(x=>x.c),borderRadius:8,barThickness:22}]},
+  const narrow=[["Stripe: anında","göndərmə"],["Stripe: adi","valyuta (100+)"],["Stripe: kart","(65+ ölkə)"],["Tencent: pul","kisəsi (60+)"],["Alipay+: pul","kisəsi (50+)"]];
+  new Chart($("#c1"),{type:"bar",data:{labels:mq.matches?narrow:g.map(x=>x.l),datasets:[{data:g.map(x=>x.v),backgroundColor:g.map(x=>x.c),borderRadius:8,barThickness:22}]},
     options:{indexAxis:"y",maintainAspectRatio:false,animation:{duration:1600,easing:"easeOutCubic"},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>nf(c.parsed.x,0)+(g[c.dataIndex].l[1].includes("+")?" və ya daha çox":"")}}},scales:{x:{grid:{color:"#E6F0FB"}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
   const cc={};DATA.items.forEach(i=>cc[i.cat]=(cc[i.cat]||0)+1);
   new Chart($("#c2"),{type:"doughnut",data:{labels:Object.keys(cc),datasets:[{data:Object.values(cc),backgroundColor:["#1E6FE8","#6D5BD0","#38BDF8","#0E9F8E","#9DB8D6","#D9622B","#B7791F"],borderWidth:3,borderColor:"#fff"}]},
@@ -660,7 +724,7 @@ function flowUpdate(){const fl=$("#fl"),r=fl.getBoundingClientRect(),p=Math.max(
 
 /* sources */
 const lab=new Map();
-items.forEach(i=>{if(!lab.has(i.source.url))lab.set(i.source.url,`${i.co}: ${i.source.name} · ${fd(i.date)}`)});
+items.forEach(i=>{if(!lab.has(i.source.url))lab.set(i.source.url,`${i.source.name} · ${fd(i.date)}`)});
 DATA.outside.forEach(o=>lab.set(o.url,`${o.co}: ${fd(o.date)}`));
 $("#srcs").innerHTML=[...lab].map(([u,l])=>`<li><a href="${u}" target="_blank" rel="noopener">${l}</a></li>`).join("");
 
