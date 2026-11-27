@@ -249,13 +249,6 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
   .step{opacity:1}
 }
 
-.gloss{padding:90px 0 20px}
-.gloss h2{margin:12px 0 12px}
-.glg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:36px}
-.glc{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:18px;padding:20px;transition:transform .3s,box-shadow .3s,opacity .8s}
-.glc:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(30,111,232,.5)}
-.glc b{display:block;font-size:16px;margin-bottom:8px;color:var(--brand-d)}
-.glc p{font-size:14px;color:var(--muted);line-height:1.55}
 .tl{width:350px;display:flex;flex-direction:column}
 .tlc{flex:1;min-height:340px;display:flex;flex-direction:column}
 .tlt{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -266,8 +259,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .tlc>small{margin-top:auto}
 .tlc .why+small{margin-top:0}
 .tl.today .tlc p{color:#C7D8EC}
-@media (max-width:980px){.glg{grid-template-columns:repeat(2,minmax(0,1fr))}.tl{width:300px}}
-@media (max-width:560px){.glg{grid-template-columns:1fr}}
+@media (max-width:980px){.tl{width:300px}}
 </style>
 </head>
 <body>
@@ -276,7 +268,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 
 <header class="nav"><div class="wrap">
   <a class="logo" href="#top"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Bir Ekosistem<small>Payments Radar</small></span></a>
-  <nav class="links"><a href="#story">Hekayə</a><a href="#gloss">Lüğət</a><a href="#timeline">Xronologiya</a><a href="#dashboard">Panel</a><a href="#flow">Necə işləyir</a></nav>
+  <nav class="links"><a href="#story">Hekayə</a><a href="#timeline">Xronologiya</a><a href="#dashboard">Panel</a><a href="#flow">Necə işləyir</a></nav>
   <a class="btn pri" href="#dashboard">Panelə bax</a>
 </div></header>
 
@@ -313,8 +305,6 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
     </div>
   </div>
 </section>
-
-<section class="gloss" id="gloss"><div class="wrap"><div class="rv"><span class="eyebrow">Qısa lüğət</span><h2>Texniki sözlər sadə dildə</h2><p class="lead">Aşağıdakı bölmələrdə rast gələcəyiniz sözlərin qısa izahı.</p></div><div class="glg" id="glGrid"></div></div></section>
 
 <section class="hs" id="timeline">
   <div class="hs-in">
@@ -360,7 +350,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 
 <section class="flow" id="flow">
   <div class="wrap">
-    <div class="flow-head rv"><span class="eyebrow">Necə işləyir</span><h2>Mənbədən qərara qədər</h2><p class="lead">Süni intellekt xülasə çıxarır, insan təsdiq edir. Bank mühitində bu ikili yoxlama məcburidir.</p></div>
+    <div class="flow-head rv"><span class="eyebrow">Necə işləyir</span><h2>Mənbədən qərara qədər</h2><p class="lead">Süni intellekt xəbərləri toplayır və sadə dildə izah edir.</p></div>
     <div class="fl" id="fl"><div class="prog" id="flp"></div></div>
   </div>
 </section>
@@ -368,7 +358,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 <section class="cta"><div class="wrap"><div class="ctab rv"><h2>Prototipdən işlək sistemə</h2><p>Növbəti addım: xəbərlərin avtomatik toplanması və saxlanması, işçilərin şirkət hesabı ilə girişi və həftəlik e-poçt xülasəsi.</p><a class="btn" href="#top">Yuxarı qayıt</a></div></div></section>
 </main>
 
-<footer class="foot"><div class="wrap"><b>Bu səhifədəki bütün faktların mənbələri</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. "Bir Ekosistem üçün nə deməkdir" qeydləri analitik təklifidir, rəsmi mövqe deyil.</p></div></footer>
+<footer class="foot"><div class="wrap"><b>Bu səhifədəki bütün faktların mənbələri</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. "Bir Ekosistem üçün nə deməkdir" qeydləri süni intellektin təklifidir, rəsmi mövqe deyil.</p></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
@@ -522,7 +512,7 @@ const S=[
  {tag:"AI köməkçi ödənişləri",c:"#6D5BD0",h:"Proqram ödəyir, insan nəzarət edir",p:()=>`${fd("2026-10-20")} tarixində Visa, BILL və Billtrust şirkətləri süni intellekt köməkçisinin fakturanı özü ödədiyi ilk real sınağa başladı. ${fd("2026-09-30")} tarixində Mastercard isə ödənişi proqramın başlatma ehtimalını göstərən bal təqdim etdi (hələlik ABŞ-da sınaq).`,url:I("visa-agent").source.url},
  {tag:"Stablecoin",c:"#1E6FE8",h:"Stablecoin gündəlik ödənişlərə yaxınlaşır",p:()=>`Stablecoin dəyəri dollar kimi sabit saxlanılan rəqəmsal pulun adıdır. Stripe ${F.payoutsStable} bazarda onunla anında pul göndərməyi təklif edir, stablecoin ilə işləyən kart buraxılışı isə ${F.euCountries} Aİ ölkəsinə gəlir. Visa və Mastercard da bu istiqamətdə yeni məhsullar açıqladı.`,url:I("stripe-pay").source.url},
  {tag:"Rəqəmsal pul kisələri",c:"#0E9F8E",h:"Pul kisələri bir-birinə qoşulur",p:()=>`Mastercard-ın Wallet Pay xidməti (${fd("2026-09-09")}) müxtəlif pul kisələrinin telefonla, QR kodla və internetdə eyni qaydada işləməsinə kömək edir. Tencent isə ${F.tencentCountries} ölkə və regiondan ${F.tencentWallets}-dan çox xarici pul kisəsini öz sisteminə qoşub.`,url:I("mc-wallet").source.url},
- {tag:"Bir Ekosistem",c:"#0A2540",h:"Bir Ekosistem üçün nə deməkdir?",p:()=>`Üç trend bir sual doğurur: Birbank və M10 hansı yenilikləri sınaqdan keçirə bilər? Sağdakılar analitik təkliflərdir, qərar komandalara məxsusdur.`,url:""}
+ {tag:"Bir Ekosistem",c:"#0A2540",h:"Bir Ekosistem üçün nə deməkdir?",p:()=>`Üç trend bir sual doğurur: Birbank və M10 hansı yenilikləri sınaqdan keçirə bilər? Sağdakılar süni intellektin təklifləridir, qərar komandalara məxsusdur.`,url:""}
 ];
 const stepsEl=$("#steps"),stage=$("#stage");
 S.forEach((s,k)=>stepsEl.insertAdjacentHTML("beforeend",`<div class="step" data-k="${k}"><span class="tag regtag" style="--c:${s.c}">${s.tag}</span><h3>${s.h}</h3><p>${s.p()}</p>${s.url?`<a class="src" href="${s.url}" target="_blank" rel="noopener">${ico("ext")} Mənbəyə bax</a>`:""}</div>`));
@@ -554,7 +544,7 @@ stage.innerHTML=`
     <div class="mini">${big(F.momoPct,"+","%",0)}<p class="cap">MoMo-da gündəlik əməliyyatların artımı, Çinə gedənlər (Tencent-in açıqlaması)</p></div>
   </div>
   <div class="chips"><span class="chip">Google Pay: Walmart (${fd("2026-08-21")})</span><span class="chip">Hindistan UPI: telefonla ödəniş (${fd("2026-09-10")}, yoxlanılır)</span></div></div>
-<div class="panel" data-k="3"><span class="eyebrow">Analitik təklifi</span><h4>Bir Ekosistem üçün mümkün addımlar</h4>
+<div class="panel" data-k="3"><span class="eyebrow">Süni intellektin təklifi</span><h4>Bir Ekosistem üçün mümkün addımlar</h4>
   <div class="hyp"><small>Birbank · fırıldaqçılıqla mübarizə</small><p>${I("mc-agent").impact}</p></div>
   <div class="hyp"><small>M10 · pul kisəsi və dostlar arası ödəniş</small><p>${I("mc-wallet").impact} ${I("venmo-receipt").impact}</p></div>
   <div class="hyp"><small>Ekosistem · ani ödənişlər</small><p>${I("npci").impact}</p></div>
@@ -580,18 +570,6 @@ $(".ring .v").innerHTML=`<span><span id="heroRingV" data-count="${vpct}">0</span
 setTimeout(()=>{document.body.classList.add("loaded");
   $("#heroRing").style.strokeDashoffset=339.3*(1-vpct/100);
   countUp($("#heroRingV"));$$("#hstats [data-count]").forEach(countUp)},150);
-
-/* glossary */
-const GL=[["AI köməkçi","Sizin adınızdan alış-veriş edən və ya ödəniş edən proqram. Məsələn, \"bu fakturanı ödə\" deyirsiniz, proqram özü ödəyir."],
- ["Sınaq layihəsi (pilot)","Yeniliyin hamıya açılmazdan əvvəl məhdud sayda istifadəçi və ya şirkətlə real şəraitdə yoxlanması."],
- ["Stablecoin","Dəyəri dollar kimi bir valyutaya bağlı saxlanılan rəqəmsal pul. Qiyməti bitcoin kimi sürətlə qalxıb-düşmür."],
- ["Rəqəmsal pul kisəsi","Telefondakı ödəniş tətbiqi (Apple Pay, Google Pay, M10 kimi). Kartı çıxarmadan ödəməyə imkan verir."],
- ["Təhlükəsiz kart kodu (token)","Kart nömrəsinin yerinə işlədilən təsadüfi kod. Oğurlansa belə, onunla kartı istifadə etmək olmur."],
- ["Ani ödənişlər","Pulun saniyələr içində, həftənin hər günü və hər saatı göndərilməsi. Azərbaycanda bu sistem AÖS adlanır."],
- ["Təmassız ödəniş (NFC)","Telefonu və ya kartı terminala yaxınlaşdırmaqla ödəniş, heç nə daxil etmək lazım deyil."],
- ["Şirkətlərarası ödənişlər","Bir şirkətin başqa şirkətə ödəməsi, məsələn təchizatçıya faktura ödənişi."]];
-$("#glGrid").innerHTML=GL.map((g,i)=>`<div class="glc rv" style="--d:${(i%4)*.07}s"><b>${g[0]}</b><p>${g[1]}</p></div>`).join("");
-$$("#glGrid .rv").forEach(el=>rvIO.observe(el));
 
 /* horizontal timeline */
 const tl=[...DATA.items.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(i=>({when:fd(i.date),co:i.co,title:i.short,what:i.what,why:i.impact,url:i.source.url,past:true,st:i.status})),
@@ -642,7 +620,7 @@ function initCharts(){if(chartsDone)return;chartsDone=true;
 new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){initCharts();o.disconnect()}}),{threshold:.15}).observe($(".app"));
 
 /* flow */
-const FL=[["Etibarlı mənbələrin seçilməsi","Yalnız şirkətlərin öz xəbər səhifələri, bloqları və investor səhifələri kimi etibarlı mənbələr seçilir. Siyahını insan müəyyən edir."],["Xəbərlərin toplanması","Xəbərlər hər gün avtomatik toplanır, təkrarlar silinir və yalnız son 3 ayın xəbərləri saxlanılır."],["Süni intellekt izah yazır","Süni intellekt (Claude) hər xəbər üçün sadə izah, mövzu, şirkət və Bir Ekosistem üçün mümkün təsiri yazır."],["İnsan yoxlayır","Məhsul analitiki izahı şirkətin öz səhifəsi ilə müqayisə edir və status verir: Təsdiqlənib və ya Yoxlanılır."],["Panel","Xəbərlər tarix, şirkət və mövzuya görə süzülür."],["Həftəlik e-poçt xülasəsi","Ən vacib xəbərlər e-poçt və Teams-ə göndərilir, istənilən xəbərdən tapşırıq yaratmaq olur."]];
+const FL=[["Etibarlı mənbələrin seçilməsi","Yalnız şirkətlərin öz xəbər səhifələri, bloqları və investor səhifələri kimi etibarlı mənbələr seçilir."],["Xəbərlərin toplanması","Xəbərlər hər gün avtomatik toplanır, təkrarlar silinir və yalnız son 3 ayın xəbərləri saxlanılır."],["Süni intellekt izah yazır","Süni intellekt (Claude) hər xəbər üçün sadə izah, mövzu, şirkət və Bir Ekosistem üçün mümkün təsiri yazır."],["Panel","Xəbərlər tarix, şirkət və mövzuya görə süzülür."],["Həftəlik e-poçt xülasəsi","Ən vacib xəbərlər e-poçt və Teams-ə göndərilir, istənilən xəbərdən tapşırıq yaratmaq olur."]];
 $("#fl").insertAdjacentHTML("beforeend",FL.map((f,i)=>`<div class="fs"><div class="n">${i+1}</div><h4>${f[0]}</h4><p>${f[1]}</p></div>`).join(""));
 function flowUpdate(){const fl=$("#fl"),r=fl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));$("#flp").style.height=(p*(fl.offsetHeight-20))+"px";
   $$(".fs").forEach(s=>s.classList.toggle("on",s.offsetTop+24<=p*fl.offsetHeight))}
