@@ -246,6 +246,13 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .tlc .why+small{margin-top:0}
 .tl.today .tlc p{color:#C7D8EC}
 @media (max-width:980px){.tl{width:300px}}
+.slogan{margin-top:24px;font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.01em}
+.slogan b{display:inline-block;padding:0 11px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--sky));color:#fff;font-weight:700}
+.hero h1{margin-top:14px}
+.dash{padding-top:64px}
+.story{padding-top:50px}
+.panel .eyebrow{text-transform:none;letter-spacing:.02em;font-size:13px}
+@media (max-width:980px){.app{grid-template-columns:minmax(0,1fr)}.main{min-width:0;padding:14px}.hero-grid,.row2{grid-template-columns:minmax(0,1fr)!important}.tools{width:100%}.search{min-width:0;flex:1}.user{display:none}.pc{padding:14px}.tbl th,.tbl td{padding:10px 5px}.tbl .dt{white-space:normal}.cov{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -254,8 +261,8 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 
 <header class="nav"><div class="wrap">
   <a class="logo" href="#top"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Bir Ekosistem<small>Payments Radar</small></span></a>
-  <nav class="links"><a href="#story">Hekayə</a><a href="#timeline">Xronologiya</a><a href="#dashboard">Panel</a><a href="#flow">Necə işləyir</a></nav>
-  <a class="btn pri" href="#dashboard">Panelə bax</a>
+  <nav class="links"><a href="#dashboard">Panel</a><a href="#story">Əsas istiqamətlər</a><a href="#timeline">Xronologiya</a><a href="#flow">Necə işləyir</a></nav>
+  <a class="btn pri" href="#dashboard">Panelə keçin</a>
 </div></header>
 
 <main>
@@ -264,24 +271,59 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
   <div class="wrap hero-grid">
     <div>
       <span class="pill"><i></i><span id="asof"></span></span>
-      <h1 id="h1"><span class="w">Ödənişlər</span> <span class="w">dünyasında</span> <span class="w grad">son 3 ayda</span> <span class="w grad">nə</span> <span class="w grad">dəyişdi?</span></h1>
-      <p class="lead">Birbank və M10 komandaları üçün: ödəniş şirkətlərinin son 3 ayda təqdim etdiyi yeni funksiyalar, innovativ layihələr və sınaq layihələri. Yalnız etibarlı mənbələrdən.</p>
-      <div class="btns"><a class="btn pri" href="#story">Hekayəni izlə <svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a class="btn" href="#dashboard">Birbaşa panelə keç</a></div>
+      <p class="slogan">Bütün xəbərlər <b>BİR</b> ünvanda</p>
+      <h1 id="h1"><span class="w">Ödənişlər</span> <span class="w">dünyasında</span> <span class="w grad">son 3 ayda</span> <span class="w grad">nə</span> <span class="w grad">dəyişib?</span></h1>
+      <p class="lead">Bu səhifədə Birbank və M10 komandaları üçün ödəniş şirkətlərinin son üç ayda təqdim etdiyi yeni funksiyalar, innovativ layihələr və sınaqlar toplanıb. Məlumatlar etibarlı mənbələrdən götürülüb.</p>
+      <div class="btns"><a class="btn pri" href="#dashboard">Panelə keçin <svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a class="btn" href="#story">Əsas istiqamətlər</a></div>
       <div class="stats" id="hstats"></div>
     </div>
     <div class="floaty" data-speed="-0.05">
       <div class="gcard">
-        <div style="margin-bottom:6px"><p class="eyebrow">Ən son xəbərlər</p><p style="font-size:20px;font-weight:600;line-height:1.25;margin:6px 0 2px">Sonuncu 3 yenilik</p><p class="cap">Saytdakı bütün xəbərlər mənbə səhifəsindən təsdiqlənib.</p></div>
+        <div style="margin-bottom:6px"><p style="font-size:20px;font-weight:600;line-height:1.25;margin:0 0 2px">Ən son yeniliklər</p><p class="cap">Saytdakı bütün xəbərlər mənbə əsasında təsdiqlənib.</p></div>
         <div id="heroRows"></div>
       </div>
     </div>
   </div>
-  <div class="scrollhint"><i></i>Aşağı sürüşdür</div>
+  <div class="scrollhint"><i></i>Aşağı sürüşdürün</div>
+</section>
+
+<section class="dash" id="dashboard">
+  <div class="wrap">
+    <div class="dash-head rv"><h2>Son üç ayın yenilikləri bir baxışda</h2><p class="lead">Xəbərləri mövzu üzrə süzün, ətraflı izahlarını oxuyun və mənbə səhifəsinə keçin.</p></div>
+    <div class="app">
+      <aside class="side">
+        <div class="logo"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Radar</span></div>
+        <div class="nv on" data-ic="grid">Panel</div><div class="nv" data-ic="pulse">Xəbərlər</div><div class="nv" data-ic="globe">Şirkətlər</div><div class="nv" data-ic="file">Mənbələr</div><div class="nv" data-ic="shield">Tənzimləmə</div><div class="nv" data-ic="sliders">Parametrlər</div>
+      </aside>
+      <div class="main">
+        <div class="topbar">
+          <div><h3>Payments Radar</h3><p id="dwin"></p></div>
+          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtarın..." aria-label="Xəbər axtarışı"></label><div class="bell"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></div><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Daxili panel</small></div></div></div>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div class="row2">
+          <div class="pc"><h4>Xidmətlərin əhatə dairəsi</h4><p class="sub">Şirkətlərin öz açıqlamaları əsasında. “+” işarəsi “ən azı” deməkdir.</p><div class="cv"><canvas id="c1"></canvas></div></div>
+          <div class="pc"><h4>Xəbərlərin mövzular üzrə bölgüsü</h4><p class="sub">Son üç ay</p><div class="cv"><canvas id="c2"></canvas></div></div>
+        </div>
+        <div class="row2" style="grid-template-columns:minmax(0,1fr)">
+          <div class="pc"><h4>Son xəbərlər</h4><p class="sub">Ətraflı məlumat üçün xəbərin üzərinə klikləyin</p>
+            <div class="chips" id="fchips" style="margin:0 0 12px"></div>
+            <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Xəbər və mənbə</th><th>Şirkət və mövzu</th><th>Tarix</th></tr></thead><tbody id="tb"></tbody></table></div>
+          </div>
+        </div>
+        <div class="row2" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <div class="pc"><h4>Növbəti tarixlər</h4><p class="sub" id="upsub"></p><ul class="ul" id="ups"></ul></div>
+          <div class="pc"><h4>İstifadə olunan mənbələr</h4><p class="sub">Xəbərlər bu mənbələr əsasında hazırlanıb</p><div class="cov" id="cov"></div></div>
+        </div>
+        <div class="pc" id="outside"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="story" id="story">
   <div class="wrap">
-    <div class="story-head rv"><span class="eyebrow">Hekayə · 3 trend, 1 nəticə</span><h2>Sürüşdürün. Hər addımda<br>xəritə dəyişir.</h2><p class="lead">Üç əsas trend: süni intellekt köməkçisinin ödəməsi, stablecoin və rəqəmsal pul kisələri. Sonda isə Bir Ekosistem üçün mümkün nəticələr.</p></div>
+    <div class="story-head rv"><h2>Əsas istiqamətlər</h2></div>
     <div class="story-grid">
       <div class="steps" id="steps"></div>
       <div class="stage" id="stage"></div>
@@ -291,55 +333,21 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 
 <section class="hs" id="timeline">
   <div class="hs-in">
-    <div class="hs-head"><span class="eyebrow">Xronologiya · avqust → noyabr 2026</span><h2>Soldan sağa: son 3 ayda<br>nələr təqdim olundu</h2></div>
+    <div class="hs-head"><span class="eyebrow">Avqust – noyabr 2026</span><h2>Son üç ayın xronologiyası</h2></div>
     <div class="hs-track" id="hsTrack"><div class="hs-line"></div></div>
-  </div>
-</section>
-
-<section class="dash" id="dashboard">
-  <div class="wrap">
-    <div class="dash-head rv"><span class="eyebrow">Canlı panel</span><h2>Bütün xəbərlər bir ekranda</h2><p class="lead">Bütün xəbərlər bir yerdə: mövzuya görə süzün, hər xəbərin nə demək olduğunu oxuyun və mənbə səhifəsinə keçin.</p></div>
-    <div class="app rv">
-      <aside class="side">
-        <div class="logo"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Radar</span></div>
-        <div class="nv on" data-ic="grid">Panel</div><div class="nv" data-ic="pulse">Xəbərlər</div><div class="nv" data-ic="globe">Şirkətlər</div><div class="nv" data-ic="file">Mənbələr</div><div class="nv" data-ic="shield">Qaydalar</div><div class="nv" data-ic="sliders">Ayarlar</div>
-      </aside>
-      <div class="main">
-        <div class="topbar">
-          <div><h3>Payments Radar</h3><p id="dwin"></p></div>
-          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtar..." aria-label="Xəbər axtar"></label><div class="bell"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></div><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Məhsul analitiki</small></div></div></div>
-        </div>
-        <div class="kpis" id="kpis"></div>
-        <div class="row2">
-          <div class="pc"><h4>Şirkətlər neçə ölkə və bazara çıxıb</h4><p class="sub">Şirkətlərin öz açıqlamalarına görə. "+" olan rəqəm "ən azı" deməkdir.</p><div class="cv"><canvas id="c1"></canvas></div></div>
-          <div class="pc"><h4>Mövzulara görə xəbərlər</h4><p class="sub">3 aylıq pəncərə</p><div class="cv"><canvas id="c2"></canvas></div></div>
-        </div>
-        <div class="row2" style="grid-template-columns:minmax(0,1fr)">
-          <div class="pc"><h4>Son xəbərlər</h4><p class="sub">Xəbərə klikləyin: izah və mənbə linki açılır</p>
-            <div class="chips" id="fchips" style="margin:0 0 12px"></div>
-            <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Xəbər və mənbə</th><th>Şirkət və mövzu</th><th>Tarix</th></tr></thead><tbody id="tb"></tbody></table></div>
-          </div>
-        </div>
-        <div class="row2" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-          <div class="pc"><h4>Növbəti tarixlər</h4><p class="sub" id="upsub"></p><ul class="ul" id="ups"></ul></div>
-          <div class="pc"><h4>İstifadə olunan mənbələr</h4><p class="sub">Xəbərlər bu səhifələrdən götürülüb</p><div class="cov" id="cov"></div></div>
-        </div>
-        <div class="pc" id="outside"></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <section class="flow" id="flow">
   <div class="wrap">
-    <div class="flow-head rv"><span class="eyebrow">Necə işləyir</span><h2>Mənbədən qərara qədər</h2><p class="lead">Süni intellekt xəbərləri toplayır və sadə dildə izah edir.</p></div>
+    <div class="flow-head rv"><span class="eyebrow">Necə işləyir</span><h2>Mənbədən qərara gedən yol</h2><p class="lead">Süni intellekt xəbərləri toplayır və sadə dildə izah edir.</p></div>
     <div class="fl" id="fl"><div class="prog" id="flp"></div></div>
   </div>
 </section>
 
 </main>
 
-<footer class="foot"><div class="wrap"><b>Bu səhifədəki bütün faktların mənbələri</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. "Bir Ekosistem üçün nə deməkdir" qeydləri süni intellektin təklifidir, rəsmi mövqe deyil.</p></div></footer>
+<footer class="foot"><div class="wrap"><b>Saytda istifadə olunan mənbələr</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. “Bir Ekosistem üçün” bölmələrindəki fikirlər süni intellektin hazırladığı təkliflərdir və rəsmi mövqe sayılmır.</p></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
@@ -349,127 +357,127 @@ const DATA={
   asOf:"2026-11-15",window:{from:"2026-08-15",to:"2026-11-15"},
   facts:{juniperTrn:14.6,oneInN:10,payoutsStable:160,payoutsFiat:100,issuing:65,issuingTarget:100,euCountries:27,ousdMln:800,walletUsersBn:4.3,mcCredentialsBn:3.7,tencentWallets:60,tencentCountries:16,momoPct:290,alipayWallets:50},
   items:[
-    {id:"visa-fraud",date:"2026-10-21",co:"Visa",cat:"Şirkətlərarası ödənişlər",short:"Visa: şirkət ödənişlərində daha çox nəzarət",
-     title:"Visa şirkətlərarası ödənişləri daha təhlükəsiz və nəzarətli edən yeniliklər təqdim etdi",
-     what:"Visa şirkətlər arasında kartla ödənişlər üçün üç yeni alət açıqladı: təchizatçının həqiqiliyini yoxlama, virtual kartla ödəyəndə əlavə təsdiq və xərclərə limit qoyma.",
-     summary:"Visa həmçinin kartla ödəniş qəbul etməyə hazır təchizatçıları süni intellektlə tapan alətin yeni versiyasını təqdim etdi; əvvəlki versiya artıq 600 milyard dollardan çox potensial kart xərci aşkar edib. Limit qoyma aləti uyğun banklar üçün dəstəklənən ölkələrdə artıq işləyir. Təchizatçını yoxlama və virtual kartda əlavə təsdiq alətləri hələ sınaq mərhələsindədir, hamı üçün 2027-də açılması gözlənilir.",
-     impact:"Şirkət müştərilərinə virtual kart təklif edən bank üçün (məsələn, Birbank) bu, fırıldaqçılığa qarşı yeni yanaşma nümunəsidir.",level:"Orta",
-     source:{name:"Visa xəbər mərkəzi",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
-    {id:"visa-agent",date:"2026-10-20",co:"Visa",cat:"AI köməkçi ödənişləri",short:"Visa: süni intellekt fakturanı özü ödədi",
-     title:"Visa, BILL və Billtrust: süni intellekt köməkçisi fakturanı özü ödədi",
-     what:"Visa və iki tərəfdaş şirkət (BILL və Billtrust) real şəraitdə ilk dəfə belə sınaq keçirir: şirkət adından işləyən süni intellekt köməkçisi təchizatçının portalında fakturanı özü ödəyir.",
-     summary:"Sınaq canlıdır, yəni real ödənişlər başdan sona keçir. Köməkçinin etibarlı olduğunu yoxlamaq üçün Visa-nın xüsusi qaydaları (Trusted Agent Protocol) və kart məlumatının yerinə işlədilən təhlükəsiz kodlar istifadə olunur.",
-     impact:"Gələcəkdə müştərilər ödənişi proqrama tapşıra biləcək. Bank üçün əsas sual: proqramın həqiqətən müştəri adından işlədiyini necə yoxlamaq olar?",level:"Yüksək",
-     source:{name:"Visa xəbər mərkəzi (20 və 21 oktyabr buraxılışları)",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
-    {id:"visa-direct",date:"2026-10-15",co:"Visa",cat:"Stablecoin",short:"Visa Direct: stablecoin ilə pul köçürmə",
-     title:"Visa Direct stablecoin ilə pul köçürməsini sınaqdan real istifadəyə keçirdi",
-     what:"Visa-nın pul köçürmə xidməti stablecoin ilə işləməyə başladı: bizneslər ölkələrarası ödənişlər üçün pulu USDC stablecoin-i ilə, demək olar ki, anında əvvəlcədən yerləşdirə bilir.",
-     summary:"Bunu ilk tətbiq edən Visa Direct-in tərəfdaşı Inyo Global-dır. Inyo pul köçürmə şirkətləri, fintechlər və banklarla işləyir, platforması 180-dən çox ölkəyə yerli və beynəlxalq ödəniş göndərir. Əvvəllər pulu yalnız adi maliyyələşdirmə saatlarında yerləşdirmək olurdu. Əlçatanlıq müştərinin uyğunluğundan və ölkədən asılıdır.",
-     impact:"Stablecoin ilə ölkələrarası köçürmələr gələcəkdə M10 və Birbank üçün tərəfdaşlıq imkanı ola bilər. Həm də qaydalar baxımından izlənməlidir.",level:"Orta",
-     source:{name:"Visa xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22851.html"},status:"Təsdiqlənib"},
-    {id:"visa-onchain",date:"2026-09-08",co:"Visa",cat:"Stablecoin",short:"Visa: blokçeyn əsaslı kredit",
-     title:"Visa blokçeyn əsaslı kredit üçün yeni yanaşma açıqladı",
-     what:"Visa stablecoin ilə işləyən kart proqramlarının və fintechlərin dövriyyə krediti almasını asanlaşdıran yeni yanaşma açıqladı. Kredit blokçeyn (rəqəmsal qeydiyyat şəbəkəsi) üzərində verilir.",
-     summary:"Visa-nın hesablaşma məlumatları, müştərinin icazəsi ilə, kredit verənlərə proqramları qiymətləndirməkdə kömək edir. İlk nümunə Credit Coop şirkətidir: maliyyələşdirmə, girov və geri ödəmə avtomatik işləyir. Visa-nın açıqlamasına görə bu model 2023-dən bəri 2,5 milyard dollardan çox hesablaşmanı maliyyələşdirib və geri qaytarılmayan borc olmayıb. Visa şəbəkəsində 160-dan çox stablecoin kart proqramı işləyir.",
-     impact:"Blokçeyn əsaslı kredit hələ yeni sahədir. Bir Ekosistem üçün hələlik izləmək kifayətdir.",level:"İzləmə",
-     source:{name:"Visa xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22721.html"},status:"Təsdiqlənib"},
-    {id:"visa-a2a",date:"2026-09-01",co:"Visa",cat:"Fırıldaqçılığa qarşı təhlükəsizlik",short:"Visa: fırıldaqçılığı pul çıxmamış tutur",
-     title:"Visa fırıldaqçılığı pul hesabdan çıxmazdan əvvəl dayandıran xidmətini yenilədi",
-     what:"Visa bankların hesabdan hesaba köçürmələrdə fırıldaqçılığı pul çıxmazdan əvvəl görməsinə kömək edən xidməti (A2A Protect) yenilədi: indi vahid risk balı verilir.",
-     summary:"Bank xidmətə bir qoşulma ilə inteqrasiya olunur və hər xəbərdarlıqda əməliyyatın niyə işarələndiyi sadə dildə izah edilir. Məlumat paylaşmağa razı olan banklar yeni fırıldaq üsullarını və təşkilatlanmış hücumları görür. Visa-nın öz rəqəmlərinə görə xidmət 50%-dən çox əlavə fırıldaqçılığın qarşısını almağa və lazımsız xəbərdarlıqları 40%-dən çox azaltmağa kömək edir.",
-     impact:"Ani ödənişlərdə pul göndəriləndən sonra geri qaytarmaq çətindir, ona görə köçürmədən əvvəl yoxlama vacibdir. Azərbaycanda ani ödənişlər sistemi (AÖS) üçün də aktual mövzudur.",level:"Orta",
-     source:{name:"Visa xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22696.html"},status:"Təsdiqlənib"},
-    {id:"mc-agent",date:"2026-09-30",co:"Mastercard",cat:"AI köməkçi ödənişləri",short:"Mastercard: ödənişi insan, yoxsa proqram etdi?",
-     title:"Mastercard ödənişi süni intellektin başlatma ehtimalını göstərən bal təqdim etdi",
-     what:"Mastercard hər ödənişin insan yox, süni intellekt köməkçisi tərəfindən başladılması ehtimalını göstərən bal verən yeni xidməti sınaqdan keçirir (hələlik ABŞ-da).",
-     summary:"Bu, Mastercard-ın süni intellekt köməkçilərinin ödənişləri üçün qurduğu etibar sisteminin (Agent Pay) ilk xidmətidir. Zamanla davranış, satıcının riski, ödənişin xarakteri, kart məlumatının riski və müştərinin alış ehtimalı kimi əlavə göstəricilər də əlavə olunacaq. Tərəfdaşlar: Cloudflare (təhlükəsiz mühit) və Skyfire (köməkçinin kim olduğunu yoxlama).",
+    {id:"visa-fraud",date:"2026-10-21",co:"Visa",cat:"Şirkətlərarası ödənişlər",short:"Visa korporativ ödənişlərdə nəzarəti gücləndirib",
+     title:"Visa korporativ kart ödənişlərinin təhlükəsizliyini artıran yeni həllər təqdim edib",
+     what:"Visa şirkətlərarası kart ödənişləri üçün üç yeni alət açıqlayıb: təchizatçının həqiqiliyinin yoxlanılması, virtual kartla ödəniş zamanı əlavə təsdiq və xərclərə limit qoyulması.",
+     summary:"Visa, həmçinin kartla ödəniş qəbul etməyə hazır olan təchizatçıları süni intellekt vasitəsilə müəyyən edən alətin yeni versiyasını təqdim edib. Əvvəlki versiya kartla ödənilə biləcək 600 milyard dollardan artıq potensial xərc aşkar edib. Xərc limiti aləti dəstəklənən ölkələrdə uyğun banklar üçün artıq əlçatandır. Digər iki alət hazırda sınaq mərhələsindədir və 2027-ci ildə hamının istifadəsinə veriləcəyi gözlənilir.",
+     impact:"Korporativ müştərilərə virtual kart təklif edilərsə, bu yanaşma fırıldaqçılığın qarşısının alınması üçün nümunə ola bilər.",level:"Orta",
+     source:{name:"Visa-nın xəbər mərkəzi",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
+    {id:"visa-agent",date:"2026-10-20",co:"Visa",cat:"Süni intellektlə ödənişlər",short:"Visa süni intellektlə faktura ödənişini sınaqdan keçirir",
+     title:"Visa süni intellekt köməkçisinin fakturanı müstəqil ödədiyi sınağa başlayıb",
+     what:"Visa, BILL və Billtrust şirkətləri birlikdə real sınaq keçirir: şirkətin adından çıxış edən süni intellekt köməkçisi təchizatçının portalında fakturanı müstəqil şəkildə ödəyir.",
+     summary:"Sınaq real mühitdə aparılır və ödənişlər əvvəldən sona qədər icra olunur. Köməkçinin etibarlılığını yoxlamaq üçün Visa-nın xüsusi qaydalarından (Trusted Agent Protocol) və kart məlumatlarını əvəz edən təhlükəsiz kodlardan istifadə edilir.",
+     impact:"Gələcəkdə müştərilər ödənişləri proqrama həvalə edə biləcəklər. Bank üçün əsas sual budur: proqramın həqiqətən müştərinin adından hərəkət etdiyini necə təsdiqləmək olar?",level:"Yüksək",
+     source:{name:"Visa-nın xəbər mərkəzi (20 və 21 oktyabr açıqlamaları)",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
+    {id:"visa-direct",date:"2026-10-15",co:"Visa",cat:"Stablecoin",short:"Visa stablecoin ilə pul köçürməsinə başlayıb",
+     title:"Visa Direct xidmətində stablecoin ilə pul köçürməsi sınaq mərhələsindən real istifadəyə keçib",
+     what:"Visa-nın pul köçürmə xidməti stablecoin ilə işləməyə başlayıb: şirkətlər ölkələrarası ödənişlər üçün vəsaiti USDC stablecoin-i vasitəsilə, əvvəlcədən və demək olar ki, dərhal yerləşdirə bilirlər.",
+     summary:"Bu imkanı ilk olaraq Visa Direct-in tərəfdaşı Inyo Global tətbiq edib. Inyo pul köçürmə şirkətləri, fintex şirkətləri və banklarla əməkdaşlıq edir; onun platforması 180-dən çox ölkəyə yerli və beynəlxalq ödənişlər göndərir. Əvvəllər vəsaiti yalnız standart maliyyələşdirmə saatları çərçivəsində yerləşdirmək mümkün idi. Xidmətin əlçatanlığı müştərinin tələblərə uyğunluğundan və ölkədən asılıdır.",
+     impact:"Stablecoin vasitəsilə ölkələrarası köçürmələr gələcəkdə Birbank və M10 üçün tərəfdaşlıq imkanı yarada bilər. Bu sahə tənzimləmə baxımından da diqqətdə saxlanılmalıdır.",level:"Orta",
+     source:{name:"Visa-nın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22851.html"},status:"Təsdiqlənib"},
+    {id:"visa-onchain",date:"2026-09-08",co:"Visa",cat:"Stablecoin",short:"Visa blokçeyn əsaslı kreditləşmə təqdim edib",
+     title:"Visa blokçeyn üzərində kreditləşmə üçün yeni yanaşma açıqlayıb",
+     what:"Visa stablecoin ilə işləyən kart proqramlarının və fintex şirkətlərinin dövriyyə krediti əldə etməsini asanlaşdıran yeni yanaşma açıqlayıb. Kredit blokçeyn (paylanmış rəqəmsal qeydiyyat sistemi) üzərində verilir.",
+     summary:"Visa-nın hesablaşma məlumatları müştərinin razılığı əsasında kredit verənlərə kart proqramlarını qiymətləndirməyə kömək edir. İlk nümunə Credit Coop şirkətidir: maliyyələşdirmə, girovun idarə edilməsi və borcun qaytarılması avtomatik həyata keçirilir. Visa-nın açıqlamasına görə, bu model 2023-cü ildən bəri 2,5 milyard dollardan artıq hesablaşmanı maliyyələşdirib və qaytarılmayan borc qeydə alınmayıb. Visa şəbəkəsində 160-dan çox stablecoin kart proqramı fəaliyyət göstərir.",
+     impact:"Blokçeyn əsaslı kreditləşmə hələ yeni sahədir. Bir Ekosistem üçün hazırda onu müşahidə etmək kifayətdir.",level:"İzləmə",
+     source:{name:"Visa-nın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22721.html"},status:"Təsdiqlənib"},
+    {id:"visa-a2a",date:"2026-09-01",co:"Visa",cat:"Fırıldaqçılığa qarşı mübarizə",short:"Visa fırıldaqçılığa qarşı xidmətini yeniləyib",
+     title:"Visa vəsait hesabdan çıxmazdan əvvəl fırıldaqçılığın qarşısını alan xidmətini yeniləyib",
+     what:"Visa banklara hesabdan hesaba köçürmələrdə fırıldaqçılığı vəsait hesabdan çıxmazdan əvvəl aşkar etməyə kömək edən “A2A Protect” xidmətini yeniləyib. Xidmətə vahid risk balı əlavə olunub.",
+     summary:"Bank xidmətə vahid inteqrasiya vasitəsilə qoşulur və hər xəbərdarlıqda əməliyyatın nəyə görə şübhəli sayıldığı sadə dildə izah edilir. Məlumat mübadiləsinə razılıq verən banklar yeni fırıldaqçılıq üsullarını və mütəşəkkil hücumları görə bilirlər. Visa-nın öz göstəricilərinə görə, xidmət 50%-dən çox əlavə fırıldaqçılıq halının qarşısını almağa və lazımsız xəbərdarlıqları 40%-dən çox azaltmağa kömək edir.",
+     impact:"Ani ödənişlərdə göndərilmiş vəsaiti geri qaytarmaq çətindir, buna görə köçürmədən əvvəlki yoxlama vacibdir. Bu mövzu Azərbaycanın Ani Ödənişlər Sistemi (AÖS) üçün də aktualdır.",level:"Orta",
+     source:{name:"Visa-nın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22696.html"},status:"Təsdiqlənib"},
+    {id:"mc-agent",date:"2026-09-30",co:"Mastercard",cat:"Süni intellektlə ödənişlər",short:"Mastercard süni intellektin başlatdığı ödənişləri tanıyan xidməti sınaqdan keçirir",
+     title:"Mastercard ödənişin süni intellekt tərəfindən edilməsi ehtimalını göstərən bal təqdim edib",
+     what:"Mastercard ödənişin insan tərəfindən deyil, süni intellekt köməkçisi tərəfindən başladılması ehtimalını qiymətləndirən yeni xidməti hazırda ABŞ-da sınaqdan keçirir.",
+     summary:"Bu, Mastercard-ın süni intellekt köməkçiləri ilə edilən ödənişlər üçün yaratdığı etibar sistemində (Agent Pay) yeni xidmətlərin birincisidir. Zaman keçdikcə davranış, satıcı riski, ödənişin xüsusiyyətləri, kart məlumatlarının riski və müştərinin alış ehtimalı kimi göstəricilər də əlavə ediləcək. Tərəfdaşlar Cloudflare (təhlükəsiz mühit) və Skyfire (köməkçinin kimliyinin yoxlanılması) şirkətləridir.",
      impact:"Fırıldaqçılıqla mübarizə komandası üçün ödənişi insanın, yoxsa proqramın başlatdığını bilmək yeni və faydalı məlumat ola bilər.",level:"Yüksək",
-     source:{name:"Mastercard investor səhifəsi (Business Wire)",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Advances-Agentic-Commerce-With-New-Trust-and-Intelligence-Services/default.aspx"},status:"Təsdiqlənib"},
-    {id:"mc-wallet",date:"2026-09-09",co:"Mastercard",cat:"Rəqəmsal pul kisələri",short:"Mastercard Wallet Pay",
-     title:"Mastercard rəqəmsal pul kisələrinin bir-biri ilə işləməsi üçün Wallet Pay-i işə saldı",
-     what:"Rəqəmsal pul kisəsi telefondakı ödəniş tətbiqidir. Wallet Pay müxtəlif ölkələrin pul kisələrinin telefonu terminala yaxınlaşdırmaqla, QR kodla və internetdə eyni qaydada işləməsinə kömək edir.",
-     summary:"Tərəfdaşlar arasında Alipay+ və onun pul kisələri (AlipayHK, GCash, KakaoPay, TrueMoney), həmçinin Mercado Pago, MTN və TenPay Global var. Mastercard-ın açıqlamasına görə dünyada 4,3 milyarddan çox insan rəqəmsal pul kisəsi işlədir, 2030-a qədər bu rəqəmin 6 milyarddan çox olacağı gözlənilir.",
-     impact:"M10 kimi pul kisəsi tətbiqi üçün başqa ölkələrin pul kisələri ilə qarşılıqlı işləmək gələcək inkişaf istiqaməti ola bilər.",level:"Yüksək",
-     source:{name:"Mastercard investor səhifəsi (Business Wire)",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Wallet-Pay-to-Scale-Digital-Wallets-Worldwide/default.aspx"},status:"Təsdiqlənib"},
-    {id:"mc-bvnk",date:"2026-10-15",co:"Mastercard",cat:"Stablecoin",short:"Mastercard və BVNK: biznes üçün vahid platforma",
-     title:"Mastercard və BVNK adi pul və stablecoin üçün vahid platforma işə saldı",
-     what:"Mastercard və BVNK ortaq platforma (Global Money Platform) işə saldı: banklar, fintechlər və şirkətlər öz adları altında adi pulu və stablecoin-i birlikdə saxlayan hesablar təklif edə bilir.",
-     summary:"Platforma valyutanı anında çevirməyə, stablecoin ilə bağlı kartlar buraxmağa (130-dan çox ölkədə) və yerli bank ödənişlərinə imkan verir. İlk qoşulanlar arasında Nuvei, Marqeta, Ontop və Almond FinTech var. Platforma BVNK vasitəsilə artıq əlçatandır. Bu, Mastercard-ın 2026-cı ilin avqustunda BVNK-nı almasından sonra ilk böyük birləşmədir.",
-     impact:"Şirkət müştərilərinə adi pulu və stablecoin-i tək hesabda saxlamaq imkanı gələcəkdə biznes bankçılığı üçün maraqlı ola bilər.",level:"İzləmə",
-     source:{name:"Mastercard investor səhifəsi",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-and-BVNK-Launch-Global-Money-Platform-to-Power-a-Multi-Money-World/default.aspx"},status:"Təsdiqlənib"},
-    {id:"stripe-pay",date:"2026-10-16",co:"Stripe",cat:"Stablecoin",short:"Stripe: stablecoin ilə anında pul göndərmə",
-     title:"Stripe stablecoin ilə pul göndərməni və kart buraxılışını genişləndirir",
-     what:"Stripe (onlayn ödəniş şirkəti) fintech şirkətləri üçün stablecoin ilə anında pul göndərməni 160 bazarda təklif edir və stablecoin ilə işləyən kart buraxılışını 27 Aİ ölkəsinə gətirir.",
-     summary:"Adi valyutada pul göndərmə 100-dən çox bazarda mümkündür. Stablecoin ilə kart buraxılışı indi 65-dən çox ölkədə əlçatandır və Stripe 2026-nın sonuna 100 ölkəni hədəfləyir. Nümunə: Turo şirkəti bu xidmətlə 160 milyon dollardan çox ödəniş göndərib, uğur nisbəti 99,5%-dir.",
-     impact:"Anında ölkələrarası pul göndərmə fərdi sahibkarlar və frilanserlər üçün Bir Ekosistem tərəfindən də düşünülə bilər.",level:"Orta",
-     source:{name:"Stripe bloqu",type:"Şirkət bloqu",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},status:"Təsdiqlənib"},
-    {id:"stripe-ousd",date:"2026-09-30",co:"Stripe",cat:"Stablecoin",short:"Stripe: OUSD əsas stablecoin oldu",
-     title:"Stripe yeni OUSD stablecoin-ini platformasında əsas seçim etdi",
-     what:"Stripe yeni OUSD stablecoin-ini istifadəyə verdi və onu platformasında əsas (defolt) stablecoin etdi. Başqa stablecoin-lər də işləməyə davam edir.",
-     summary:"OUSD-ni Open Standard şirkəti buraxır; təsisçiləri Coinbase, Mastercard, Shopify, Stripe və Visa-dır, 200-dən çox şəbəkə tərəfdaşı var. Biznes onu Stripe-ın hesab, kart, pul göndərmə və ödəniş qəbulu xidmətlərində işlədə bilir. Buraxılış və geri qaytarma haqqı yoxdur, OUSD-ni 100-dən çox ölkəyə göndərmək olur. 22 oktyabr yazısında Stripe dövriyyənin 800 milyon dollardan çox olduğunu bildirib.",
-     impact:"Böyük ödəniş platformasının hansı stablecoin-i əsas seçməsi bu sahənin nə qədər sürətlə normallaşdığını göstərir.",level:"İzləmə",
-     source:{name:"Stripe bloqu",type:"Şirkət bloqu",url:"https://stripe.com/blog/ousd-now-live-on-stripe"},status:"Təsdiqlənib"},
-    {id:"pp-workday",date:"2026-11-12",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"PayPal: maaş birbaşa PayPal-a",
-     title:"PayPal maaşı birbaşa PayPal hesabına yönləndirməyə imkan verir",
-     what:"Workday proqramından istifadə edən ABŞ şirkətlərinin işçiləri maaşlarını PayPal hesabına yönləndirə bilər. Maaş iki günə qədər tez çata bilər.",
-     summary:"Bu seçim artıq aktivdir və işəgötürənə əlavə xərc yoxdur. PayPal Debit Mastercard kartı seçilmiş kateqoriyada ayda 1000 dollara qədər 5% geri qaytarır.",
-     impact:"Maaşın rəqəmsal pul kisəsinə yönləndirilməsi M10 üçün korporativ müştərilərlə əməkdaşlıq ideyası ola bilər.",level:"Orta",
-     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
-    {id:"venmo-receipt",date:"2026-11-09",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"Venmo: çeki maddələrə böl",
-     title:"Venmo çeki skan edib hesabı maddə-maddə bölür",
-     what:"İstifadəçi çeki şəkilə çəkir və ya yükləyir, hər maddəni dostlarına təyin edir. Venmo vergi və bahşişi hesablayıb pul sorğularını göndərir.",
-     summary:"Funksiya hazırda tədricən yayılır, yaxın həftələrdə hamıya açılacağı bildirilir.",
-     impact:"Dostlar arasında hesabı bölmək gündəlik problemdir. Bu, M10 üçün sadə və faydalı funksiya ideyasıdır.",level:"Orta",
-     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
-    {id:"pp-enterprise",date:"2026-10-23",co:"PayPal",cat:"Şirkətlərarası ödənişlər",short:"PayPal: biznes üçün yeni imkanlar",
-     title:"PayPal biznes müştəriləri üçün yeni ödəniş və təhlükəsizlik imkanları əlavə etdi",
-     what:"PayPal-ın biznes xidmətləri (Braintree və Hyperwallet) yeni ödəniş üsulları, daha sürətli hesablaşma və fırıldaqçılığa qarşı yeni alət əlavə etdi.",
-     summary:"Əsas yeniliklər: uyğun Visa kartlarına pul göndərmək; ABŞ-da ACH köçürmələrinin hesablaşmasının 1–2 gün tez olması; Discover şəbəkəsinin təhlükəsiz kart kodlarının dəstəyi; Twint, Bizum, PayU və Skrill kimi yerli ödəniş üsulları; Avropada SEPA Instant ilə ani pul göndərmə və alıcının adının yoxlanması; ABŞ-da özünüxidmət rejimində, maşın öyrənməsi ilə işləyən fırıldaqçılıq yoxlaması (təxminən 100 risk göstəricisi).",
-     impact:"Pul göndərməzdən əvvəl alıcının adını yoxlamaq səhv köçürmələrin qarşısını alır. Bu, ani ödənişlərdə bank təcrübəsi üçün faydalı nümunədir.",level:"Orta",
-     source:{name:"PayPal yenilik qeydləri",type:"Şirkət açıqlaması",url:"https://www.paypal.com/us/brc/article/paypal-open-release-notes"},status:"Təsdiqlənib"},
-    {id:"pp-tuition",date:"2026-08-19",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"PayPal və Venmo: təhsil haqqı",
-     title:"PayPal və Venmo təhsil haqqı ödənişinə qoşuldu",
-     what:"Tələbə və ailələr təhsil haqqını məktəbin öz ödəniş portalında PayPal və ya Venmo ilə ödəyə bilir.",
-     summary:"Funksiya üç portal tərəfdaşı (Illumia, Nelnet Campus Commerce, TouchNet) vasitəsilə qoşulub. Pul bank hesabından, kartdan və ya PayPal/Venmo balansından çəkilə bilər. Bellarmine, Butler, Kansas State, Michigan State və Texas Tech daxil olmaqla məktəblərdə artıq işləyir.",
-     impact:"Təhsil, kommunal kimi mövcud ödəniş portallarına yeni ödəniş üsulu əlavə etmək Bir Ekosistem üçün inteqrasiya modeli ola bilər.",level:"İzləmə",
-     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
-    {id:"google-walmart",date:"2026-08-21",co:"Google",cat:"Rəqəmsal pul kisələri",short:"Google Pay: Walmart-da telefonla ödəniş",
-     title:"Google Pay ilə Walmart və Sam's Club-da telefonla ödəmək mümkün olur",
-     what:"ABŞ-ın böyük pərakəndə şəbəkəsi Walmart-da və Sam's Club-da telefonu terminala yaxınlaşdırmaqla Google Pay ilə ödəniş başlayır.",
-     summary:"Əvvəlcə seçilmiş mağazalarda başlayır. Plan: 2026-nın sonuna bütün ABŞ mağaza və klublarında, 2027-nin ortasına yanacaqdoldurma məntəqələrində.",
-     impact:"Böyük pərakəndəçinin telefonla ödənişi dəstəkləməsi bu üsulun nə qədər geniş yayıldığını göstərir.",level:"İzləmə",
-     source:{name:"Google bloqu",type:"Şirkət bloqu",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},status:"Təsdiqlənib"},
-    {id:"tencent",date:"2026-11-05",co:"Tencent",cat:"Rəqəmsal pul kisələri",short:"Tencent: turistlər Çində öz pul kisəsi ilə",
-     title:"Tencent xarici turistlərin Çində öz pul kisələri ilə yaşamasını asanlaşdırır",
-     what:"Çinə gedən turistlər öz ölkəsinin pul kisəsi tətbiqindən çıxmadan yemək sifariş edə, nəqliyyat çağıra, təyyarə və qatar bileti ala bilir (Pay in China 2.0).",
-     summary:"Tencent-in ödəniş xidməti (Weixin Pay) 16 ölkə və regiondan 60-dan çox xarici pul kisəsi ilə qoşulub. Şirkət bildirir ki, Vyetnamın MoMo pul kisəsində Çinə gedən istifadəçilərin gündəlik əməliyyatları orta hesabla 290% artıb. Tencent həmçinin Mastercard və UnionPay International ilə anlaşma memorandumu imzalayıb. Mənbə ödənişli press-relizdir, rəqəmlər şirkətin öz iddiasıdır.",
-     impact:"Səyahət edən müştərilər üçün pul kisələrinin ölkələr arasında işləməsi M10 üçün uzunmüddətli ideya ola bilər.",level:"Orta",
+     source:{name:"Mastercard-ın investor səhifəsi",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Advances-Agentic-Commerce-With-New-Trust-and-Intelligence-Services/default.aspx"},status:"Təsdiqlənib"},
+    {id:"mc-wallet",date:"2026-09-09",co:"Mastercard",cat:"Rəqəmsal pul kisələri",short:"Mastercard pul kisələrini birləşdirən xidmət yaradıb",
+     title:"Mastercard rəqəmsal pul kisələrinin qarşılıqlı işləməsi üçün “Wallet Pay” xidmətini istifadəyə verib",
+     what:"“Wallet Pay” müxtəlif ölkələrin rəqəmsal pul kisələrinin (telefondakı ödəniş tətbiqlərinin) təmassız ödənişdə, QR kodla və internetdə eyni qaydada işləməsinə imkan yaradır.",
+     summary:"Tərəfdaşlar arasında Alipay+ və ona qoşulmuş pul kisələri (AlipayHK, GCash, KakaoPay, TrueMoney), həmçinin Mercado Pago, MTN və TenPay Global var. Mastercard-ın açıqlamasına görə, dünyada 4,3 milyarddan çox insan rəqəmsal pul kisəsindən istifadə edir və 2030-cu ilədək bu göstəricinin 6 milyardı keçəcəyi gözlənilir.",
+     impact:"M10 kimi pul kisəsi tətbiqləri üçün başqa ölkələrin pul kisələri ilə qarşılıqlı işləmək gələcək inkişaf istiqaməti ola bilər.",level:"Yüksək",
+     source:{name:"Mastercard-ın investor səhifəsi",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Wallet-Pay-to-Scale-Digital-Wallets-Worldwide/default.aspx"},status:"Təsdiqlənib"},
+    {id:"mc-bvnk",date:"2026-10-15",co:"Mastercard",cat:"Stablecoin",short:"Mastercard stablecoin platformasını istifadəyə verib",
+     title:"Mastercard və BVNK adi pulu və stablecoin-i birləşdirən platformanı istifadəyə verib",
+     what:"Mastercard və BVNK birgə “Global Money Platform” adlı platformanı istifadəyə verib. Banklar, fintex şirkətləri və müəssisələr öz brendləri altında həm adi pulun, həm də stablecoin-in saxlandığı hesablar təklif edə bilərlər.",
+     summary:"Platforma valyutanın dərhal mübadiləsinə, stablecoin ilə əlaqəli kartların buraxılmasına (130-dan çox ölkədə) və yerli bank ödənişlərinə imkan verir. İlk qoşulanlar arasında Nuvei, Marqeta, Ontop və Almond FinTech var. Platforma artıq BVNK vasitəsilə əlçatandır. Bu, Mastercard-ın 2026-cı ilin avqustunda BVNK-nı satın almasından sonra ilk böyük birgə həlldir.",
+     impact:"Korporativ müştərilərə adi pulu və stablecoin-i bir hesabda saxlamaq imkanının verilməsi gələcəkdə biznes bankçılığı üçün maraqlı ola bilər.",level:"İzləmə",
+     source:{name:"Mastercard-ın investor səhifəsi",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-and-BVNK-Launch-Global-Money-Platform-to-Power-a-Multi-Money-World/default.aspx"},status:"Təsdiqlənib"},
+    {id:"stripe-pay",date:"2026-10-16",co:"Stripe",cat:"Stablecoin",short:"Stripe stablecoin ilə ödəniş imkanlarını genişləndirib",
+     title:"Stripe stablecoin vasitəsilə pul göndərmə və kart buraxılışı imkanlarını genişləndirib",
+     what:"Onlayn ödəniş şirkəti Stripe fintex şirkətlərinə 160 bazarda stablecoin ilə dərhal pul göndərmək imkanı təklif edir və stablecoin əsaslı kart buraxılışını Avropa İttifaqının 27 ölkəsində istifadəyə verir.",
+     summary:"Adi valyutada pul göndərmək 100-dən çox bazarda mümkündür. Stablecoin əsaslı kart buraxılışının əhatəsi 65-dən çox ölkəyə çatır, 2026-cı ilin sonunadək bu sayın 100-ə çatdırılması hədəflənir. Məsələn, Turo şirkəti bu xidmət vasitəsilə 160 milyon dollardan artıq ödəniş göndərib, uğurlu ödənişlərin payı 99,5% olub.",
+     impact:"Ölkələrarası dərhal pul göndərmə imkanı fərdi sahibkarlar və frilanserlər üçün Bir Ekosistemdə də nəzərdən keçirilə bilər.",level:"Orta",
+     source:{name:"Stripe bloqu",type:"Şirkətin bloqu",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},status:"Təsdiqlənib"},
+    {id:"stripe-ousd",date:"2026-09-30",co:"Stripe",cat:"Stablecoin",short:"Stripe OUSD stablecoin-ini əsas seçim kimi müəyyən edib",
+     title:"Stripe platformasında OUSD əsas stablecoin kimi müəyyən edilib",
+     what:"Stripe yeni OUSD stablecoin-ini istifadəyə verib və onu platformasında standart seçim kimi təyin edib. Digər stablecoin-lər də dəstəklənməyə davam edir.",
+     summary:"OUSD-ni Open Standard şirkəti buraxır. Onun təsisçiləri Coinbase, Mastercard, Shopify, Stripe və Visa-dır, şirkətin 200-dən çox şəbəkə tərəfdaşı var. Müəssisələr OUSD-dən Stripe-ın hesab, kart, pul göndərmə və ödəniş qəbulu xidmətlərində istifadə edə bilərlər. Buraxılış və geri qaytarma üçün haqq tutulmur, vəsaiti 100-dən çox ölkəyə göndərmək mümkündür. Stripe 22 oktyabr tarixli açıqlamasında OUSD dövriyyəsinin 800 milyon dollardan çox olduğunu bildirib.",
+     impact:"Böyük ödəniş platformasının əsas stablecoin seçməsi bu sahənin sürətlə gündəlik istifadəyə daxil olduğunu göstərir.",level:"İzləmə",
+     source:{name:"Stripe bloqu",type:"Şirkətin bloqu",url:"https://stripe.com/blog/ousd-now-live-on-stripe"},status:"Təsdiqlənib"},
+    {id:"pp-workday",date:"2026-11-12",co:"PayPal",cat:"İstifadəçi funksiyaları",short:"PayPal maaşın birbaşa hesaba köçürülməsini təklif edir",
+     title:"PayPal əməkdaşlara maaşlarını birbaşa PayPal hesabına yönəltmək imkanı verib",
+     what:"Workday sistemindən istifadə edən ABŞ şirkətlərinin əməkdaşları maaşlarını PayPal hesabına yönəldə bilərlər. Vəsait hesaba iki günədək daha tez daxil ola bilər.",
+     summary:"Xidmət artıq aktivdir və işəgötürən üçün əlavə xərc yaratmır. PayPal Debit Mastercard kartı ilə seçilmiş kateqoriyada ayda 1000 dollaradək xərcin 5%-i geri qaytarılır.",
+     impact:"Maaşın rəqəmsal pul kisəsinə köçürülməsi M10 üçün korporativ müştərilərlə əməkdaşlıq ideyası ola bilər.",level:"Orta",
+     source:{name:"PayPal-ın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"venmo-receipt",date:"2026-11-09",co:"PayPal",cat:"İstifadəçi funksiyaları",short:"Venmo ortaq hesabı çek əsasında bölməyə imkan verir",
+     title:"Venmo çeki skan edərək ortaq hesabı məhsullar üzrə bölmək imkanı yaradıb",
+     what:"İstifadəçi çekin fotosunu çəkir və ya yükləyir, hər məhsulu müvafiq şəxsə təyin edir. Venmo vergi və xidmət haqqını hesablayaraq ödəniş sorğularını göndərir.",
+     summary:"Funksiya mərhələlərlə istifadəyə verilir; onun yaxın həftələrdə hamı üçün əlçatan olacağı bildirilir.",
+     impact:"Dostlar arasında hesabın bölüşdürülməsi gündəlik ehtiyacdır. Bu, M10 üçün sadə və faydalı funksiya ideyasıdır.",level:"Orta",
+     source:{name:"PayPal-ın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"pp-enterprise",date:"2026-10-23",co:"PayPal",cat:"Şirkətlərarası ödənişlər",short:"PayPal biznes müştəriləri üçün yeni imkanlar əlavə edib",
+     title:"PayPal biznes müştəriləri üçün yeni ödəniş və təhlükəsizlik imkanları təqdim edib",
+     what:"PayPal-ın biznes xidmətlərinə (Braintree və Hyperwallet) yeni ödəniş üsulları, daha sürətli hesablaşma və fırıldaqçılığa qarşı yeni alət əlavə olunub.",
+     summary:"Əsas yeniliklər bunlardır: uyğun Visa kartlarına pul göndərilməsi; ABŞ-da ACH köçürmələri üzrə hesablaşmanın 1–2 gün tezləşməsi; Discover şəbəkəsinin təhlükəsiz kart kodlarının dəstəklənməsi; Twint, Bizum, PayU və Skrill kimi yerli ödəniş üsulları; Avropada SEPA Instant vasitəsilə ani pul göndərmə və alıcının adının yoxlanılması; ABŞ-da müştərinin özünün aktivləşdirdiyi, maşın təliminə əsaslanan fırıldaqçılıq yoxlaması (təxminən 100 risk göstəricisi).",
+     impact:"Pul göndərməzdən əvvəl alıcının adının yoxlanılması səhv köçürmələrin qarşısını alır. Bu, ani ödənişlər üzrə faydalı bank təcrübəsi nümunəsidir.",level:"Orta",
+     source:{name:"PayPal-ın yenilik qeydləri",type:"Şirkət açıqlaması",url:"https://www.paypal.com/us/brc/article/paypal-open-release-notes"},status:"Təsdiqlənib"},
+    {id:"pp-tuition",date:"2026-08-19",co:"PayPal",cat:"İstifadəçi funksiyaları",short:"PayPal və Venmo ilə təhsil haqqı ödəmək mümkündür",
+     title:"PayPal və Venmo təhsil haqqı ödənişlərinə qoşulub",
+     what:"Tələbələr və onların ailələri təhsil haqqını təhsil müəssisəsinin öz ödəniş portalında PayPal və ya Venmo vasitəsilə ödəyə bilərlər.",
+     summary:"Xidmət üç portal tərəfdaşı (Illumia, Nelnet Campus Commerce və TouchNet) vasitəsilə qoşulub. Ödəniş bank hesabından, kartdan, yaxud PayPal və ya Venmo balansından edilə bilər. Xidmət Bellarmine, Butler, Kansas State, Michigan State və Texas Tech daxil olmaqla bir sıra təhsil müəssisələrində artıq işləyir.",
+     impact:"Təhsil və kommunal xidmətlər üzrə mövcud ödəniş portallarına yeni ödəniş üsulunun əlavə edilməsi Bir Ekosistem üçün inteqrasiya modeli ola bilər.",level:"İzləmə",
+     source:{name:"PayPal-ın xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"google-walmart",date:"2026-08-21",co:"Google",cat:"Rəqəmsal pul kisələri",short:"Google Pay Walmart mağazalarında istifadəyə verilir",
+     title:"Walmart və Sam's Club mağazalarında Google Pay ilə təmassız ödəniş tətbiq edilir",
+     what:"Google açıqlayıb ki, Walmart və Sam's Club mağazalarında telefonu terminala yaxınlaşdırmaqla Google Pay ilə ödəniş etmək mümkün olacaq.",
+     summary:"Xidmət əvvəlcə seçilmiş mağazalarda tətbiq edilir. Plana görə, 2026-cı ilin sonunadək ABŞ-dakı bütün mağaza və klublarda, 2027-ci ilin ortasında isə yanacaqdoldurma məntəqələrində istifadəyə veriləcək.",
+     impact:"Böyük pərakəndə satış şəbəkəsinin telefonla ödənişi dəstəkləməsi bu üsulun nə qədər geniş yayıldığını göstərir.",level:"İzləmə",
+     source:{name:"Google bloqu",type:"Şirkətin bloqu",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},status:"Təsdiqlənib"},
+    {id:"tencent",date:"2026-11-05",co:"Tencent",cat:"Rəqəmsal pul kisələri",short:"Tencent turistlər üçün ödəniş imkanlarını genişləndirib",
+     title:"Tencent xarici turistlərin Çində öz pul kisələrindən istifadə imkanlarını genişləndirib",
+     what:"Çinə səfər edən turistlər öz ölkələrinin pul kisəsi tətbiqindən çıxmadan yemək sifariş edə, taksi çağıra, təyyarə və qatar bileti ala bilirlər (“Pay in China 2.0”).",
+     summary:"Tencent-in ödəniş xidməti Weixin Pay 16 ölkə və regiondan 60-dan çox xarici pul kisəsi ilə əlaqələndirilib. Şirkətin məlumatına görə, Vyetnamın MoMo pul kisəsinin Çinə səfər edən istifadəçiləri üzrə gündəlik əməliyyatlar orta hesabla 290% artıb. Tencent, həmçinin Mastercard və UnionPay International ilə anlaşma memorandumu imzalayıb. Mənbə ödənişli press-relizdir, rəqəmlər şirkətin öz açıqlamasına əsaslanır.",
+     impact:"Səyahət edən müştərilər baxımından pul kisələrinin ölkələrarası işləməsi M10 üçün uzunmüddətli ideya ola bilər.",level:"Orta",
      source:{name:"PR Newswire (Yahoo Finance, ödənişli press-reliz)",type:"Press-reliz",url:"https://finance.yahoo.com/technology/ai/articles/tencent-showcases-global-payment-connectivity-105600388.html"},status:"Təsdiqlənib"},
-    {id:"npci",date:"2026-09-14",co:"NPCI",cat:"Ani ödənişlər",short:"Hindistan UPI: telefonla ödəniş və AI dəstək",
-     title:"Hindistanın UPI sistemi telefonla terminalda ödəniş və süni intellektli dəstək təqdim etdi",
-     what:"Hindistanın ani ödəniş şəbəkəsi UPI-ni idarə edən NPCI iki yenilik təqdim etdi: telefonu terminala toxundurmaqla ödəniş və süni intellektlə işləyən yardım xidməti (MyUPI).",
-     summary:"Telefonla ödənişdə mobil internet tələb olunmur, terminalın bağlantısı istifadə edilir; kiçik məbləğlərdə PIN kod lazım deyil. MyUPI bütün bank və tətbiqlərdəki UPI əməliyyatlarını və avtomatik ödəniş icazələrini bir yerdə göstərir, şübhəli halda hesabdan çıxışları dayandırmağı istəməyə və uyğun əməliyyatlarda pulun avtomatik geri qaytarılmasına imkan verir.",
-     impact:"Azərbaycanın ani ödənişlər sisteminə (AÖS) oxşar milli sistem istifadəçiyə köməkçi və təhlükəsizlik alətləri əlavə edir. Birbank və M10 üçün birbaşa müqayisə nümunəsidir.",level:"Yüksək",
+    {id:"npci",date:"2026-09-14",co:"NPCI",cat:"Ani ödənişlər",short:"Hindistanda UPI ilə təmassız ödəniş mümkün olub",
+     title:"Hindistanın UPI sistemində təmassız ödəniş və süni intellekt dəstəyi istifadəyə verilib",
+     what:"Hindistanın ani ödəniş sistemi UPI-ni idarə edən NPCI iki yenilik təqdim edib: telefonu terminala yaxınlaşdırmaqla ödəniş və süni intellekt əsaslı dəstək xidməti (MyUPI).",
+     summary:"Telefonla ödəniş üçün mobil internet tələb olunmur, terminalın bağlantısından istifadə edilir. Kiçik məbləğlərdə PIN kodu daxil etmək lazım deyil. MyUPI bütün banklar və tətbiqlər üzrə UPI əməliyyatlarını və avtomatik ödəniş icazələrini bir yerdə göstərir, şübhəli hallarda hesabdan vəsait silinməsinin dayandırılmasını istəməyə imkan verir və uyğun əməliyyatlarda vəsaiti avtomatik geri qaytarır.",
+     impact:"Bu addım Azərbaycanın Ani Ödənişlər Sistemi (AÖS) üçün oxşar köməkçi və təhlükəsizlik alətlərinə nümunə ola bilər. Bu, Birbank və M10 üçün də birbaşa müqayisə imkanı yaradır.",level:"Yüksək",
      source:{name:"The Paypers (ödəniş sahəsi üzrə nəşr)",type:"Xəbər nəşri",url:"https://thepaypers.com/payments/news/indias-npci-launches-nfc-based-upi-tap-pay-for-pos-payments"},status:"Təsdiqlənib"}
   ],
   future:[
-    {when:"Yaxın həftələrdə",co:"PayPal",title:"Venmo: çek bölgüsü hamıya açılır",what:"Çeki skan edib hesabı maddə-maddə bölmək funksiyası geniş istifadəyə veriləcək (Venmo-nun 9 noyabr açıqlaması).",url:"https://newsroom.paypal-corp.com/news"},
-    {when:"2026-nın sonu",d:"2026-12-31",co:"Google",title:"Google Pay Walmart-ın bütün ABŞ mağazalarında",what:"Google Pay ilə telefonla ödəniş Walmart-ın bütün ABŞ mağaza və klublarında işləyəcək (Google-un planı).",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},
-    {when:"2026-nın sonu",d:"2026-12-31",co:"Stripe",title:"Stripe: stablecoin kartı 100 ölkədə",what:"Stripe stablecoin ilə işləyən kart buraxılışını 100 ölkəyə çatdırmağı hədəfləyir (Stripe-ın planı).",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},
-    {when:"2027",co:"Visa",title:"Visa: iki yeni təhlükəsizlik aləti hamıya açılır",what:"Təchizatçını yoxlama və virtual kartda əlavə təsdiq alətləri hazırda sınaqdadır, hamı üçün açılması 2027-də gözlənilir (Visa-nın planı).",url:V22866},
-    {when:"2027",co:"Mastercard",title:"Mastercard: yerli ödənişlər 200-dən çox ölkəyə",what:"Yerli valyutada ödənişlərin 200-dən çox ölkə və ərazidə 40-dan çox valyutaya genişlənəcəyi gözlənilir (Mastercard və BVNK açıqlaması).",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-and-BVNK-Launch-Global-Money-Platform-to-Power-a-Multi-Money-World/default.aspx"},
-    {when:"2027-nin ortası",co:"Google",title:"Google Pay Walmart-ın yanacaqdoldurma məntəqələrində",what:"Telefonla ödəniş Walmart-ın yanacaqdoldurma məntəqələrinə də gətiriləcək (Google-un planı).",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"}
+    {when:"Yaxın həftələrdə",co:"PayPal",title:"Venmo-da çek üzrə hesab bölgüsü hamıya açılacaq",what:"Çeki skan edərək ortaq hesabı bölmək funksiyası bütün istifadəçilərə təqdim ediləcək (9 noyabr tarixli açıqlama).",url:"https://newsroom.paypal-corp.com/news"},
+    {when:"2026-cı ilin sonu",d:"2026-12-31",co:"Google",title:"Google Pay Walmart-ın ABŞ-dakı bütün mağazalarında işləyəcək",what:"Google Pay ilə telefonla ödəniş Walmart-ın ABŞ-dakı bütün mağaza və klublarında mümkün olacaq (Google-un planı).",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},
+    {when:"2026-cı ilin sonu",d:"2026-12-31",co:"Stripe",title:"Stripe stablecoin kartlarının əhatəsini 100 ölkəyə çatdıracaq",what:"Şirkət stablecoin əsaslı kart buraxılışının 100 ölkəni əhatə etməsini hədəfləyir (Stripe-ın planı).",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},
+    {when:"2027-ci il",co:"Visa",title:"Visa iki yeni təhlükəsizlik alətini hamıya təqdim edəcək",what:"Hazırda sınaqda olan təchizatçı yoxlaması və virtual kartla ödənişdə əlavə təsdiq alətlərinin 2027-ci ildə hamı üçün əlçatan olacağı gözlənilir (Visa-nın planı).",url:V22866},
+    {when:"2027-ci il",co:"Mastercard",title:"Mastercard yerli ödənişləri 200-dən çox ölkəyə genişləndirəcək",what:"Yerli valyutada ödənişlərin 200-dən çox ölkə və ərazidə 40-dan artıq valyutanı əhatə edəcəyi gözlənilir (Mastercard və BVNK açıqlaması).",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-and-BVNK-Launch-Global-Money-Platform-to-Power-a-Multi-Money-World/default.aspx"},
+    {when:"2027-ci ilin ortası",co:"Google",title:"Google Pay Walmart-ın yanacaqdoldurma məntəqələrində də istifadəyə veriləcək",what:"Telefonla ödəniş Walmart-ın yanacaqdoldurma məntəqələrində də tətbiq ediləcək (Google-un planı).",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"}
   ],
   outside:[
-    {date:"2026-04-29",co:"Stripe",title:"Stripe Sessions: 288 yeni məhsul və funksiya (AI köməkçilər üçün Link pul kisəsi daxil)",url:"https://stripe.com/newsroom/news/sessions-2026",note:"Pəncərədən əvvəl elan olunub, lakin bu ilin AI ödənişləri mövzusunda əsas mənbədir."}
+    {date:"2026-04-29",co:"Stripe",title:"Stripe Sessions tədbirində 288 yeni məhsul və funksiya açıqlanıb",url:"https://stripe.com/newsroom/news/sessions-2026",note:"Onların arasında süni intellekt köməkçiləri üçün “Link” pul kisəsi də var."}
   ],
-  sources:["Visa xəbər mərkəzi","Mastercard investor səhifəsi","PayPal xəbər mərkəzi və yenilik qeydləri","Stripe bloqu","Google bloqu","Tencent press-relizi (Yahoo Finance)","The Paypers (Hindistan UPI)"]
+  sources:["Visa-nın xəbər mərkəzi","Mastercard-ın investor səhifəsi","PayPal-ın xəbər mərkəzi və yenilik qeydləri","Stripe bloqu","Google bloqu","Tencent-in press-relizi (Yahoo Finance)","The Paypers nəşri (Hindistan UPI)"]
 };
 /* sayta yalnız təsdiqlənmiş xəbər düşür */
 DATA.items=DATA.items.filter(i=>i.status==="Təsdiqlənib");
-const LV={"Yüksək":"yüksək","Orta":"orta","İzləmə":"hələlik izləmək kifayətdir"};
+const LV={"Yüksək":"yüksək","Orta":"orta","İzləmə":"aşağı"};
 const CO={Visa:{c:"#1E6FE8",code:"VI"},Mastercard:{c:"#D9622B",code:"MC"},Stripe:{c:"#6D5BD0",code:"ST"},PayPal:{c:"#0E9F8E",code:"PP"},Google:{c:"#3A8F5C",code:"GO"},Tencent:{c:"#B0568F",code:"TC"},NPCI:{c:"#B7791F",code:"NP"},Apple:{c:"#52667F",code:"AP"},NOW:{c:"#0A2540",code:"•"}};
-const MON=["yan","fev","mar","apr","may","iyn","iyl","avq","sen","okt","noy","dek"];
+const MON=["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"];
 const fd=s=>{const p=s.split("-").map(Number);return p.length===2?MON[p[1]-1]+" "+p[0]:p[2]+" "+MON[p[1]-1]+" "+p[0]};
 const nf=(n,d=0)=>n.toFixed(d).replace(".",",");
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -482,53 +490,54 @@ const companies=[...new Set(DATA.items.map(i=>i.co))];
 const high=DATA.items.filter(i=>i.level==="Yüksək").length;
 
 /* ===== hero ===== */
-$("#asof").textContent=`Vəziyyət: ${fd(DATA.asOf)} · müddət ${fd(DATA.window.from)} – ${fd(DATA.window.to)}`;
-$("#dwin").textContent=`Müddət: ${fd(DATA.window.from)} – ${fd(DATA.window.to)} (3 ay)`;
-$("#hstats").innerHTML=[[DATA.items.length,"xəbər"],[companies.length,"şirkət"],[DATA.future.length,"açıqlanan plan"]].map(([v,l])=>`<div><b data-count="${v}">0</b><span>${l}</span></div>`).join("");
+const period=`${fd(DATA.window.from).replace(/ \d{4}$/,"")} – ${fd(DATA.window.to)}`;
+$("#asof").textContent=`Əhatə dövrü: ${period}`;
+$("#dwin").textContent=`Əhatə dövrü: ${period}`;
+$("#hstats").innerHTML=[[DATA.items.length,"xəbər"],[companies.length,"şirkət"],[DATA.future.length,"açıqlanmış plan"]].map(([v,l])=>`<div><b data-count="${v}">0</b><span>${l}</span></div>`).join("");
 $("#heroRows").innerHTML=items.slice(0,3).map(i=>`<div class="rowitem"><div class="av" style="background:${CO[i.co].c}">${CO[i.co].code}</div><div><p>${i.short}</p><small>${i.co} · ${i.cat}</small></div><div class="r"><small class="mono">${fd(i.date)}</small></div></div>`).join("");
 
 /* ===== story ===== */
 const S=[
- {tag:"AI köməkçi ödənişləri",c:"#6D5BD0",h:"Proqram ödəyir, insan nəzarət edir",p:()=>`${fd("2026-10-20")} tarixində Visa, BILL və Billtrust şirkətləri süni intellekt köməkçisinin fakturanı özü ödədiyi ilk real sınağa başladı. ${fd("2026-09-30")} tarixində Mastercard isə ödənişi proqramın başlatma ehtimalını göstərən bal təqdim etdi (hələlik ABŞ-da sınaq).`,url:I("visa-agent").source.url},
- {tag:"Stablecoin",c:"#1E6FE8",h:"Stablecoin gündəlik ödənişlərə yaxınlaşır",p:()=>`Stablecoin dəyəri dollar kimi sabit saxlanılan rəqəmsal pulun adıdır. Stripe ${F.payoutsStable} bazarda onunla anında pul göndərməyi təklif edir, stablecoin ilə işləyən kart buraxılışı isə ${F.euCountries} Aİ ölkəsinə gəlir. Visa və Mastercard da bu istiqamətdə yeni məhsullar açıqladı.`,url:I("stripe-pay").source.url},
- {tag:"Rəqəmsal pul kisələri",c:"#0E9F8E",h:"Pul kisələri bir-birinə qoşulur",p:()=>`Mastercard-ın Wallet Pay xidməti (${fd("2026-09-09")}) müxtəlif pul kisələrinin telefonla, QR kodla və internetdə eyni qaydada işləməsinə kömək edir. Tencent isə ${F.tencentCountries} ölkə və regiondan ${F.tencentWallets}-dan çox xarici pul kisəsini öz sisteminə qoşub.`,url:I("mc-wallet").source.url},
- {tag:"Bir Ekosistem",c:"#0A2540",h:"Bir Ekosistem üçün nə deməkdir?",p:()=>`Üç trend bir sual doğurur: Birbank və M10 hansı yenilikləri sınaqdan keçirə bilər? Sağdakılar süni intellektin təklifləridir, qərar komandalara məxsusdur.`,url:""}
+ {tag:"Süni intellektlə ödənişlər",c:"#6D5BD0",h:"Süni intellekt ödəniş etməyə başlayır",p:()=>`${fd("2026-10-20")} tarixində Visa, BILL və Billtrust süni intellekt köməkçisinin fakturanı müstəqil ödədiyi real sınağa başlayıb. ${fd("2026-09-30")} tarixində isə Mastercard ödənişin proqram tərəfindən başladılması ehtimalını göstərən bal təqdim edib (hələlik ABŞ-da sınaq mərhələsindədir).`,url:I("visa-agent").source.url},
+ {tag:"Stablecoin",c:"#1E6FE8",h:"Stablecoin gündəlik ödənişlərə daxil olur",p:()=>`Stablecoin dəyəri dollar kimi müəyyən bir valyutaya bağlanan rəqəmsal puldur. Stripe ${F.payoutsStable} bazarda onun vasitəsilə dərhal pul göndərməyi təklif edir və stablecoin əsaslı kartları Avropa İttifaqının ${F.euCountries} ölkəsində istifadəyə verir. Visa və Mastercard da bu istiqamətdə yeni həllər açıqlayıb.`,url:I("stripe-pay").source.url},
+ {tag:"Rəqəmsal pul kisələri",c:"#0E9F8E",h:"Pul kisələri bir-birinə qoşulur",p:()=>`Mastercard-ın “Wallet Pay” xidməti (${fd("2026-09-09")}) müxtəlif pul kisələrinin təmassız ödənişdə, QR kodla və internetdə eyni qaydada işləməsinə imkan yaradır. Tencent isə ${F.tencentCountries} ölkə və regiondan ${F.tencentWallets}-dan çox xarici pul kisəsini öz sisteminə qoşub.`,url:I("mc-wallet").source.url},
+ {tag:"Bir Ekosistem",c:"#0A2540",h:"Bu yeniliklər Bir Ekosistem üçün nə deməkdir?",p:()=>`Birbank və M10 bu istiqamətlərdən hansılarını sınaqdan keçirə bilər? Təqdim olunan fikirlər süni intellektin təklifləridir, yekun qərar komandalara məxsusdur.`,url:""}
 ];
 const stepsEl=$("#steps"),stage=$("#stage");
-S.forEach((s,k)=>stepsEl.insertAdjacentHTML("beforeend",`<div class="step" data-k="${k}"><span class="tag regtag" style="--c:${s.c}">${s.tag}</span><h3>${s.h}</h3><p>${s.p()}</p>${s.url?`<a class="src" href="${s.url}" target="_blank" rel="noopener">${ico("ext")} Mənbəyə bax</a>`:""}</div>`));
+S.forEach((s,k)=>stepsEl.insertAdjacentHTML("beforeend",`<div class="step" data-k="${k}"><span class="tag regtag" style="--c:${s.c}">${s.tag}</span><h3>${s.h}</h3><p>${s.p()}</p>${s.url?`<a class="src" href="${s.url}" target="_blank" rel="noopener">${ico("ext")} Mənbəyə baxın</a>`:""}</div>`));
 const big=(v,pre,suf,dec)=>`<div class="big grad">${pre}<span data-count="${v}"${dec?` data-dec="${dec}"`:""}>0</span>${suf}</div>`;
 stage.innerHTML=`
-<div class="panel" data-k="0"><span class="eyebrow">AI köməkçi ödənişləri · Visa, Mastercard</span><h4>Proqram ödəyir, insan nəzarət edir</h4>
+<div class="panel" data-k="0"><span class="eyebrow">Süni intellektlə ödənişlər · Visa, Mastercard</span><h4>Süni intellekt ödəniş etməyə başlayır</h4>
   <div class="grid2">
-    <div class="mini"><p class="eyebrow">Visa · ${fd("2026-10-20")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">Canlı sınaq: BILL və Billtrust</p><p class="cap">Köməkçi təchizatçının portalında fakturanı özü ödəyir</p></div>
-    <div class="mini"><p class="eyebrow">Mastercard · ${fd("2026-09-30")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">AI ehtimal balı</p><p class="cap">Ödənişi proqramın başlatma ehtimalı, ABŞ-da sınaq</p></div>
+    <div class="mini"><p class="eyebrow">Visa · ${fd("2026-10-20")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">Real sınaq: BILL və Billtrust</p><p class="cap">Köməkçi fakturanı təchizatçının portalında müstəqil ödəyir</p></div>
+    <div class="mini"><p class="eyebrow">Mastercard · ${fd("2026-09-30")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">Süni intellekt balı</p><p class="cap">Ödənişin proqram tərəfindən başladılması ehtimalı (ABŞ-da sınaq)</p></div>
   </div>
   <div class="grid2">
-    <div class="mini">${big(F.juniperTrn,"$"," trln",1)}<p class="cap">2029-da şirkətlərarası virtual kart ödənişlərinin proqnozlaşdırılan həcmi (Juniper Research, Visa sitat edir)</p></div>
-    <div class="mini"><div class="big grad">1/<span data-count="${F.oneInN}">0</span></div><p class="cap">2030-a qədər hər 10 istehlakçıdan 1-i alış-verişi AI köməkçisinə tapşıracaq (Mastercard-ın sitat etdiyi proqnoz)</p></div>
+    <div class="mini">${big(F.juniperTrn,"$"," trln",1)}<p class="cap">2029-cu ildə korporativ virtual kart ödənişlərinin proqnozlaşdırılan həcmi (Juniper Research, Visa-nın istinadı ilə)</p></div>
+    <div class="mini"><div class="big grad">1/<span data-count="${F.oneInN}">0</span></div><p class="cap">2030-cu ilədək hər 10 istehlakçıdan birinin alış-verişdə süni intellekt köməkçisindən istifadə edəcəyi proqnozlaşdırılır (Mastercard-ın istinad etdiyi proqnoz)</p></div>
   </div>
-  <div class="chips"><span class="chip">Visa-nın AI ödəniş platforması</span><span class="chip">Etibarlı köməkçi qaydaları</span><span class="chip">Köməkçinin kimliyinin yoxlanması</span><span class="chip">Təhlükəsiz mühit (Cloudflare)</span></div></div>
-<div class="panel" data-k="1"><span class="eyebrow">Stablecoin · Stripe, Visa, Mastercard</span><h4>Stablecoin ödənişlərə daxil olur</h4>
+  <div class="chips"><span class="chip">Visa-nın süni intellekt ödəniş platforması</span><span class="chip">Etibarlı köməkçi qaydaları</span><span class="chip">Köməkçinin kimliyinin yoxlanılması</span><span class="chip">Təhlükəsiz mühit (Cloudflare)</span></div></div>
+<div class="panel" data-k="1"><span class="eyebrow">Stablecoin · Stripe, Visa, Mastercard</span><h4>Stablecoin gündəlik ödənişlərə daxil olur</h4>
   <div class="grid2">
-    <div class="mini">${big(F.payoutsStable,"","",0)}<p class="cap">bazar: stablecoin ilə anında pul göndərmə (Stripe)</p></div>
-    <div class="mini">${big(F.issuing,"","+",0)}<p class="cap">ölkə: stablecoin ilə işləyən kart buraxılışı (${F.euCountries} Aİ ölkəsi yeni)</p></div>
-    <div class="mini">${big(F.issuingTarget,"","",0)}<p class="cap">ölkə hədəfi, 2026-nın sonu (Stripe)</p></div>
-    <div class="mini">${big(F.ousdMln,"$","+ mln",0)}<p class="cap">OUSD stablecoin-inin dövriyyəsi (Stripe-in açıqlaması)</p></div>
+    <div class="mini">${big(F.payoutsStable,"","",0)}<p class="cap">bazarda stablecoin ilə dərhal pul göndərmə (Stripe)</p></div>
+    <div class="mini">${big(F.issuing,"","+",0)}<p class="cap">ölkədə stablecoin əsaslı kart buraxılışı (o cümlədən ${F.euCountries} Aİ ölkəsi)</p></div>
+    <div class="mini">${big(F.issuingTarget,"","",0)}<p class="cap">ölkə: 2026-cı ilin sonu üçün hədəf (Stripe)</p></div>
+    <div class="mini">${big(F.ousdMln,"$","+ mln",0)}<p class="cap">OUSD stablecoin-inin dövriyyəsi (Stripe-ın açıqlaması)</p></div>
   </div>
-  <div class="chips"><span class="chip">Visa Direct: stablecoin ilə köçürmə (${fd("2026-10-15")})</span><span class="chip">Mastercard və BVNK (${fd("2026-10-15")})</span></div></div>
+  <div class="chips"><span class="chip">Visa Direct: stablecoin ilə köçürmə (${fd("2026-10-15")})</span><span class="chip">Mastercard və BVNK platforması (${fd("2026-10-15")})</span></div></div>
 <div class="panel" data-k="2"><span class="eyebrow">Rəqəmsal pul kisələri · Mastercard, Tencent, Google</span><h4>Pul kisələri bir-birinə qoşulur</h4>
   <div class="grid2">
-    <div class="mini">${big(F.walletUsersBn,"",""+" mlrd",1)}<p class="cap">dünyada rəqəmsal pul kisəsi istifadəçisi (Mastercard-ın açıqlaması)</p></div>
-    <div class="mini">${big(F.mcCredentialsBn,"","+ mlrd",1)}<p class="cap">Mastercard kartı pul kisələrinə əlavə oluna bilər</p></div>
+    <div class="mini">${big(F.walletUsersBn,""," mlrd",1)}<p class="cap">dünyada rəqəmsal pul kisəsi istifadəçisi (Mastercard-ın açıqlaması)</p></div>
+    <div class="mini">${big(F.mcCredentialsBn,"","+ mlrd",1)}<p class="cap">Mastercard kartı rəqəmsal pul kisələrinə əlavə edilə bilər</p></div>
     <div class="mini">${big(F.tencentWallets,"","+",0)}<p class="cap">xarici pul kisəsi, ${F.tencentCountries} ölkə və region (Tencent)</p></div>
-    <div class="mini">${big(F.momoPct,"+","%",0)}<p class="cap">MoMo-da gündəlik əməliyyatların artımı, Çinə gedənlər (Tencent-in açıqlaması)</p></div>
+    <div class="mini">${big(F.momoPct,"+","%",0)}<p class="cap">Çinə səfər edən MoMo istifadəçilərinin gündəlik əməliyyat artımı (Tencent-in açıqlaması)</p></div>
   </div>
-  <div class="chips"><span class="chip">Google Pay: Walmart (${fd("2026-08-21")})</span><span class="chip">Hindistan UPI: telefonla ödəniş (${fd("2026-09-14")})</span></div></div>
+  <div class="chips"><span class="chip">Google Pay Walmart-da (${fd("2026-08-21")})</span><span class="chip">Hindistanda UPI ilə təmassız ödəniş (${fd("2026-09-14")})</span></div></div>
 <div class="panel" data-k="3"><span class="eyebrow">Süni intellektin təklifi</span><h4>Bir Ekosistem üçün mümkün addımlar</h4>
   <div class="hyp"><small>Birbank · fırıldaqçılıqla mübarizə</small><p>${I("mc-agent").impact}</p></div>
-  <div class="hyp"><small>M10 · pul kisəsi və dostlar arası ödəniş</small><p>${I("mc-wallet").impact} ${I("venmo-receipt").impact}</p></div>
+  <div class="hyp"><small>M10 · pul kisəsi və dostlar arasında ödəniş</small><p>${I("mc-wallet").impact} ${I("venmo-receipt").impact}</p></div>
   <div class="hyp"><small>Ekosistem · ani ödənişlər</small><p>${I("npci").impact}</p></div>
-  <p class="cap" style="margin-top:auto">Bunlar təkliflərdir. Qərar məhsul və risk komandalarına məxsusdur.</p></div>`;
+  <p class="cap" style="margin-top:auto">Bunlar təkliflərdir. Yekun qərar məhsul və risk komandalarına məxsusdur.</p></div>`;
 
 /* ===== animations ===== */
 function countUp(el){const to=+el.dataset.count,dec=+(el.dataset.dec||0),t0=performance.now(),dur=1400;
@@ -551,11 +560,11 @@ setTimeout(()=>{document.body.classList.add("loaded");
 
 /* horizontal timeline */
 const tl=[...DATA.items.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(i=>({when:fd(i.date),co:i.co,title:i.short,what:i.what,why:i.impact,url:i.source.url,past:true})),
-  {when:fd(DATA.asOf),co:"NOW",title:"Radarın vəziyyəti",what:`Bu tarixə qədər ${DATA.items.length} xəbər toplanıb, hamısı mənbə səhifəsi açılıb oxunaraq təsdiqlənib. Sağda şirkətlərin özünün açıqladığı planlar var.`,url:"",today:true},
+  {when:fd(DATA.asOf),co:"NOW",title:"Hazırkı vəziyyət",what:`Bu tarixədək ${DATA.items.length} xəbər toplanıb və hamısı mənbə əsasında təsdiqlənib. Növbəti kartlarda şirkətlərin açıqladığı planlar göstərilir.`,url:"",today:true},
   ...DATA.future.map(f=>({when:f.when,co:f.co,title:f.title,what:f.what,url:f.url,future:true}))];
 const tr=$("#hsTrack");
 tr.insertAdjacentHTML("beforeend",tl.map(t=>{const r=CO[t.co],cls=t.today?"today":(t.past?"past":"");
-  return `<div class="tl ${cls}" style="--c:${r.c}"><div class="tlc"><div class="tlt"><span class="regtag" style="--c:${r.c}">${t.today?"Vəziyyət":t.co}</span>${t.future?'<span class="badge bg-b">Plan</span>':""}</div><div class="when">${t.when}</div><h5>${t.title}</h5><p>${t.what}</p>${t.why?`<div class="why"><b>Bir Ekosistem üçün</b>${t.why}</div>`:""}${t.url?`<small><a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbəyə bax</a></small>`:""}</div></div>`}).join(""));
+  return `<div class="tl ${cls}" style="--c:${r.c}"><div class="tlc"><div class="tlt"><span class="regtag" style="--c:${r.c}">${t.today?"Bu gün":t.co}</span>${t.future?'<span class="badge bg-b">Plan</span>':""}</div><div class="when">${t.when}</div><h5>${t.title}</h5><p>${t.what}</p>${t.why?`<div class="why"><b>Bir Ekosistem üçün</b>${t.why}</div>`:""}${t.url?`<small><a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbəyə baxın</a></small>`:""}</div></div>`}).join(""));
 const hs=$("#timeline");
 function hsLayout(){const max=Math.max(0,tr.scrollWidth-innerWidth);hs.style.height=(innerHeight+max)+"px";$(".hs-line").style.width=tr.scrollWidth+"px"}
 function hsUpdate(){const r=hs.getBoundingClientRect(),total=hs.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,-r.top/total)),max=Math.max(0,tr.scrollWidth-innerWidth);tr.style.transform=`translateX(${-p*max}px)`}
@@ -563,7 +572,7 @@ function hsUpdate(){const r=hs.getBoundingClientRect(),total=hs.offsetHeight-inn
 /* dashboard */
 $$(".nv[data-ic]").forEach(el=>el.insertAdjacentHTML("afterbegin",ico(el.dataset.ic)));
 $("#bellN").textContent=DATA.future.length;
-const K=[{ic:"pulse",v:DATA.items.length,l:"Xəbər (3 ay)",bg:"#DFEBFF",c:"#1556C0"},{ic:"globe",v:companies.length,l:"Şirkət",bg:"#E6E1FA",c:"#4B3DA8"},{ic:"shield",v:DATA.future.length,l:"Açıqlanan plan",bg:"#DDF4EA",c:"#0B6B49"},{ic:"bolt",v:high,l:"Bizim üçün çox vacib",bg:"#FCEFD3",c:"#8A5A0B"}];
+const K=[{ic:"pulse",v:DATA.items.length,l:"Xəbər (son 3 ay)",bg:"#DFEBFF",c:"#1556C0"},{ic:"globe",v:companies.length,l:"Şirkət",bg:"#E6E1FA",c:"#4B3DA8"},{ic:"shield",v:DATA.future.length,l:"Açıqlanmış plan",bg:"#DDF4EA",c:"#0B6B49"},{ic:"bolt",v:high,l:"Yüksək əhəmiyyətli xəbər",bg:"#FCEFD3",c:"#8A5A0B"}];
 $("#kpis").innerHTML=K.map((k,i)=>`<div class="kpi rv" style="--d:${i*.08}s"><div class="ic" style="background:${k.bg};color:${k.c}">${ico(k.ic)}</div><b data-count="${k.v}">0</b><span>${k.l}</span></div>`).join("");
 $$("#kpis .rv").forEach(el=>{rvIO.observe(el);new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){countUp(el.querySelector("[data-count]"));o.disconnect()}}),{threshold:.4}).observe(el)});
 
@@ -573,33 +582,33 @@ $("#fchips").innerHTML=[["all","Hamısı"],...cats.map(c=>[c,c])].map(([k,l])=>`
 function renderTable(){
   const rows=items.filter(i=>(st.cat==="all"||i.cat===st.cat)&&(st.q===""||(i.title+i.what+i.summary+i.cat+i.co+i.source.name).toLowerCase().includes(st.q)));
   $("#tb").innerHTML=rows.length?rows.map(i=>`<tr class="rw" data-id="${i.id}"><td class="ttl">${i.title}<div style="font-weight:400;font-size:12px;color:var(--muted);margin-top:4px">${i.source.name} · <span class="badge bg-n" style="font-size:10px;padding:1px 8px">${i.source.type}</span></div></td><td><span class="badge" style="background:${CO[i.co].c}1F;color:${CO[i.co].c}">${i.co}</span><div style="font-size:12px;color:var(--muted);margin-top:6px">${i.cat}</div></td><td class="dt">${fd(i.date)}</td></tr>
-  <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="3"><p><b>Nə baş verdi?</b> ${i.what}</p><p><b>Təfərrüat.</b> ${i.summary}</p><p><b>Bir Ekosistem üçün nə deməkdir?</b> (əhəmiyyət: ${LV[i.level]}) ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="3" style="padding:24px;color:var(--muted)">Uyğun xəbər tapılmadı.</td></tr>`}
+  <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="3"><p><b>Nə baş verib?</b> ${i.what}</p><p><b>Ətraflı:</b> ${i.summary}</p><p><b>Bir Ekosistem üçün əhəmiyyəti</b> (dərəcə: ${LV[i.level]}): ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="3" style="padding:24px;color:var(--muted)">Axtarışa uyğun xəbər tapılmadı.</td></tr>`}
 renderTable();
 $("#tb").addEventListener("click",e=>{if(e.target.closest("a"))return;const r=e.target.closest("tr.rw");if(!r)return;const id=r.dataset.id,d=$(`tr.detail[data-for="${id}"]`);const show=d.style.display==="none";d.style.display=show?"table-row":"none";show?open.add(id):open.delete(id)});
 $("#fchips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;st.cat=c.dataset.k;$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x===c));renderTable()});
 $("#q").addEventListener("input",e=>{st.q=e.target.value.trim().toLowerCase();renderTable()});
 
-$("#upsub").textContent="Şirkətlərin özünün açıqladığı planlar";
+$("#upsub").textContent="Şirkətlərin özlərinin açıqladığı planlar";
 const now=new Date(),todayISO=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-");
-$("#ups").innerHTML=DATA.future.map(t=>`<li><span class="d">${t.d&&t.d>=todayISO?days(todayISO,t.d)+" gün":t.when}</span><div><b>${t.title}</b><small>${t.co} · ${t.when} · <a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbə</a></small></div></li>`).join("");
-$("#cov").innerHTML=`<div><ul>${DATA.sources.map(x=>`<li><span class="ok">${ico("check")}</span>${x}</li>`).join("")}</ul></div><div><p class="cap">Klarna, Wise, Revolut və Adyen hələ əhatə olunmayıb.</p></div>`;
-$("#outside").innerHTML=`<h4>3 aylıq müddətdən əvvəl, amma vacib</h4><p class="sub">Daha əvvəl elan olunub, lakin mövzu üçün hələ də aktualdır</p>`+DATA.outside.map(o=>`<div class="rowitem" style="margin-top:8px"><div class="av" style="background:${CO[o.co].c}">${CO[o.co].code}</div><div><p>${o.title}</p><small>${o.note}</small></div><div class="r"><small class="mono">${fd(o.date)}</small><br><a href="${o.url}" target="_blank" rel="noopener" style="font-size:12px;color:var(--brand-d);font-weight:600">Mənbə</a></div></div>`).join("");
+$("#ups").innerHTML=DATA.future.map(t=>`<li><span class="d">${t.d&&t.d>=todayISO?days(todayISO,t.d)+" gün qalıb":t.when}</span><div><b>${t.title}</b><small>${t.co} · ${t.when} · <a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbə</a></small></div></li>`).join("");
+$("#cov").innerHTML=`<div><ul>${DATA.sources.map(x=>`<li><span class="ok">${ico("check")}</span>${x}</li>`).join("")}</ul></div><div><p class="cap">Klarna, Wise, Revolut və Adyen şirkətlərinin xəbərləri hələ daxil edilməyib.</p></div>`;
+$("#outside").innerHTML=`<h4>Əvvəl açıqlanmış mühüm yenilik</h4><p class="sub">Əhatə dövründən əvvəl elan olunub, lakin hələ də aktualdır</p>`+DATA.outside.map(o=>`<div class="rowitem" style="margin-top:8px"><div class="av" style="background:${CO[o.co].c}">${CO[o.co].code}</div><div><p>${o.title}</p><small>${o.note}</small></div><div class="r"><small class="mono">${fd(o.date)}</small><br><a href="${o.url}" target="_blank" rel="noopener" style="font-size:12px;color:var(--brand-d);font-weight:600">Mənbə</a></div></div>`).join("");
 
 let chartsDone=false;
 function initCharts(){if(chartsDone)return;chartsDone=true;
-  if(!window.Chart){$$(".cv").forEach(c=>c.innerHTML='<p class="cap">Qrafik yüklənmədi (Chart.js CDN əlçatan deyil).</p>');return}
+  if(!window.Chart){$$(".cv").forEach(c=>c.innerHTML='<p class="cap">Qrafik yüklənmədi. Səhifəni yeniləyin.</p>');return}
   Chart.defaults.font.family='"IBM Plex Sans",sans-serif';Chart.defaults.color="#52667F";
-  const g=[{l:["Stripe: stablecoin ilə pul","göndərmə (bazar)"],v:F.payoutsStable,c:"#6D5BD0"},{l:["Stripe: adi pulla göndərmə","(bazar, 100+)"],v:F.payoutsFiat,c:"#6D5BD0"},{l:["Stripe: stablecoin kartı","(ölkə, 65+)"],v:F.issuing,c:"#6D5BD0"},{l:["Tencent: qoşulmuş xarici","pul kisəsi (60+)"],v:F.tencentWallets,c:"#B0568F"},{l:["Alipay+: qoşulmuş pul kisəsi","və bank tətbiqi (50+)"],v:F.alipayWallets,c:"#D9622B"}];
+  const g=[{l:["Stripe: stablecoin ilə","pul göndərmə (bazar)"],v:F.payoutsStable,c:"#6D5BD0"},{l:["Stripe: adi valyuta ilə","pul göndərmə (bazar, 100+)"],v:F.payoutsFiat,c:"#6D5BD0"},{l:["Stripe: stablecoin","kartları (ölkə, 65+)"],v:F.issuing,c:"#6D5BD0"},{l:["Tencent: qoşulmuş xarici","pul kisəsi (60+)"],v:F.tencentWallets,c:"#B0568F"},{l:["Alipay+: qoşulmuş pul kisəsi","və bank tətbiqi (50+)"],v:F.alipayWallets,c:"#D9622B"}];
   new Chart($("#c1"),{type:"bar",data:{labels:g.map(x=>x.l),datasets:[{data:g.map(x=>x.v),backgroundColor:g.map(x=>x.c),borderRadius:8,barThickness:22}]},
     options:{indexAxis:"y",maintainAspectRatio:false,animation:{duration:1600,easing:"easeOutCubic"},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>nf(c.parsed.x,0)+(g[c.dataIndex].l[1].includes("+")?" və ya daha çox":"")}}},scales:{x:{grid:{color:"#E6F0FB"}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
   const cc={};DATA.items.forEach(i=>cc[i.cat]=(cc[i.cat]||0)+1);
   new Chart($("#c2"),{type:"doughnut",data:{labels:Object.keys(cc),datasets:[{data:Object.values(cc),backgroundColor:["#1E6FE8","#6D5BD0","#38BDF8","#0E9F8E","#9DB8D6","#D9622B","#B7791F"],borderWidth:3,borderColor:"#fff"}]},
     options:{maintainAspectRatio:false,cutout:"62%",animation:{duration:1600,animateRotate:true},plugins:{legend:{position:"bottom",labels:{boxWidth:10,boxHeight:10,font:{size:11}}}}}});
 }
-new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){initCharts();o.disconnect()}}),{threshold:.15}).observe($(".app"));
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){initCharts();o.disconnect()}}),{threshold:.15}).observe($("#c1"));
 
 /* flow */
-const FL=[["Etibarlı mənbələrin seçilməsi","Şirkətlərin öz xəbər səhifələri, bloqları, investor səhifələri və tanınmış ödəniş nəşrləri kimi etibarlı mənbələr seçilir."],["Xəbərlərin toplanması","Xəbərlər hər gün avtomatik toplanır, təkrarlar silinir və yalnız son 3 ayın xəbərləri saxlanılır."],["Süni intellekt izah yazır","Süni intellekt (Claude) hər xəbər üçün sadə izah, mövzu, şirkət və Bir Ekosistem üçün mümkün təsiri yazır. Sayta yalnız mənbə səhifəsi oxunub təsdiqlənən xəbər qoyulur."],["Panel","Xəbərlər tarix, şirkət və mövzuya görə süzülür."],["Həftəlik e-poçt xülasəsi","Ən vacib xəbərlər e-poçt və Teams-ə göndərilir, istənilən xəbərdən tapşırıq yaratmaq olur."]];
+const FL=[["Etibarlı mənbələrin seçilməsi","Şirkətlərin rəsmi xəbər səhifələri, bloqları, investor səhifələri və tanınmış ödəniş nəşrləri kimi etibarlı mənbələr seçilir."],["Xəbərlərin toplanması","Xəbərlər hər gün avtomatik toplanır, təkrarlar silinir və yalnız son üç ayın xəbərləri saxlanılır."],["Süni intellektin izahı","Süni intellekt (Claude) hər xəbər üçün sadə izah hazırlayır, mövzunu və şirkət adını göstərir, Bir Ekosistemə mümkün təsirini qiymətləndirir. Sayta yalnız mənbəsi oxunaraq təsdiqlənmiş xəbərlər əlavə edilir."],["İdarəetmə paneli","Xəbərlər tarix, şirkət və mövzu üzrə süzülür."],["Həftəlik e-poçt xülasəsi","Ən vacib xəbərlər e-poçt və Teams vasitəsilə göndərilir, istənilən xəbər üzrə tapşırıq yaratmaq mümkündür."]];
 $("#fl").insertAdjacentHTML("beforeend",FL.map((f,i)=>`<div class="fs"><div class="n">${i+1}</div><h4>${f[0]}</h4><p>${f[1]}</p></div>`).join(""));
 function flowUpdate(){const fl=$("#fl"),r=fl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));$("#flp").style.height=(p*(fl.offsetHeight-20))+"px";
   $$(".fs").forEach(s=>s.classList.toggle("on",s.offsetTop+24<=p*fl.offsetHeight))}
