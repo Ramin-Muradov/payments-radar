@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bir Ekosistem · Payments Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F8FF;--bg2:#E1EFFE;--card:rgba(255,255,255,.82);--solid:#fff;
+  --ink:#0A2540;--muted:#52667F;--line:#CFE3F7;
+  --brand:#1E6FE8;--brand-d:#1556C0;--sky:#38BDF8;
+  --us:#6D5BD0;--eu:#1E6FE8;--az:#0E9F8E;
+  --good:#0F9D6B;--warn:#B7791F;
+  --r:18px;--mono:"IBM Plex Mono",ui-monospace,monospace;--sans:"IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#E8F4FF 0,#F7FBFF 30%,#EAF5FF 70%,#F7FBFF 100%);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-d);font-weight:600}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(30px,4.4vw,52px)}
+.lead{font-size:clamp(16px,1.6vw,19px);color:var(--muted);max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(30,111,232,.45)}
+.btn.pri{background:linear-gradient(135deg,var(--brand),var(--sky));color:#fff;border-color:transparent}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;background:transparent}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--sky))}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(242,248,255,.72);border-bottom:1px solid rgba(207,227,247,.7)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--sky));color:#fff}
+.logo small{display:block;font-weight:500;font-size:11px;color:var(--muted);margin-top:-3px}
+.links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--brand-d)}
+
+/* HERO */
+.hero{position:relative;padding:84px 0 110px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none}
+.b1{width:520px;height:520px;background:#9ED2FF;left:-120px;top:-80px}
+.b2{width:440px;height:440px;background:#BFE9FF;right:-100px;top:120px}
+.b3{width:320px;height:320px;background:#CFE0FF;left:42%;bottom:-120px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);font-size:13px;color:var(--brand-d);font-weight:500}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 rgba(15,157,107,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(15,157,107,0)}100%{box-shadow:0 0 0 0 rgba(15,157,107,0)}}
+.hero h1{font-size:clamp(40px,6.2vw,76px);margin:22px 0 20px}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.loaded .hero h1 .w{opacity:1;transform:none}
+.grad{background:linear-gradient(120deg,var(--brand),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .btns{display:flex;gap:12px;margin:30px 0 40px;flex-wrap:wrap}
+.stats{display:flex;gap:36px;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--mono);font-size:26px;font-weight:600}
+.stats span{font-size:13px;color:var(--muted)}
+.gcard{background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 24px 60px -30px rgba(30,111,232,.4)}
+.ringrow{display:flex;align-items:center;gap:22px}
+.ring{position:relative;width:128px;height:128px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12}
+.ring .bg{stroke:#DCEBFB}
+.ring .fg{stroke:url(#rg);stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:339.3;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)}
+.ring .v{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:24px}
+.rowitem{display:flex;align-items:center;gap:14px;padding:13px 14px;margin-top:10px;border-radius:14px;background:#fff;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.rowitem:hover{transform:translateX(6px);box-shadow:0 10px 24px -14px rgba(30,111,232,.5)}
+.av{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:12px;color:#fff;flex:none}
+.rowitem p{font-size:14px;font-weight:600;line-height:1.3}
+.rowitem small{font-size:12px;color:var(--muted)}
+.rowitem .r{margin-left:auto;text-align:right}
+.floaty{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+.scrollhint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:12px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollhint i{width:22px;height:36px;border:2px solid var(--brand);border-radius:12px;position:relative}
+.scrollhint i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:var(--brand);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+
+/* STORY */
+.story{padding:90px 0 40px}
+.story-head{text-align:center;margin-bottom:60px}
+.story-head h2{margin:12px 0 14px}
+.story-head .lead{margin:0 auto}
+.story-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px}
+.step{min-height:92vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .6s}
+.step.on{opacity:1}
+.step .tag{display:inline-block;align-self:flex-start;margin-bottom:16px}
+.step h3{font-size:clamp(26px,3vw,38px);margin-bottom:16px}
+.step p{color:var(--muted);font-size:17px}
+.step .src{margin-top:18px;font-size:13px;display:inline-flex;gap:6px;align-items:center;color:var(--brand-d);font-weight:500}
+.stage{position:sticky;top:11vh;height:78vh;min-height:520px;border-radius:30px;background:linear-gradient(160deg,#fff,#E4F1FF);border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 80px -40px rgba(30,111,232,.5)}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0,rgba(56,189,248,.25),transparent 55%)}
+.panel{position:absolute;inset:0;padding:34px;opacity:0;transform:translateY(30px) scale(.98);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none;display:flex;flex-direction:column}
+.panel.on{opacity:1;transform:none;pointer-events:auto}
+.panel{justify-content:space-evenly}
+.panel>[style*="margin-top:auto"]{margin-top:0!important}
+.panel h4{font-size:24px;font-weight:600;letter-spacing:-.01em;margin:8px 0 22px;line-height:1.2}
+.big{font-family:var(--mono);font-size:clamp(42px,5vw,64px);font-weight:600;line-height:1}
+.cap{font-size:13px;color:var(--muted);margin-top:6px}
+.track{position:relative;margin:24px 8px 12px;height:6px;border-radius:6px;background:#D6E8FA}
+.track .fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--brand),var(--sky));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.nodes{display:flex;justify-content:space-between;margin:0 -8px}
+.node{width:25%;text-align:center;font-size:12px;color:var(--muted);position:relative;padding-top:20px}
+.node::before{content:"";position:absolute;left:50%;top:-4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;border:3px solid #BBD6F2;transition:.4s .6s}
+.node.done::before{border-color:var(--brand);background:var(--brand)}
+.node b{display:block;color:var(--ink);font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.mini .big{font-size:34px}
+.bar{height:10px;border-radius:10px;background:#D6E8FA;margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--sky));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-size:12px;padding:5px 12px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:500}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.hyp{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.hyp small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-d);font-weight:600}
+.hyp p{font-size:14px;margin-top:4px;color:var(--ink)}
+
+/* HSCROLL */
+.hs{position:relative;height:380vh;margin-top:60px}
+.hs-in{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hs-head{padding:0 24px;max-width:1200px;margin:0 auto 40px;width:100%}
+.hs-head h2{margin-top:10px}
+.hs-track{display:flex;gap:26px;padding:0 max(24px,calc((100vw - 1200px)/2 + 24px));will-change:transform;position:relative}
+.hs-line{position:absolute;left:0;right:0;top:46px;height:3px;background:#CFE3F7}
+.tl{flex:none;width:300px;position:relative;padding-top:70px}
+.tl::before{content:"";position:absolute;top:36px;left:0;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--c);z-index:2}
+.tl.past::before{background:var(--c)}
+.tl.today::before{background:var(--ink);border-color:var(--ink);box-shadow:0 0 0 8px rgba(10,37,64,.12)}
+.tlc{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px;padding:20px;min-height:200px;transition:transform .3s,box-shadow .3s}
+.tlc:hover{transform:translateY(-6px);box-shadow:0 20px 40px -22px rgba(30,111,232,.5)}
+.tlc .when{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--c)}
+.tlc h5{font-size:17px;font-weight:600;margin:8px 0 10px;line-height:1.3}
+.tlc small{font-size:12px;color:var(--muted)}
+.regtag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;color:#fff;background:var(--c)}
+.tl.today .tlc{background:var(--ink);color:#fff}
+.tl.today .tlc small,.tl.today .tlc .when{color:#9DB8D6}
+
+/* DASHBOARD */
+.dash{padding:100px 0 60px}
+.dash-head{margin-bottom:40px}
+.dash-head h2{margin:12px 0 12px}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);background:#F7FAFE;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(30,111,232,.45)}
+.side{background:#fff;border-right:1px solid var(--line);padding:22px 14px}
+.side .logo{padding:0 10px 22px;font-size:16px}
+.nv{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-size:14px;color:var(--muted);margin-bottom:4px;cursor:default}
+.nv.on{background:#E6F1FF;color:var(--brand-d);font-weight:600}
+.main{padding:26px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.topbar h3{font-size:24px}
+.topbar p{font-size:13px;color:var(--muted)}
+.tools{display:flex;align-items:center;gap:12px}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;color:var(--muted);min-width:230px}
+.search input{border:0;outline:0;background:transparent;font:inherit;font-size:14px;color:var(--ink);width:100%}
+.bell{position:relative;width:40px;height:40px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);border-radius:12px}
+.bell i{position:absolute;top:-4px;right:-4px;background:#E5484D;color:#fff;font-style:normal;font-size:10px;width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-weight:600}
+.user{display:flex;align-items:center;gap:10px}
+.user .av{background:#D6E8FF;color:var(--brand-d);border-radius:50%}
+.user small{display:block;font-size:11px;color:var(--muted)}
+.user b{font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+.kpi .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px}
+.kpi b{display:block;font-family:var(--mono);font-size:30px;font-weight:600;line-height:1}
+.kpi span{font-size:13px;color:var(--muted)}
+.row2{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.pc h4{font-size:16px;font-weight:600;margin-bottom:2px}
+.pc .sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.cv{position:relative;height:260px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-weight:600;color:var(--muted);font-size:12px;padding:10px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 10px;border-bottom:1px solid #EAF2FB;vertical-align:top}
+.tbl tr.rw{cursor:pointer;transition:background .2s}
+.tbl tr.rw:hover{background:#F2F8FF}
+.tbl .ttl{font-weight:600;max-width:340px}
+.tbl .dt{font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--muted)}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.bg-g{background:#DDF4EA;color:#0B6B49}.bg-a{background:#FCEFD3;color:#8A5A0B}.bg-b{background:#DFEBFF;color:#1556C0}.bg-n{background:#EAF0F7;color:#3D536B}
+.detail td{background:#F7FBFF;padding:16px 18px}
+.detail p{font-size:13px;margin-bottom:8px}
+.detail a{color:var(--brand-d);font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.ul{list-style:none}
+.ul li{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;background:#F5F9FE;margin-bottom:10px}
+.ul .d{font-family:var(--mono);font-size:12px;font-weight:600;min-width:62px;color:var(--brand-d)}
+.ul b{font-size:13px;display:block;line-height:1.3}
+.ul small{font-size:12px;color:var(--muted)}
+.cov{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cov h5{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.cov li{list-style:none;font-size:13px;display:flex;gap:8px;align-items:flex-start;padding:5px 0}
+.cov .ok{color:var(--good)}.cov .no{color:var(--warn)}
+.legend{font-size:12px;color:var(--muted);margin-top:14px;display:flex;gap:16px;flex-wrap:wrap}
+
+/* FLOW */
+.flow{padding:100px 0}
+.flow-head{text-align:center;margin-bottom:60px}
+.flow-head h2{margin:12px 0}
+.flow-head .lead{margin:0 auto}
+.fl{position:relative;max-width:760px;margin:0 auto;padding-left:70px}
+.fl::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:3px;background:#D6E8FA;border-radius:3px}
+.fl .prog{position:absolute;left:23px;top:10px;width:3px;height:0;background:linear-gradient(var(--brand),var(--sky));border-radius:3px}
+.fs{position:relative;padding:0 0 46px;opacity:.3;transform:translateX(24px);transition:.7s}
+.fs.on{opacity:1;transform:none}
+.fs .n{position:absolute;left:-70px;top:0;width:48px;height:48px;border-radius:50%;background:#fff;border:3px solid #BBD6F2;display:grid;place-items:center;font-family:var(--mono);font-weight:600;color:var(--muted);transition:.5s}
+.fs.on .n{border-color:var(--brand);background:var(--brand);color:#fff}
+.fs h4{font-size:21px;margin-bottom:6px}
+.fs p{color:var(--muted);font-size:15px}
+
+.cta{padding:60px 0 100px}
+.ctab{border-radius:32px;padding:64px 40px;text-align:center;background:linear-gradient(135deg,#1E6FE8,#38BDF8);color:#fff;position:relative;overflow:hidden}
+.ctab::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.16);right:-90px;top:-120px}
+.ctab h2{font-size:clamp(28px,4vw,46px);margin-bottom:14px;position:relative}
+.ctab p{max-width:560px;margin:0 auto 26px;opacity:.92;position:relative}
+.ctab .btn{background:#fff;color:var(--brand-d);border:0;position:relative}
+.foot{padding:30px 0 50px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+.foot ol{margin:10px 0 0 18px;columns:2;column-gap:40px}
+.foot li{margin-bottom:4px;break-inside:avoid}
+.foot a{color:var(--brand-d)}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero-grid,.story-grid,.row2{grid-template-columns:1fr!important}
+  .app{grid-template-columns:1fr}.side{display:none}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .links{display:none}
+  .stage{top:68px;height:54vh;min-height:0;margin-bottom:10px;z-index:5}
+  .story-grid{display:flex;flex-direction:column}
+  .stage{order:-1}
+  .step{min-height:62vh;justify-content:flex-end;padding-bottom:6vh}
+  .panel{padding:16px}.panel h4{font-size:17px;margin:4px 0 8px}
+  .big{font-size:32px}.mini{padding:10px}.mini .big{font-size:21px}.grid2{gap:8px}
+  .hyp{padding:8px 12px;margin-bottom:8px}.hyp p{font-size:12px}
+  .chip{font-size:11px;padding:4px 9px}.chips{gap:6px;margin-top:8px}
+  .track{margin:14px 8px 8px}.node{font-size:10px}
+  .foot ol{columns:1}
+  .cov{grid-template-columns:1fr}
+  .tbl .hm{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv,.hero h1 .w,.fs{opacity:1!important;transform:none!important}
+  .step{opacity:1}
+}
+
+.gloss{padding:90px 0 20px}
+.gloss h2{margin:12px 0 12px}
+.glg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:36px}
+.glc{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:18px;padding:20px;transition:transform .3s,box-shadow .3s,opacity .8s}
+.glc:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(30,111,232,.5)}
+.glc b{display:block;font-size:16px;margin-bottom:8px;color:var(--brand-d)}
+.glc p{font-size:14px;color:var(--muted);line-height:1.55}
+.tl{width:350px;display:flex;flex-direction:column}
+.tlc{flex:1;min-height:340px;display:flex;flex-direction:column}
+.tlt{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tlc h5{font-size:17px}
+.tlc p{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0 0 12px}
+.tlc .why{border-top:1px solid var(--line);padding-top:10px;margin-top:auto;margin-bottom:10px;font-size:12.5px;line-height:1.5}
+.tlc .why b{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-d);margin-bottom:3px}
+.tlc>small{margin-top:auto}
+.tlc .why+small{margin-top:0}
+.tl.today .tlc p{color:#C7D8EC}
+@media (max-width:980px){.glg{grid-template-columns:repeat(2,minmax(0,1fr))}.tl{width:300px}}
+@media (max-width:560px){.glg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E6FE8"/><stop offset="1" stop-color="#38BDF8"/></linearGradient></defs></svg>
+<div class="progress"><i id="bar"></i></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Bir Ekosistem<small>Payments Radar</small></span></a>
+  <nav class="links"><a href="#story">Hekayə</a><a href="#gloss">Lüğət</a><a href="#timeline">Xronologiya</a><a href="#dashboard">Panel</a><a href="#flow">Necə işləyir</a></nav>
+  <a class="btn pri" href="#dashboard">Panelə bax</a>
+</div></header>
+
+<main>
+<section class="hero" id="top">
+  <div class="blob b1" data-speed="0.15"></div><div class="blob b2" data-speed="-0.1"></div><div class="blob b3" data-speed="0.08"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><i></i><span id="asof"></span></span>
+      <h1 id="h1"><span class="w">Ödənişlər</span> <span class="w">dünyasında</span> <span class="w grad">son 3 ayda</span> <span class="w grad">nə</span> <span class="w grad">dəyişdi?</span></h1>
+      <p class="lead">Birbank və M10 komandaları üçün: ödəniş şirkətlərinin son 3 ayda təqdim etdiyi yeni funksiyalar, innovativ layihələr və sınaq layihələri. Yalnız etibarlı mənbələrdən.</p>
+      <div class="btns"><a class="btn pri" href="#story">Hekayəni izlə <svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a><a class="btn" href="#dashboard">Birbaşa panelə keç</a></div>
+      <div class="stats" id="hstats"></div>
+    </div>
+    <div class="floaty" data-speed="-0.05">
+      <div class="gcard">
+        <div class="ringrow">
+          <div class="ring"><svg viewBox="0 0 128 128"><circle class="bg" cx="64" cy="64" r="54"/><circle class="fg" id="heroRing" cx="64" cy="64" r="54"/></svg><div class="v"><span id="heroRingV">0</span></div></div>
+          <div><p class="eyebrow">Etibar göstəricisi</p><p style="font-size:20px;font-weight:600;line-height:1.25;margin:6px 0 4px">Təsdiqlənmiş xəbərlərin payı</p><p class="cap" id="heroRingCap"></p></div>
+        </div>
+        <div id="heroRows"></div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollhint"><i></i>Aşağı sürüşdür</div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-head rv"><span class="eyebrow">Hekayə · 3 trend, 1 nəticə</span><h2>Sürüşdürün. Hər addımda<br>xəritə dəyişir.</h2><p class="lead">Üç əsas trend: süni intellekt köməkçisinin ödəməsi, stablecoin və rəqəmsal pul kisələri. Sonda isə Bir Ekosistem üçün mümkün nəticələr.</p></div>
+    <div class="story-grid">
+      <div class="steps" id="steps"></div>
+      <div class="stage" id="stage"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gloss" id="gloss"><div class="wrap"><div class="rv"><span class="eyebrow">Qısa lüğət</span><h2>Texniki sözlər sadə dildə</h2><p class="lead">Aşağıdakı bölmələrdə rast gələcəyiniz sözlərin qısa izahı.</p></div><div class="glg" id="glGrid"></div></div></section>
+
+<section class="hs" id="timeline">
+  <div class="hs-in">
+    <div class="hs-head"><span class="eyebrow">Xronologiya · avqust → noyabr 2026</span><h2>Soldan sağa: son 3 ayda<br>nələr təqdim olundu</h2></div>
+    <div class="hs-track" id="hsTrack"><div class="hs-line"></div></div>
+  </div>
+</section>
+
+<section class="dash" id="dashboard">
+  <div class="wrap">
+    <div class="dash-head rv"><span class="eyebrow">Canlı panel</span><h2>Bütün xəbərlər bir ekranda</h2><p class="lead">Bütün xəbərlər bir yerdə: mövzuya görə süzün, hər xəbərin nə demək olduğunu oxuyun və mənbə səhifəsinə keçin.</p></div>
+    <div class="app rv">
+      <aside class="side">
+        <div class="logo"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Radar</span></div>
+        <div class="nv on" data-ic="grid">Panel</div><div class="nv" data-ic="pulse">Xəbərlər</div><div class="nv" data-ic="globe">Şirkətlər</div><div class="nv" data-ic="file">Mənbələr</div><div class="nv" data-ic="shield">Qaydalar</div><div class="nv" data-ic="sliders">Ayarlar</div>
+      </aside>
+      <div class="main">
+        <div class="topbar">
+          <div><h3>Payments Radar</h3><p id="dwin"></p></div>
+          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtar..." aria-label="Xəbər axtar"></label><div class="bell"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></div><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Məhsul analitiki</small></div></div></div>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div class="row2">
+          <div class="pc"><h4>Şirkətlər neçə ölkə və bazara çıxıb</h4><p class="sub">Şirkətlərin öz açıqlamalarına görə. "+" olan rəqəm "ən azı" deməkdir.</p><div class="cv"><canvas id="c1"></canvas></div></div>
+          <div class="pc"><h4>Mövzulara görə xəbərlər</h4><p class="sub">3 aylıq pəncərə</p><div class="cv"><canvas id="c2"></canvas></div></div>
+        </div>
+        <div class="row2" style="grid-template-columns:minmax(0,1fr)">
+          <div class="pc"><h4>Son xəbərlər</h4><p class="sub">Xəbərə klikləyin: izah və mənbə linki açılır</p>
+            <div class="chips" id="fchips" style="margin:0 0 12px"></div>
+            <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Xəbər və mənbə</th><th>Şirkət və mövzu</th><th>Tarix</th><th>Status</th></tr></thead><tbody id="tb"></tbody></table></div>
+            <div class="legend"><span><span class="badge bg-g">Təsdiqlənib</span> məlumat şirkətin öz səhifəsindən yoxlanılıb</span><span><span class="badge bg-a">Yoxlanılır</span> mənbənin tam mətni oxunmayıb, təfərrüatlar yoxlanılır</span></div>
+          </div>
+        </div>
+        <div class="row2" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <div class="pc"><h4>Növbəti tarixlər</h4><p class="sub" id="upsub"></p><ul class="ul" id="ups"></ul></div>
+          <div class="pc"><h4>Mənbə əhatəsi</h4><p class="sub">Hansı mənbələr avtomatik oxundu</p><div class="cov" id="cov"></div></div>
+        </div>
+        <div class="pc" id="outside"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="wrap">
+    <div class="flow-head rv"><span class="eyebrow">Necə işləyir</span><h2>Mənbədən qərara qədər</h2><p class="lead">Süni intellekt xülasə çıxarır, insan təsdiq edir. Bank mühitində bu ikili yoxlama məcburidir.</p></div>
+    <div class="fl" id="fl"><div class="prog" id="flp"></div></div>
+  </div>
+</section>
+
+<section class="cta"><div class="wrap"><div class="ctab rv"><h2>Prototipdən işlək sistemə</h2><p>Növbəti addım: xəbərlərin avtomatik toplanması və saxlanması, işçilərin şirkət hesabı ilə girişi və həftəlik e-poçt xülasəsi.</p><a class="btn" href="#top">Yuxarı qayıt</a></div></div></section>
+</main>
+
+<footer class="foot"><div class="wrap"><b>Bu səhifədəki bütün faktların mənbələri</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. "Bir Ekosistem üçün nə deməkdir" qeydləri analitik təklifidir, rəsmi mövqe deyil.</p></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+/* ===== DATA (bütün rəqəmlər buradan oxunur) ===== */
+const VL="https://usa.visa.com/about-visa/newsroom/press-releases-listing.html",V22866="https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22866.html";
+const DATA={
+  asOf:"2026-11-15",window:{from:"2026-08-15",to:"2026-11-15"},
+  facts:{juniperTrn:14.6,oneInN:10,payoutsStable:160,payoutsFiat:100,issuing:65,issuingTarget:100,euCountries:27,ousdMln:800,walletUsersBn:4.3,mcCredentialsBn:3.7,tencentWallets:60,tencentCountries:16,momoPct:290,alipayWallets:50},
+  items:[
+    {id:"visa-fraud",date:"2026-10-21",co:"Visa",cat:"Şirkətlərarası ödənişlər",short:"Visa: şirkət ödənişlərində daha çox nəzarət",
+     title:"Visa şirkətlərarası ödənişləri daha təhlükəsiz və nəzarətli edən yeniliklər təqdim etdi",
+     what:"Visa şirkətlər arasında kartla ödənişlər üçün üç yeni alət açıqladı: təchizatçının həqiqiliyini yoxlama, virtual kartla ödəyəndə əlavə təsdiq və xərclərə limit qoyma.",
+     summary:"Visa həmçinin kartla ödəniş qəbul etməyə hazır təchizatçıları süni intellektlə tapan alətin yeni versiyasını təqdim etdi; əvvəlki versiya artıq 600 milyard dollardan çox potensial kart xərci aşkar edib. Limit qoyma aləti uyğun banklar üçün dəstəklənən ölkələrdə artıq işləyir. Təchizatçını yoxlama və virtual kartda əlavə təsdiq alətləri hələ sınaq mərhələsindədir, hamı üçün 2027-də açılması gözlənilir.",
+     impact:"Şirkət müştərilərinə virtual kart təklif edən bank üçün (məsələn, Birbank) bu, fırıldaqçılığa qarşı yeni yanaşma nümunəsidir.",level:"Orta",
+     source:{name:"Visa xəbər mərkəzi",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
+    {id:"visa-agent",date:"2026-10-20",co:"Visa",cat:"AI köməkçi ödənişləri",short:"Visa: süni intellekt fakturanı özü ödədi",
+     title:"Visa, BILL və Billtrust: süni intellekt köməkçisi fakturanı özü ödədi",
+     what:"Visa və iki tərəfdaş şirkət (BILL və Billtrust) real şəraitdə ilk dəfə belə sınaq keçirir: şirkət adından işləyən süni intellekt köməkçisi təchizatçının portalında fakturanı özü ödəyir.",
+     summary:"Sınaq canlıdır, yəni real ödənişlər başdan sona keçir. Köməkçinin etibarlı olduğunu yoxlamaq üçün Visa-nın xüsusi qaydaları (Trusted Agent Protocol) və kart məlumatının yerinə işlədilən təhlükəsiz kodlar istifadə olunur.",
+     impact:"Gələcəkdə müştərilər ödənişi proqrama tapşıra biləcək. Bank üçün əsas sual: proqramın həqiqətən müştəri adından işlədiyini necə yoxlamaq olar?",level:"Yüksək",
+     source:{name:"Visa xəbər mərkəzi (20 və 21 oktyabr buraxılışları)",type:"Şirkət açıqlaması",url:V22866},status:"Təsdiqlənib"},
+    {id:"visa-direct",date:"2026-10-15",co:"Visa",cat:"Stablecoin",short:"Visa Direct: stablecoin ilə pul köçürmə",
+     title:"Visa Direct stablecoin ilə pul köçürməsini başladır",
+     what:"Visa-nın pul köçürmə xidməti stablecoin ilə də işləməyə başlayır. Sınaq layihələri real istifadəyə keçir.",
+     summary:"Bu xəbər yalnız Visa-nın xəbər siyahısındakı başlığa əsaslanır. Tam mətn oxunmayıb, ona görə təfərrüatlar (hansı ölkələr, hansı tərəfdaşlar) hələ yoxlanılır.",
+     impact:"Stablecoin ilə ölkələrarası köçürmələr gələcəkdə M10 və Birbank üçün tərəfdaşlıq imkanı ola bilər. Həm də qaydalar baxımından izlənməlidir.",level:"Orta",
+     source:{name:"Visa xəbər siyahısı (yalnız başlıq)",type:"Şirkət açıqlaması",url:VL},status:"Yoxlanılır"},
+    {id:"visa-onchain",date:"2026-09-08",co:"Visa",cat:"Stablecoin",short:"Visa: blokçeyn əsaslı kredit",
+     title:"Visa blokçeyn üzərində verilən krediti gündəlik ödənişlərə yaxınlaşdırır",
+     what:"Visa blokçeyn (rəqəmsal qeydiyyat şəbəkəsi) üzərində verilən krediti gündəlik ödənişlərə gətirdiyini bildirir.",
+     summary:"Bu xəbər yalnız Visa-nın xəbər siyahısındakı başlığa əsaslanır. Tam mətn oxunmayıb, ona görə təfərrüatlar yoxlanılır.",
+     impact:"Hələlik yalnız izləmək kifayətdir. Təfərrüatlar bilinəndən sonra qiymətləndirmək olar.",level:"İzləmə",
+     source:{name:"Visa xəbər siyahısı (yalnız başlıq)",type:"Şirkət açıqlaması",url:VL},status:"Yoxlanılır"},
+    {id:"visa-a2a",date:"2026-09-01",co:"Visa",cat:"Fırıldaqçılığa qarşı təhlükəsizlik",short:"Visa: fırıldaqçılığı pul çıxmamış tutur",
+     title:"Visa pul hesabdan çıxmazdan əvvəl fırıldaqçılığı dayandıran yenilikləri təqdim etdi",
+     what:"Visa bank hesabından hesaba edilən köçürmələrdə, pul hesabdan çıxmazdan əvvəl şübhəli əməliyyatı tutmağa kömək edən təkmilləşdirilmiş xidmət (A2A Protect) təqdim edib.",
+     summary:"Bu xəbər yalnız Visa-nın xəbər siyahısındakı başlığa əsaslanır. Tam mətn oxunmayıb, ona görə təfərrüatlar yoxlanılır.",
+     impact:"Ani ödənişlərdə pul göndəriləndən sonra geri qaytarmaq çətindir, ona görə köçürmədən əvvəl yoxlama vacibdir. Azərbaycanda ani ödənişlər sistemi (AÖS) üçün də aktual mövzudur.",level:"Orta",
+     source:{name:"Visa xəbər siyahısı (yalnız başlıq)",type:"Şirkət açıqlaması",url:VL},status:"Yoxlanılır"},
+    {id:"mc-agent",date:"2026-09-30",co:"Mastercard",cat:"AI köməkçi ödənişləri",short:"Mastercard: ödənişi insan, yoxsa proqram etdi?",
+     title:"Mastercard ödənişi süni intellektin başlatma ehtimalını göstərən bal təqdim etdi",
+     what:"Mastercard hər ödənişin insan yox, süni intellekt köməkçisi tərəfindən başladılması ehtimalını göstərən bal verən yeni xidməti sınaqdan keçirir (hələlik ABŞ-da).",
+     summary:"Bu, Mastercard-ın süni intellekt köməkçilərinin ödənişləri üçün qurduğu etibar sisteminin (Agent Pay) ilk xidmətidir. Zamanla davranış, satıcının riski, ödənişin xarakteri, kart məlumatının riski və müştərinin alış ehtimalı kimi əlavə göstəricilər də əlavə olunacaq. Tərəfdaşlar: Cloudflare (təhlükəsiz mühit) və Skyfire (köməkçinin kim olduğunu yoxlama).",
+     impact:"Fırıldaqçılıqla mübarizə komandası üçün ödənişi insanın, yoxsa proqramın başlatdığını bilmək yeni və faydalı məlumat ola bilər.",level:"Yüksək",
+     source:{name:"Mastercard investor səhifəsi (Business Wire)",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Advances-Agentic-Commerce-With-New-Trust-and-Intelligence-Services/default.aspx"},status:"Təsdiqlənib"},
+    {id:"mc-wallet",date:"2026-09-09",co:"Mastercard",cat:"Rəqəmsal pul kisələri",short:"Mastercard Wallet Pay",
+     title:"Mastercard rəqəmsal pul kisələrinin bir-biri ilə işləməsi üçün Wallet Pay-i işə saldı",
+     what:"Rəqəmsal pul kisəsi telefondakı ödəniş tətbiqidir. Wallet Pay müxtəlif ölkələrin pul kisələrinin telefonu terminala yaxınlaşdırmaqla, QR kodla və internetdə eyni qaydada işləməsinə kömək edir.",
+     summary:"Tərəfdaşlar arasında Alipay+ və onun pul kisələri (AlipayHK, GCash, KakaoPay, TrueMoney), həmçinin Mercado Pago, MTN və TenPay Global var. Mastercard-ın açıqlamasına görə dünyada 4,3 milyarddan çox insan rəqəmsal pul kisəsi işlədir, 2030-a qədər bu rəqəmin 6 milyarddan çox olacağı gözlənilir.",
+     impact:"M10 kimi pul kisəsi tətbiqi üçün başqa ölkələrin pul kisələri ilə qarşılıqlı işləmək gələcək inkişaf istiqaməti ola bilər.",level:"Yüksək",
+     source:{name:"Mastercard investor səhifəsi (Business Wire)",type:"Şirkət açıqlaması",url:"https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Wallet-Pay-to-Scale-Digital-Wallets-Worldwide/default.aspx"},status:"Təsdiqlənib"},
+    {id:"mc-bvnk",date:"2026-10",co:"Mastercard",cat:"Stablecoin",short:"Mastercard və BVNK: biznes üçün vahid hesab",
+     title:"Mastercard və BVNK şirkətlər üçün vahid pul hesabı platforması təqdim etdi",
+     what:"Mastercard və BVNK şirkəti ortaq platforma (Global Money Platform) təqdim etdi: biznes adi pulu və stablecoin-i eyni hesabda saxlaya bilir.",
+     summary:"Platforma BVNK vasitəsilə artıq əlçatandır. Mastercard-ın səhifəsi avtomatik oxumağa icazə vermir, ona görə məzmun axtarış nəticəsindən götürülüb və dəqiq gün məlum deyil.",
+     impact:"Şirkət müştərilərinə adi pulu və stablecoin-i tək hesabda saxlamaq imkanı gələcəkdə biznes bankçılığı üçün maraqlı ola bilər.",level:"İzləmə",
+     source:{name:"Mastercard xəbər səhifəsi (sayt oxumağa icazə vermir)",type:"Şirkət açıqlaması",url:"https://www.mastercard.com/global/en/news-and-trends/press/2026/october/mastercard-and-bvnk-launch-global-money-platform-to-power-a-mult.html"},status:"Yoxlanılır"},
+    {id:"stripe-pay",date:"2026-10-16",co:"Stripe",cat:"Stablecoin",short:"Stripe: stablecoin ilə anında pul göndərmə",
+     title:"Stripe stablecoin ilə pul göndərməni və kart buraxılışını genişləndirir",
+     what:"Stripe (onlayn ödəniş şirkəti) fintech şirkətləri üçün stablecoin ilə anında pul göndərməni 160 bazarda təklif edir və stablecoin ilə işləyən kart buraxılışını 27 Aİ ölkəsinə gətirir.",
+     summary:"Adi valyutada pul göndərmə 100-dən çox bazarda mümkündür. Stablecoin ilə kart buraxılışı indi 65-dən çox ölkədə əlçatandır və Stripe 2026-nın sonuna 100 ölkəni hədəfləyir. Nümunə: Turo şirkəti bu xidmətlə 160 milyon dollardan çox ödəniş göndərib, uğur nisbəti 99,5%-dir.",
+     impact:"Anında ölkələrarası pul göndərmə fərdi sahibkarlar və frilanserlər üçün Bir Ekosistem tərəfindən də düşünülə bilər.",level:"Orta",
+     source:{name:"Stripe bloqu",type:"Şirkət bloqu",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},status:"Təsdiqlənib"},
+    {id:"stripe-ousd",date:"2026-09-30",co:"Stripe",cat:"Stablecoin",short:"Stripe: OUSD əsas stablecoin oldu",
+     title:"Stripe-də OUSD stablecoin-i əsas seçim oldu",
+     what:"Stripe OUSD adlı stablecoin-i öz platformasında əsas (defolt) stablecoin kimi təqdim edir.",
+     summary:"Stripe 22 oktyabr yazısında OUSD-nin dövriyyədə 800 milyon dollardan çox olduğunu bildirir (şirkətin öz açıqlaması). Yazının özü açılmayıb, ona görə təfərrüatlar yoxlanılır.",
+     impact:"Böyük ödəniş platformasının hansı stablecoin-i əsas seçməsi bu sahənin nə qədər sürətlə normallaşdığını göstərir.",level:"İzləmə",
+     source:{name:"Stripe bloq siyahısı",type:"Şirkət bloqu",url:"https://stripe.com/blog/product"},status:"Yoxlanılır"},
+    {id:"pp-workday",date:"2026-11-12",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"PayPal: maaş birbaşa PayPal-a",
+     title:"PayPal maaşı birbaşa PayPal hesabına yönləndirməyə imkan verir",
+     what:"Workday proqramından istifadə edən ABŞ şirkətlərinin işçiləri maaşlarını PayPal hesabına yönləndirə bilər. Maaş iki günə qədər tez çata bilər.",
+     summary:"Bu seçim artıq aktivdir və işəgötürənə əlavə xərc yoxdur. PayPal Debit Mastercard kartı seçilmiş kateqoriyada ayda 1000 dollara qədər 5% geri qaytarır.",
+     impact:"Maaşın rəqəmsal pul kisəsinə yönləndirilməsi M10 üçün korporativ müştərilərlə əməkdaşlıq ideyası ola bilər.",level:"Orta",
+     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"venmo-receipt",date:"2026-11-09",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"Venmo: çeki maddələrə böl",
+     title:"Venmo çeki skan edib hesabı maddə-maddə bölür",
+     what:"İstifadəçi çeki şəkilə çəkir və ya yükləyir, hər maddəni dostlarına təyin edir. Venmo vergi və bahşişi hesablayıb pul sorğularını göndərir.",
+     summary:"Funksiya hazırda tədricən yayılır, yaxın həftələrdə hamıya açılacağı bildirilir.",
+     impact:"Dostlar arasında hesabı bölmək gündəlik problemdir. Bu, M10 üçün sadə və faydalı funksiya ideyasıdır.",level:"Orta",
+     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"pp-enterprise",date:"2026-10-23",co:"PayPal",cat:"Şirkətlərarası ödənişlər",short:"PayPal: biznes üçün yeni imkanlar",
+     title:"PayPal biznes müştəriləri üçün yeni ödəniş və təhlükəsizlik imkanları əlavə etdi",
+     what:"PayPal-ın biznes xidmətləri (Braintree və Hyperwallet) yeni ödəniş üsulları, daha sürətli hesablaşma və fırıldaqçılığa qarşı yeni alət əlavə etdi.",
+     summary:"Əsas yeniliklər: uyğun Visa kartlarına pul göndərmək; ABŞ-da ACH köçürmələrinin hesablaşmasının 1–2 gün tez olması; Discover şəbəkəsinin təhlükəsiz kart kodlarının dəstəyi; Twint, Bizum, PayU və Skrill kimi yerli ödəniş üsulları; Avropada SEPA Instant ilə ani pul göndərmə və alıcının adının yoxlanması; ABŞ-da özünüxidmət rejimində, maşın öyrənməsi ilə işləyən fırıldaqçılıq yoxlaması (təxminən 100 risk göstəricisi).",
+     impact:"Pul göndərməzdən əvvəl alıcının adını yoxlamaq səhv köçürmələrin qarşısını alır. Bu, ani ödənişlərdə bank təcrübəsi üçün faydalı nümunədir.",level:"Orta",
+     source:{name:"PayPal yenilik qeydləri",type:"Şirkət açıqlaması",url:"https://www.paypal.com/us/brc/article/paypal-open-release-notes"},status:"Təsdiqlənib"},
+    {id:"pp-tuition",date:"2026-08-19",co:"PayPal",cat:"Gündəlik istifadəçi funksiyaları",short:"PayPal və Venmo: təhsil haqqı",
+     title:"PayPal və Venmo təhsil haqqı ödənişinə qoşuldu",
+     what:"Tələbə və ailələr təhsil haqqını məktəbin öz ödəniş portalında PayPal və ya Venmo ilə ödəyə bilir.",
+     summary:"Funksiya üç portal tərəfdaşı (Illumia, Nelnet Campus Commerce, TouchNet) vasitəsilə qoşulub. Pul bank hesabından, kartdan və ya PayPal/Venmo balansından çəkilə bilər. Bellarmine, Butler, Kansas State, Michigan State və Texas Tech daxil olmaqla məktəblərdə artıq işləyir.",
+     impact:"Təhsil, kommunal kimi mövcud ödəniş portallarına yeni ödəniş üsulu əlavə etmək Bir Ekosistem üçün inteqrasiya modeli ola bilər.",level:"İzləmə",
+     source:{name:"PayPal xəbər mərkəzi",type:"Şirkət açıqlaması",url:"https://newsroom.paypal-corp.com/news"},status:"Təsdiqlənib"},
+    {id:"google-walmart",date:"2026-08-21",co:"Google",cat:"Rəqəmsal pul kisələri",short:"Google Pay: Walmart-da telefonla ödəniş",
+     title:"Google Pay ilə Walmart və Sam's Club-da telefonla ödəmək mümkün olur",
+     what:"ABŞ-ın böyük pərakəndə şəbəkəsi Walmart-da və Sam's Club-da telefonu terminala yaxınlaşdırmaqla Google Pay ilə ödəniş başlayır.",
+     summary:"Əvvəlcə seçilmiş mağazalarda başlayır. Plan: 2026-nın sonuna bütün ABŞ mağaza və klublarında, 2027-nin ortasına yanacaqdoldurma məntəqələrində.",
+     impact:"Böyük pərakəndəçinin telefonla ödənişi dəstəkləməsi bu üsulun nə qədər geniş yayıldığını göstərir.",level:"İzləmə",
+     source:{name:"Google bloqu",type:"Şirkət bloqu",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},status:"Təsdiqlənib"},
+    {id:"tencent",date:"2026-11-05",co:"Tencent",cat:"Rəqəmsal pul kisələri",short:"Tencent: turistlər Çində öz pul kisəsi ilə",
+     title:"Tencent xarici turistlərin Çində öz pul kisələri ilə yaşamasını asanlaşdırır",
+     what:"Çinə gedən turistlər öz ölkəsinin pul kisəsi tətbiqindən çıxmadan yemək sifariş edə, nəqliyyat çağıra, təyyarə və qatar bileti ala bilir (Pay in China 2.0).",
+     summary:"Tencent-in ödəniş xidməti (Weixin Pay) 16 ölkə və regiondan 60-dan çox xarici pul kisəsi ilə qoşulub. Şirkət bildirir ki, Vyetnamın MoMo pul kisəsində Çinə gedən istifadəçilərin gündəlik əməliyyatları orta hesabla 290% artıb. Tencent həmçinin Mastercard və UnionPay International ilə anlaşma memorandumu imzalayıb. Mənbə ödənişli press-relizdir, rəqəmlər şirkətin öz iddiasıdır.",
+     impact:"Səyahət edən müştərilər üçün pul kisələrinin ölkələr arasında işləməsi M10 üçün uzunmüddətli ideya ola bilər.",level:"Orta",
+     source:{name:"PR Newswire (Yahoo Finance, ödənişli press-reliz)",type:"Press-reliz",url:"https://finance.yahoo.com/technology/ai/articles/tencent-showcases-global-payment-connectivity-105600388.html"},status:"Təsdiqlənib"},
+    {id:"npci",date:"2026-09-10",co:"NPCI",cat:"Ani ödənişlər",short:"Hindistan UPI: telefonla ödəniş və AI dəstək",
+     title:"Hindistanın UPI sistemi telefonla terminalda ödəniş və süni intellektli dəstək təqdim etdi",
+     what:"Hindistanın milli ani ödəniş şəbəkəsi (UPI) iki yenilik açıqladı: telefonu terminala yaxınlaşdırmaqla ödəniş və süni intellektlə işləyən yardım xidməti (MyUPI).",
+     summary:"Telefonla ödəniş 5000 rupiyə qədər şifrəsiz mümkündür və internetsiz də işləyə bilir. MyUPI bütün bank və tətbiqlərdəki UPI əməliyyatlarını və avtomatik ödəniş icazələrini bir yerdə göstərir, şübhəli əməliyyatı dayandırmaq üçün sorğu göndərməyə və avtomatik geri qaytarma tələbinə imkan verir. NPCI saytı avtomatik oxumağa icazə vermir, ona görə məzmun axtarış nəticəsindən götürülüb.",
+     impact:"Azərbaycanın ani ödənişlər sisteminə (AÖS) oxşar milli sistem istifadəçiyə köməkçi və təhlükəsizlik alətləri əlavə edir. Birbank və M10 üçün birbaşa müqayisə nümunəsidir.",level:"Yüksək",
+     source:{name:"NPCI press-relizi (sayt oxumağa icazə vermir)",type:"Şirkət açıqlaması",url:"https://www.npci.org.in/uploads/NPCI_Press_Release_RBI_Governor_Unveils_New_UPI_Capabilities_at_GFF_2026_AI_Powered_Customer_Support_and_Seamless_Tap_and_Pay_Experience_bb763a7670.pdf"},status:"Yoxlanılır"}
+  ],
+  future:[
+    {when:"2026-nın sonu",d:"2026-12-31",co:"Google",title:"Walmart-ın bütün ABŞ mağazalarında Google Pay (plan)",what:"Google Pay ilə telefonla ödəniş Walmart-ın bütün ABŞ mağaza və klublarında işləyəcək (Google-un planı).",url:"https://blog.google/products-and-platforms/platforms/google-pay/tap-to-pay-google-pay-walmart/"},
+    {when:"2026-nın sonu",d:"2026-12-31",co:"Stripe",title:"Stripe: stablecoin kartı 100 ölkədə (hədəf)",what:"Stripe stablecoin ilə işləyən kart buraxılışını 100 ölkəyə çatdırmağı hədəfləyir (Stripe-in planı).",url:"https://stripe.com/blog/new-ways-for-fintechs-to-move-money-and-expand-globally"},
+    {when:"2027",co:"Visa",title:"Visa: iki yeni təhlükəsizlik aləti hamıya açılır (plan)",what:"Təchizatçını yoxlama və virtual kartda əlavə təsdiq alətləri hazırda sınaqdadır, hamı üçün açılması 2027-də gözlənilir (Visa-nın planı).",url:V22866}
+  ],
+  outside:[
+    {date:"2026-06-09",co:"Apple",title:"Apple Pay: yenilənmiş ödəniş ekranı və Wallet-da hesab bölgüsü (iOS 27, payızda)",url:"https://www.apple.com/newsroom/2026/06/apple-unveils-innovative-features-and-intelligence-experiences-across-services/",note:"Pəncərədən əvvəl elan olunub. Səhifə yeniliyin artıq buraxıldığını göstərmir, ona görə bu status yoxlanılmayıb."},
+    {date:"2026-04-29",co:"Stripe",title:"Stripe Sessions: 288 yeni məhsul və funksiya (AI köməkçilər üçün Link pul kisəsi daxil)",url:"https://stripe.com/newsroom/news/sessions-2026",note:"Pəncərədən əvvəl elan olunub, lakin bu ilin AI ödənişləri mövzusunda əsas mənbədir."}
+  ],
+  coverage:{ok:["Visa xəbər mərkəzi","PayPal xəbər mərkəzi və yenilik qeydləri","Stripe bloqu","Mastercard investor səhifəsi","Google bloqu","Yahoo Finance / PR Newswire (Tencent)"],
+            no:["Mastercard və NPCI xəbər səhifələri avtomatik oxumağa icazə vermir","Klarna, Wise, Revolut, Adyen: bu müddətdə xəbər tapılmadı, ayrıca yoxlanılmayıb","Apple Pay yeniliklərinin buraxılış statusu yoxlanılmayıb","Reuters və FT: axtarış aləti bu saytlara daxil ola bilmir"]}
+};
+const LV={"Yüksək":"yüksək","Orta":"orta","İzləmə":"hələlik izləmək kifayətdir"};
+const CO={Visa:{c:"#1E6FE8",code:"VI"},Mastercard:{c:"#D9622B",code:"MC"},Stripe:{c:"#6D5BD0",code:"ST"},PayPal:{c:"#0E9F8E",code:"PP"},Google:{c:"#3A8F5C",code:"GO"},Tencent:{c:"#B0568F",code:"TC"},NPCI:{c:"#B7791F",code:"NP"},Apple:{c:"#52667F",code:"AP"},NOW:{c:"#0A2540",code:"•"}};
+const MON=["yan","fev","mar","apr","may","iyn","iyl","avq","sen","okt","noy","dek"];
+const fd=s=>{const p=s.split("-").map(Number);return p.length===2?MON[p[1]-1]+" "+p[0]:p[2]+" "+MON[p[1]-1]+" "+p[0]};
+const nf=(n,d=0)=>n.toFixed(d).replace(".",",");
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const days=(a,b)=>{const p=s=>{const[y,m,d]=s.split("-").map(Number);return Date.UTC(y,m-1,d)};return Math.round((p(b)-p(a))/864e5)};
+const IC={grid:'<rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>',pulse:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',sliders:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',ext:'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>',check:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>'};
+const ico=n=>`<svg class="i" viewBox="0 0 24 24">${IC[n]}</svg>`;
+const statusCls=s=>s==="Təsdiqlənib"?"bg-g":"bg-a";
+const items=DATA.items.slice().sort((a,b)=>b.date.localeCompare(a.date));
+const I=id=>DATA.items.find(x=>x.id===id),F=DATA.facts;
+const companies=[...new Set(DATA.items.map(i=>i.co))];
+const verified=DATA.items.filter(i=>i.status==="Təsdiqlənib").length;
+const high=DATA.items.filter(i=>i.level==="Yüksək").length;
+const vpct=Math.round(verified/DATA.items.length*100);
+
+/* ===== hero ===== */
+$("#asof").textContent=`Vəziyyət: ${fd(DATA.asOf)} · müddət ${fd(DATA.window.from)} – ${fd(DATA.window.to)}`;
+$("#dwin").textContent=`Müddət: ${fd(DATA.window.from)} – ${fd(DATA.window.to)} (3 ay)`;
+$("#hstats").innerHTML=[[DATA.items.length,"xəbər"],[companies.length,"şirkət"],[verified,"təsdiqlənib"]].map(([v,l])=>`<div><b data-count="${v}">0</b><span>${l}</span></div>`).join("");
+$("#heroRingCap").textContent=`${DATA.items.length} xəbərdən ${verified}-i şirkətin öz səhifəsindən yoxlanılıb.`;
+$("#heroRows").innerHTML=items.slice(0,3).map(i=>`<div class="rowitem"><div class="av" style="background:${CO[i.co].c}">${CO[i.co].code}</div><div><p>${i.short}</p><small>${i.co} · ${i.cat}</small></div><div class="r"><small class="mono">${fd(i.date)}</small></div></div>`).join("");
+
+/* ===== story ===== */
+const S=[
+ {tag:"AI köməkçi ödənişləri",c:"#6D5BD0",h:"Proqram ödəyir, insan nəzarət edir",p:()=>`${fd("2026-10-20")} tarixində Visa, BILL və Billtrust şirkətləri süni intellekt köməkçisinin fakturanı özü ödədiyi ilk real sınağa başladı. ${fd("2026-09-30")} tarixində Mastercard isə ödənişi proqramın başlatma ehtimalını göstərən bal təqdim etdi (hələlik ABŞ-da sınaq).`,url:I("visa-agent").source.url},
+ {tag:"Stablecoin",c:"#1E6FE8",h:"Stablecoin gündəlik ödənişlərə yaxınlaşır",p:()=>`Stablecoin dəyəri dollar kimi sabit saxlanılan rəqəmsal pulun adıdır. Stripe ${F.payoutsStable} bazarda onunla anında pul göndərməyi təklif edir, stablecoin ilə işləyən kart buraxılışı isə ${F.euCountries} Aİ ölkəsinə gəlir. Visa və Mastercard da bu istiqamətdə yeni məhsullar açıqladı.`,url:I("stripe-pay").source.url},
+ {tag:"Rəqəmsal pul kisələri",c:"#0E9F8E",h:"Pul kisələri bir-birinə qoşulur",p:()=>`Mastercard-ın Wallet Pay xidməti (${fd("2026-09-09")}) müxtəlif pul kisələrinin telefonla, QR kodla və internetdə eyni qaydada işləməsinə kömək edir. Tencent isə ${F.tencentCountries} ölkə və regiondan ${F.tencentWallets}-dan çox xarici pul kisəsini öz sisteminə qoşub.`,url:I("mc-wallet").source.url},
+ {tag:"Bir Ekosistem",c:"#0A2540",h:"Bir Ekosistem üçün nə deməkdir?",p:()=>`Üç trend bir sual doğurur: Birbank və M10 hansı yenilikləri sınaqdan keçirə bilər? Sağdakılar analitik təkliflərdir, qərar komandalara məxsusdur.`,url:""}
+];
+const stepsEl=$("#steps"),stage=$("#stage");
+S.forEach((s,k)=>stepsEl.insertAdjacentHTML("beforeend",`<div class="step" data-k="${k}"><span class="tag regtag" style="--c:${s.c}">${s.tag}</span><h3>${s.h}</h3><p>${s.p()}</p>${s.url?`<a class="src" href="${s.url}" target="_blank" rel="noopener">${ico("ext")} Mənbəyə bax</a>`:""}</div>`));
+const big=(v,pre,suf,dec)=>`<div class="big grad">${pre}<span data-count="${v}"${dec?` data-dec="${dec}"`:""}>0</span>${suf}</div>`;
+stage.innerHTML=`
+<div class="panel" data-k="0"><span class="eyebrow">AI köməkçi ödənişləri · Visa, Mastercard</span><h4>Proqram ödəyir, insan nəzarət edir</h4>
+  <div class="grid2">
+    <div class="mini"><p class="eyebrow">Visa · ${fd("2026-10-20")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">Canlı sınaq: BILL və Billtrust</p><p class="cap">Köməkçi təchizatçının portalında fakturanı özü ödəyir</p></div>
+    <div class="mini"><p class="eyebrow">Mastercard · ${fd("2026-09-30")}</p><p style="font-size:15px;font-weight:600;margin-top:6px">AI ehtimal balı</p><p class="cap">Ödənişi proqramın başlatma ehtimalı, ABŞ-da sınaq</p></div>
+  </div>
+  <div class="grid2">
+    <div class="mini">${big(F.juniperTrn,"$"," trln",1)}<p class="cap">2029-da şirkətlərarası virtual kart ödənişlərinin proqnozlaşdırılan həcmi (Juniper Research, Visa sitat edir)</p></div>
+    <div class="mini"><div class="big grad">1/<span data-count="${F.oneInN}">0</span></div><p class="cap">2030-a qədər hər 10 istehlakçıdan 1-i alış-verişi AI köməkçisinə tapşıracaq (Mastercard-ın sitat etdiyi proqnoz)</p></div>
+  </div>
+  <div class="chips"><span class="chip">Visa-nın AI ödəniş platforması</span><span class="chip">Etibarlı köməkçi qaydaları</span><span class="chip">Köməkçinin kimliyinin yoxlanması</span><span class="chip">Təhlükəsiz mühit (Cloudflare)</span></div></div>
+<div class="panel" data-k="1"><span class="eyebrow">Stablecoin · Stripe, Visa, Mastercard</span><h4>Stablecoin ödənişlərə daxil olur</h4>
+  <div class="grid2">
+    <div class="mini">${big(F.payoutsStable,"","",0)}<p class="cap">bazar: stablecoin ilə anında pul göndərmə (Stripe)</p></div>
+    <div class="mini">${big(F.issuing,"","+",0)}<p class="cap">ölkə: stablecoin ilə işləyən kart buraxılışı (${F.euCountries} Aİ ölkəsi yeni)</p></div>
+    <div class="mini">${big(F.issuingTarget,"","",0)}<p class="cap">ölkə hədəfi, 2026-nın sonu (Stripe)</p></div>
+    <div class="mini">${big(F.ousdMln,"$","+ mln",0)}<p class="cap">OUSD stablecoin-inin dövriyyəsi (Stripe-in açıqlaması)</p></div>
+  </div>
+  <div class="chips"><span class="chip">Visa Direct: stablecoin ilə köçürmə (${fd("2026-10-15")}, yoxlanılır)</span><span class="chip">Mastercard və BVNK (${fd("2026-10")}, yoxlanılır)</span></div></div>
+<div class="panel" data-k="2"><span class="eyebrow">Rəqəmsal pul kisələri · Mastercard, Tencent, Google</span><h4>Pul kisələri bir-birinə qoşulur</h4>
+  <div class="grid2">
+    <div class="mini">${big(F.walletUsersBn,"",""+" mlrd",1)}<p class="cap">dünyada rəqəmsal pul kisəsi istifadəçisi (Mastercard-ın açıqlaması)</p></div>
+    <div class="mini">${big(F.mcCredentialsBn,"","+ mlrd",1)}<p class="cap">Mastercard kartı pul kisələrinə əlavə oluna bilər</p></div>
+    <div class="mini">${big(F.tencentWallets,"","+",0)}<p class="cap">xarici pul kisəsi, ${F.tencentCountries} ölkə və region (Tencent)</p></div>
+    <div class="mini">${big(F.momoPct,"+","%",0)}<p class="cap">MoMo-da gündəlik əməliyyatların artımı, Çinə gedənlər (Tencent-in açıqlaması)</p></div>
+  </div>
+  <div class="chips"><span class="chip">Google Pay: Walmart (${fd("2026-08-21")})</span><span class="chip">Hindistan UPI: telefonla ödəniş (${fd("2026-09-10")}, yoxlanılır)</span></div></div>
+<div class="panel" data-k="3"><span class="eyebrow">Analitik təklifi</span><h4>Bir Ekosistem üçün mümkün addımlar</h4>
+  <div class="hyp"><small>Birbank · fırıldaqçılıqla mübarizə</small><p>${I("mc-agent").impact}</p></div>
+  <div class="hyp"><small>M10 · pul kisəsi və dostlar arası ödəniş</small><p>${I("mc-wallet").impact} ${I("venmo-receipt").impact}</p></div>
+  <div class="hyp"><small>Ekosistem · ani ödənişlər</small><p>${I("npci").impact}</p></div>
+  <p class="cap" style="margin-top:auto">Bunlar təkliflərdir. Qərar məhsul və risk komandalarına məxsusdur.</p></div>`;
+
+/* ===== animations ===== */
+function countUp(el){const to=+el.dataset.count,dec=+(el.dataset.dec||0),t0=performance.now(),dur=1400;
+  const f=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=nf(to*e,dec);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function runPanel(p){$$("[data-count]",p).forEach(countUp);setTimeout(()=>$$("[data-w]",p).forEach(b=>b.style.width=b.dataset.w+"%"),120)}
+function resetPanel(p){$$("[data-w]",p).forEach(b=>b.style.width="0")}
+let activeK=-1;
+function activate(k){if(k===activeK)return;activeK=k;
+  $$(".step").forEach(s=>s.classList.toggle("on",+s.dataset.k===k));
+  $$(".panel").forEach(p=>{const on=+p.dataset.k===k;if(on&&!p.classList.contains("on")){p.classList.add("on");runPanel(p)}else if(!on){p.classList.remove("on");resetPanel(p)}})}
+const stepIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)activate(+e.target.dataset.k)}),{rootMargin:innerWidth<980?"-68% 0px -18% 0px":"-45% 0px -45% 0px"});
+$$(".step").forEach(s=>stepIO.observe(s));
+const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}}),{threshold:.12});
+$$(".rv").forEach(el=>rvIO.observe(el));
+
+/* hero ring + words */
+$$("#h1 .w").forEach((w,i)=>w.style.transitionDelay=(i*0.09)+"s");
+$(".ring .v").innerHTML=`<span><span id="heroRingV" data-count="${vpct}">0</span>%</span>`;
+setTimeout(()=>{document.body.classList.add("loaded");
+  $("#heroRing").style.strokeDashoffset=339.3*(1-vpct/100);
+  countUp($("#heroRingV"));$$("#hstats [data-count]").forEach(countUp)},150);
+
+/* glossary */
+const GL=[["AI köməkçi","Sizin adınızdan alış-veriş edən və ya ödəniş edən proqram. Məsələn, \"bu fakturanı ödə\" deyirsiniz, proqram özü ödəyir."],
+ ["Sınaq layihəsi (pilot)","Yeniliyin hamıya açılmazdan əvvəl məhdud sayda istifadəçi və ya şirkətlə real şəraitdə yoxlanması."],
+ ["Stablecoin","Dəyəri dollar kimi bir valyutaya bağlı saxlanılan rəqəmsal pul. Qiyməti bitcoin kimi sürətlə qalxıb-düşmür."],
+ ["Rəqəmsal pul kisəsi","Telefondakı ödəniş tətbiqi (Apple Pay, Google Pay, M10 kimi). Kartı çıxarmadan ödəməyə imkan verir."],
+ ["Təhlükəsiz kart kodu (token)","Kart nömrəsinin yerinə işlədilən təsadüfi kod. Oğurlansa belə, onunla kartı istifadə etmək olmur."],
+ ["Ani ödənişlər","Pulun saniyələr içində, həftənin hər günü və hər saatı göndərilməsi. Azərbaycanda bu sistem AÖS adlanır."],
+ ["Təmassız ödəniş (NFC)","Telefonu və ya kartı terminala yaxınlaşdırmaqla ödəniş, heç nə daxil etmək lazım deyil."],
+ ["Şirkətlərarası ödənişlər","Bir şirkətin başqa şirkətə ödəməsi, məsələn təchizatçıya faktura ödənişi."]];
+$("#glGrid").innerHTML=GL.map((g,i)=>`<div class="glc rv" style="--d:${(i%4)*.07}s"><b>${g[0]}</b><p>${g[1]}</p></div>`).join("");
+$$("#glGrid .rv").forEach(el=>rvIO.observe(el));
+
+/* horizontal timeline */
+const tl=[...DATA.items.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(i=>({when:fd(i.date),co:i.co,title:i.short,what:i.what,why:i.impact,url:i.source.url,past:true,st:i.status})),
+  {when:"Bu gün",co:"NOW",title:"Radarın vəziyyəti: "+fd(DATA.asOf),what:`Bu günə qədər ${DATA.items.length} xəbər toplanıb, ${verified}-i şirkətin öz səhifəsindən təsdiqlənib. Sağda şirkətlərin açıqladığı növbəti planlar var.`,url:"",today:true},
+  ...DATA.future.map(f=>({when:f.when,co:f.co,title:f.title,what:f.what,url:f.url,future:true}))];
+const tr=$("#hsTrack");
+tr.insertAdjacentHTML("beforeend",tl.map(t=>{const r=CO[t.co],cls=t.today?"today":(t.past?"past":"");
+  return `<div class="tl ${cls}" style="--c:${r.c}"><div class="tlc"><div class="tlt"><span class="regtag" style="--c:${r.c}">${t.today?"İndi":t.co}</span>${t.st==="Yoxlanılır"?'<span class="badge bg-a">Yoxlanılır</span>':t.past?'<span class="badge bg-g">Təsdiqlənib</span>':t.future?'<span class="badge bg-b">Plan</span>':""}</div><div class="when">${t.when}</div><h5>${t.title}</h5><p>${t.what}</p>${t.why?`<div class="why"><b>Bir Ekosistem üçün</b>${t.why}</div>`:""}${t.url?`<small><a href="${t.url}" target="_blank" rel="noopener" style="color:var(--brand-d);font-weight:600">Mənbəyə bax</a></small>`:""}</div></div>`}).join(""));
+const hs=$("#timeline");
+function hsLayout(){const max=Math.max(0,tr.scrollWidth-innerWidth);hs.style.height=(innerHeight+max)+"px";$(".hs-line").style.width=tr.scrollWidth+"px"}
+function hsUpdate(){const r=hs.getBoundingClientRect(),total=hs.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,-r.top/total)),max=Math.max(0,tr.scrollWidth-innerWidth);tr.style.transform=`translateX(${-p*max}px)`}
+
+/* dashboard */
+$$(".nv[data-ic]").forEach(el=>el.insertAdjacentHTML("afterbegin",ico(el.dataset.ic)));
+$("#bellN").textContent=DATA.items.filter(i=>i.status==="Yoxlanılır").length;
+const K=[{ic:"pulse",v:DATA.items.length,l:"Xəbər (3 ay)",bg:"#DFEBFF",c:"#1556C0"},{ic:"globe",v:companies.length,l:"Şirkət",bg:"#E6E1FA",c:"#4B3DA8"},{ic:"shield",v:verified,l:"Təsdiqlənib",bg:"#DDF4EA",c:"#0B6B49"},{ic:"bolt",v:high,l:"Bizim üçün çox vacib",bg:"#FCEFD3",c:"#8A5A0B"}];
+$("#kpis").innerHTML=K.map((k,i)=>`<div class="kpi rv" style="--d:${i*.08}s"><div class="ic" style="background:${k.bg};color:${k.c}">${ico(k.ic)}</div><b data-count="${k.v}">0</b><span>${k.l}</span></div>`).join("");
+$$("#kpis .rv").forEach(el=>{rvIO.observe(el);new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){countUp(el.querySelector("[data-count]"));o.disconnect()}}),{threshold:.4}).observe(el)});
+
+const cats=[...new Set(DATA.items.map(i=>i.cat))];
+const st={cat:"all",q:""},open=new Set();
+$("#fchips").innerHTML=[["all","Hamısı"],...cats.map(c=>[c,c])].map(([k,l])=>`<span class="chip ${k==="all"?"on":""}" data-k="${k}" role="button" tabindex="0" style="cursor:pointer">${l}</span>`).join("");
+function renderTable(){
+  const rows=items.filter(i=>(st.cat==="all"||i.cat===st.cat)&&(st.q===""||(i.title+i.what+i.summary+i.cat+i.co+i.source.name).toLowerCase().includes(st.q)));
+  $("#tb").innerHTML=rows.length?rows.map(i=>`<tr class="rw" data-id="${i.id}"><td class="ttl">${i.title}<div style="font-weight:400;font-size:12px;color:var(--muted);margin-top:4px">${i.source.name} · <span class="badge bg-n" style="font-size:10px;padding:1px 8px">${i.source.type}</span></div></td><td><span class="badge" style="background:${CO[i.co].c}1F;color:${CO[i.co].c}">${i.co}</span><div style="font-size:12px;color:var(--muted);margin-top:6px">${i.cat}</div></td><td class="dt">${fd(i.date)}</td><td><span class="badge ${statusCls(i.status)}">${i.status}</span></td></tr>
+  <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="4"><p><b>Nə baş verdi?</b> ${i.what}</p><p><b>Təfərrüat.</b> ${i.summary}</p><p><b>Bir Ekosistem üçün nə deməkdir?</b> (əhəmiyyət: ${LV[i.level]}) ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="4" style="padding:24px;color:var(--muted)">Uyğun xəbər tapılmadı.</td></tr>`}
+renderTable();
+$("#tb").addEventListener("click",e=>{if(e.target.closest("a"))return;const r=e.target.closest("tr.rw");if(!r)return;const id=r.dataset.id,d=$(`tr.detail[data-for="${id}"]`);const show=d.style.display==="none";d.style.display=show?"table-row":"none";show?open.add(id):open.delete(id)});
+$("#fchips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;st.cat=c.dataset.k;$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x===c));renderTable()});
+$("#q").addEventListener("input",e=>{st.q=e.target.value.trim().toLowerCase();renderTable()});
+
+$("#upsub").textContent=`Şirkətlərin özünün açıqladığı planlar · ${fd(DATA.asOf)} vəziyyəti ilə`;
+$("#ups").innerHTML=DATA.future.map(t=>`<li><span class="d">${t.d?days(DATA.asOf,t.d)+" gün":t.when}</span><div><b>${t.title}</b><small>${t.co} · ${t.when}</small></div></li>`).join("");
+$("#cov").innerHTML=`<div><h5 style="color:var(--good)">Oxunub</h5><ul>${DATA.coverage.ok.map(x=>`<li><span class="ok">${ico("check")}</span>${x}</li>`).join("")}</ul></div><div><h5 style="color:var(--warn)">Hələ avtomatik oxunmur</h5><ul>${DATA.coverage.no.map(x=>`<li><span class="no">${ico("x")}</span>${x}</li>`).join("")}</ul></div>`;
+$("#outside").innerHTML=`<h4>3 aylıq müddətdən əvvəl, amma vacib</h4><p class="sub">Daha əvvəl elan olunub, lakin mövzu üçün hələ də aktualdır</p>`+DATA.outside.map(o=>`<div class="rowitem" style="margin-top:8px"><div class="av" style="background:${CO[o.co].c}">${CO[o.co].code}</div><div><p>${o.title}</p><small>${o.note}</small></div><div class="r"><small class="mono">${fd(o.date)}</small><br><a href="${o.url}" target="_blank" rel="noopener" style="font-size:12px;color:var(--brand-d);font-weight:600">Mənbə</a></div></div>`).join("");
+
+let chartsDone=false;
+function initCharts(){if(chartsDone)return;chartsDone=true;
+  if(!window.Chart){$$(".cv").forEach(c=>c.innerHTML='<p class="cap">Qrafik yüklənmədi (Chart.js CDN əlçatan deyil).</p>');return}
+  Chart.defaults.font.family='"IBM Plex Sans",sans-serif';Chart.defaults.color="#52667F";
+  const g=[{l:["Stripe: stablecoin ilə pul","göndərmə (bazar)"],v:F.payoutsStable,c:"#6D5BD0"},{l:["Stripe: adi pulla göndərmə","(bazar, 100+)"],v:F.payoutsFiat,c:"#6D5BD0"},{l:["Stripe: stablecoin kartı","(ölkə, 65+)"],v:F.issuing,c:"#6D5BD0"},{l:["Tencent: qoşulmuş xarici","pul kisəsi (60+)"],v:F.tencentWallets,c:"#B0568F"},{l:["Alipay+: qoşulmuş pul kisəsi","və bank tətbiqi (50+)"],v:F.alipayWallets,c:"#D9622B"}];
+  new Chart($("#c1"),{type:"bar",data:{labels:g.map(x=>x.l),datasets:[{data:g.map(x=>x.v),backgroundColor:g.map(x=>x.c),borderRadius:8,barThickness:22}]},
+    options:{indexAxis:"y",maintainAspectRatio:false,animation:{duration:1600,easing:"easeOutCubic"},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>nf(c.parsed.x,0)+(g[c.dataIndex].l[1].includes("+")?" və ya daha çox":"")}}},scales:{x:{grid:{color:"#E6F0FB"}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+  const cc={};DATA.items.forEach(i=>cc[i.cat]=(cc[i.cat]||0)+1);
+  new Chart($("#c2"),{type:"doughnut",data:{labels:Object.keys(cc),datasets:[{data:Object.values(cc),backgroundColor:["#1E6FE8","#6D5BD0","#38BDF8","#0E9F8E","#9DB8D6","#D9622B","#B7791F"],borderWidth:3,borderColor:"#fff"}]},
+    options:{maintainAspectRatio:false,cutout:"62%",animation:{duration:1600,animateRotate:true},plugins:{legend:{position:"bottom",labels:{boxWidth:10,boxHeight:10,font:{size:11}}}}}});
+}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){initCharts();o.disconnect()}}),{threshold:.15}).observe($(".app"));
+
+/* flow */
+const FL=[["Etibarlı mənbələrin seçilməsi","Yalnız şirkətlərin öz xəbər səhifələri, bloqları və investor səhifələri kimi etibarlı mənbələr seçilir. Siyahını insan müəyyən edir."],["Xəbərlərin toplanması","Xəbərlər hər gün avtomatik toplanır, təkrarlar silinir və yalnız son 3 ayın xəbərləri saxlanılır."],["Süni intellekt izah yazır","Süni intellekt (Claude) hər xəbər üçün sadə izah, mövzu, şirkət və Bir Ekosistem üçün mümkün təsiri yazır."],["İnsan yoxlayır","Məhsul analitiki izahı şirkətin öz səhifəsi ilə müqayisə edir və status verir: Təsdiqlənib və ya Yoxlanılır."],["Panel","Xəbərlər tarix, şirkət və mövzuya görə süzülür."],["Həftəlik e-poçt xülasəsi","Ən vacib xəbərlər e-poçt və Teams-ə göndərilir, istənilən xəbərdən tapşırıq yaratmaq olur."]];
+$("#fl").insertAdjacentHTML("beforeend",FL.map((f,i)=>`<div class="fs"><div class="n">${i+1}</div><h4>${f[0]}</h4><p>${f[1]}</p></div>`).join(""));
+function flowUpdate(){const fl=$("#fl"),r=fl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));$("#flp").style.height=(p*(fl.offsetHeight-20))+"px";
+  $$(".fs").forEach(s=>s.classList.toggle("on",s.offsetTop+24<=p*fl.offsetHeight))}
+
+/* sources */
+const lab=new Map();
+items.forEach(i=>{if(!lab.has(i.source.url))lab.set(i.source.url,`${i.co}: ${i.source.name} · ${fd(i.date)}`)});
+DATA.outside.forEach(o=>lab.set(o.url,`${o.co}: ${fd(o.date)}`));
+$("#srcs").innerHTML=[...lab].map(([u,l])=>`<li><a href="${u}" target="_blank" rel="noopener">${l}</a></li>`).join("");
+
+/* scroll loop */
+const blobs=$$(".blob[data-speed]");let tick=false;
+function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{tick=false;
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$("#bar").style.width=(y/h*100)+"%";
+  if(y<innerHeight*1.6)blobs.forEach(b=>b.style.transform=`translateY(${y*+b.dataset.speed}px)`);
+  hsUpdate();flowUpdate()})}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",()=>{hsLayout();onScroll()});
+addEventListener("load",()=>{hsLayout();onScroll()});hsLayout();onScroll();
+</script>
+</body></html>
