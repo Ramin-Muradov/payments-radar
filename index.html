@@ -353,16 +353,6 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
 .tc-row i{grid-column:1/-1;height:6px;border-radius:6px;background:#E6F0FB;overflow:hidden;display:block}
 .tc-row em{display:block;height:100%;background:var(--c)}
 .tc-last{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
-.legend2{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-bottom:12px}
-.legend2 i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
-.regs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.rg{display:block;text-align:left;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;min-width:0}
-.rg:hover{border-color:var(--brand)}
-.rg-h{display:flex;justify-content:space-between;gap:10px;font-size:13px}
-.rg-h span{color:var(--muted);white-space:nowrap}
-.rg-track{display:block;height:10px;border-radius:10px;background:#E6F0FB;margin:8px 0;overflow:hidden}
-.rg-bar{display:flex;height:100%;border-radius:10px;overflow:hidden}
-.rg-n{display:block;font-size:12px;color:var(--muted);line-height:1.45}
 .heat{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed;font-size:12px}
 .heat th{font-weight:600;color:var(--muted);text-align:center;font-size:11px}
 .heat th:first-child{text-align:left;width:42%}
@@ -395,6 +385,35 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
   .heat th:first-child{width:40%}
   .months{height:220px;gap:8px}
 }
+.globe-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+.globe-box{position:relative;display:flex;flex-direction:column;align-items:center;min-width:0}
+#globe{display:block;touch-action:pan-y;cursor:grab;max-width:100%}
+#globe:active{cursor:grabbing}
+.gtip{position:absolute;pointer-events:none;background:#0A2540;color:#fff;font-size:12px;padding:6px 10px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-130%);opacity:0;transition:opacity .15s;z-index:2}
+.gtip.on{opacity:1}
+.ginfo{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.gi-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:center}
+.gi-head i{width:14px;height:14px;border-radius:50%;background:var(--c)}
+.gi-head b{font-size:17px;line-height:1.3}
+.gi-head span{grid-column:2;font-size:12px;color:var(--muted)}
+.gi-share{height:8px;border-radius:8px;background:#E6F0FB;margin:10px 0 12px;overflow:hidden}
+.gi-share em{display:block;height:100%}
+.gi-type{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px;width:100%;text-align:left;font:inherit;font-size:13px;color:var(--ink);background:#F5F9FE;border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin-bottom:8px;cursor:pointer}
+.gi-type:hover:not(:disabled){border-color:var(--brand)}
+.gi-type:disabled{opacity:.5;cursor:default}
+.gi-type i{grid-column:1/-1;display:block;height:6px;border-radius:6px;background:#E6F0FB;overflow:hidden}
+.gi-type em{display:block;height:100%}
+.gi-note{font-size:12px;color:var(--muted);margin:6px 0;line-height:1.5}
+.gi-all{width:100%;margin-top:8px;font:inherit;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--brand),var(--sky));border:0;border-radius:10px;padding:10px;cursor:pointer}
+.gchips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.gc{display:block;text-align:left;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;min-width:0}
+.gc.on{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.gc span{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:600;line-height:1.3}
+.gc i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--c)}
+.gc b{display:block;font:600 12px var(--mono);margin:6px 0}
+.gc em{display:block;height:6px;border-radius:6px;background:#E6F0FB;overflow:hidden}
+.gc u{display:block;height:100%;background:var(--c);text-decoration:none}
+@media (max-width:980px){.globe-wrap{grid-template-columns:minmax(0,1fr)}.gchips{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -445,7 +464,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
         <div class="kpis" id="kpis"></div>
         <div class="pc"><h4>Əsas nəticələr</h4><p class="sub">Paneldəki xəbərlər əsasında avtomatik hesablanır</p><div class="ins" id="ins"></div><p class="note">Bu rəqəmlər yalnız paneldə toplanmış xəbərləri əks etdirir və bazarın tam statistikası sayılmır.</p></div>
         <div class="types" id="types"></div>
-        <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Regionun üzərinə klikləyin, onun xəbərləri aşağıda göstəriləcək</p><div class="legend2" id="leg"></div><div class="regs" id="regs"></div></div>
+        <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Qlobusu fırladın, regionun üzərinə gəlin (telefonda toxunun) və maraqlandığınız xəbərlərə keçin</p><div class="globe-wrap"><div class="globe-box" id="globebox"><canvas id="globe" role="img" aria-label="Xəbərlərin regionlar üzrə bölgüsünü göstərən qlobus"></canvas><div class="gtip" id="gtip"></div><p class="note">Dairədəki rəqəm regiondakı xəbərlərin sayıdır. Qlobal xəbərlər xəritədə göstərilmir.</p></div><div class="ginfo" id="ginfo"></div></div><div class="gchips" id="gchips"></div></div>
         <div class="row2 uneven">
           <div class="pc"><h4>Kim hansı mövzu üzərində işləyir?</h4><p class="sub">Rəng nə qədər tünddürsə, xəbər sayı o qədər çoxdur</p><table class="heat" id="heat"></table></div>
           <div class="pc"><h4>Aylar üzrə dinamika</h4><p class="sub" id="msub"></p><div class="months" id="months"></div></div>
@@ -497,6 +516,8 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
 
 <footer class="foot"><div class="wrap"><b>Saytda istifadə olunan mənbələr</b><ol id="srcs"></ol><p style="margin-top:14px">Bu, prototipdir. “Bir Ekosistem üçün” bölmələrindəki fikirlər süni intellektin hazırladığı təkliflərdir və rəsmi mövqe sayılmır.</p></div></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
 /* ===== DATA (bütün rəqəmlər buradan oxunur) ===== */
 const VL="https://usa.visa.com/about-visa/newsroom/press-releases-listing.html",V22866="https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22866.html";
@@ -972,14 +993,77 @@ $("#ins").innerHTML=INS.map(x=>`<div class="in"><small>${x[0]}</small><b>${x[1]}
 
 /* banks, wallets, others */
 $("#types").innerHTML=Object.entries(TYPE).map(([k,t])=>{const a=ofType(k),top=ranked(countBy(a,i=>i.cat)).slice(0,3),last=a.slice().sort((x,y)=>y.date.localeCompare(x.date))[0];
-  return `<button type="button" class="tcard" data-type="${k}" style="--c:${t.c}"><span class="tc-title">${t.n}</span><span class="tc-num">${a.length}<small>ümumi sayın ${pct(a.length)}%-i</small></span>${top.map(([c,n])=>`<span class="tc-row"><span>${c}</span><b>${n}</b><i><em style="width:${pct(n,a.length)}%"></em></i></span>`).join("")}${last?`<span class="tc-last">Son xəbər: ${last.short}</span>`:""}</button>`}).join("");
+  return `<button type="button" class="tcard" data-type="${k}" style="--c:${t.c}"><span class="tc-title">${t.n}</span><span class="tc-num">${a.length}<small>ümumi sayın ${pct(a.length)}%-i</small></span>${top.map(([c,n])=>`<span class="tc-row"><span>${c}</span><b>${n} · ${pct(n,a.length)}%</b><i><em style="width:${pct(n,a.length)}%"></em></i></span>`).join("")}${last?`<span class="tc-last">Son xəbər: ${last.short}</span>`:""}</button>`}).join("");
 
-/* regions */
-$("#leg").innerHTML=Object.values(TYPE).map(t=>`<span><i style="background:${t.c}"></i>${t.n}</span>`).join("");
+/* regions on a globe */
 const regs=Object.keys(RG).map(k=>{const a=DATA.items.filter(i=>i.region===k);return{k,a,n:a.length}}).filter(r=>r.n).sort((x,y)=>(x.k==="global")-(y.k==="global")||y.n-x.n);
-const rmax=Math.max(...regs.map(r=>r.n));
-$("#regs").innerHTML=regs.map(r=>{const c=countBy(r.a,i=>i.type),top=leaders(countBy(r.a,i=>i.cat)),who=[...new Set(r.a.map(i=>i.co))],more=who.length>4?` və daha ${who.length-4}`:"";
-  return `<button type="button" class="rg" data-region="${r.k}"><span class="rg-h"><b>${RG[r.k]}</b><span>${r.n} xəbər · ${pct(r.n)}%</span></span><span class="rg-track"><span class="rg-bar" style="width:${pct(r.n,rmax)}%">${Object.keys(TYPE).filter(t=>c[t]).map(t=>`<i style="flex:${c[t]};background:${TYPE[t].c}" title="${TYPE[t].n}: ${c[t]}"></i>`).join("")}</span></span><span class="rg-n">Əsas mövzu: ${top.names[0]}. Şirkətlər: ${who.slice(0,4).join(", ")}${more}</span></button>`}).join("");
+const RC={cis:"#E8590C",tme:"#D6336C",apac:"#1C7ED6",eu:"#7048E8",na:"#2F9E44",latam:"#E69500",af:"#8D5524",global:"#0A2540"};
+const RCENTER={cis:[62,45],tme:[44,28],apac:[108,12],eu:[12,50],na:[-100,43],latam:[-64,-12],af:[20,4]};
+const CIS=["Azerbaijan","Armenia","Georgia","Kazakhstan","Uzbekistan","Kyrgyzstan","Tajikistan","Turkmenistan","Russia","Belarus"];
+const TME=["Turkey","Saudi Arabia","United Arab Emirates","Iran","Iraq","Israel","Jordan","Lebanon","Syria","Yemen","Oman","Qatar","Kuwait","Palestine"];
+const regionOf=f=>{const n=f.properties.name;if(CIS.includes(n))return"cis";if(TME.includes(n))return"tme";if(n==="Cyprus"||n==="N. Cyprus")return"eu";
+  const[lon,lat]=d3.geoCentroid(f);if(lat<-60)return null;if(lon<-30)return lat>33?"na":"latam";if(lon>-20&&lon<52&&lat<37.5)return"af";if(lon>=-30&&lon<45&&lat>=36)return"eu";return"apac"};
+const gCalm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let features=[],gsize=0,rot=[-55,-25],hover=null,sel=null,spin=!gCalm,drag=null,seen=false;
+
+/* info card and region buttons */
+function showRegion(k){const r=regs.find(x=>x.k===k);if(!r)return;
+  const c=countBy(r.a,i=>i.type),top=leaders(countBy(r.a,i=>i.cat)),who=[...new Set(r.a.map(i=>i.co))],last=r.a.slice().sort((a,b)=>b.date.localeCompare(a.date))[0];
+  $("#ginfo").innerHTML=`<div class="gi-head" style="--c:${RC[k]}"><i></i><b>${RG[k]}</b><span>${r.n} xəbər · ümumi sayın ${pct(r.n)}%-i</span></div>
+  <div class="gi-share"><em style="width:${pct(r.n)}%;background:${RC[k]}"></em></div>
+  ${Object.keys(TYPE).map(t=>`<button type="button" class="gi-type" data-region="${k}" data-type="${t}" ${c[t]?"":"disabled"}><span>${TYPE[t].n}</span><b>${c[t]||0} · ${pct(c[t]||0,r.n)}%</b><i><em style="width:${pct(c[t]||0,r.n)}%;background:${TYPE[t].c}"></em></i></button>`).join("")}
+  <p class="gi-note"><b>Əsas mövzu:</b> ${top.names.slice(0,2).join(", ")}</p>
+  <p class="gi-note"><b>Şirkətlər:</b> ${who.slice(0,5).join(", ")}${who.length>5?` və daha ${who.length-5}`:""}</p>
+  <p class="gi-note"><b>Son xəbər:</b> ${last.short}</p>
+  <button type="button" class="gi-all" data-region="${k}">Bütün ${r.n} xəbərə baxın</button>`;
+  $$(".gc").forEach(b=>b.classList.toggle("on",b.dataset.region===k))}
+$("#gchips").innerHTML=regs.map(r=>`<button type="button" class="gc" data-region="${r.k}" style="--c:${RC[r.k]}"><span><i></i>${RG[r.k]}</span><b>${r.n} xəbər · ${pct(r.n)}%</b><em><u style="width:${pct(r.n)}%"></u></em></button>`).join("");
+$("#ginfo").addEventListener("click",e=>{const t=e.target.closest(".gi-type"),a=e.target.closest(".gi-all");
+  if(t&&!t.disabled)setFilter({region:t.dataset.region,type:t.dataset.type},true);else if(a)setFilter({region:a.dataset.region},true)});
+$("#gchips").addEventListener("click",e=>{const b=e.target.closest(".gc");if(!b)return;const k=b.dataset.region;spin=false;sel=RCENTER[k]?k:null;showRegion(k);turnTo(k)});
+showRegion(regs[0].k);
+
+/* the globe itself */
+const cv=$("#globe"),ctx=cv.getContext("2d");
+let proj,gpath;
+const visibleAt=c=>d3.geoDistance(c,[-rot[0],-rot[1]])<1.35;
+const radiusOf=n=>11+Math.sqrt(n)*2.4;
+function drawGlobe(){if(!proj)return;proj.rotate(rot);ctx.clearRect(0,0,gsize,gsize);
+  ctx.beginPath();gpath({type:"Sphere"});const sea=ctx.createRadialGradient(gsize*.35,gsize*.3,gsize*.05,gsize/2,gsize/2,gsize/2);sea.addColorStop(0,"#F6FBFF");sea.addColorStop(1,"#C4DFFB");ctx.fillStyle=sea;ctx.fill();
+  ctx.beginPath();gpath(d3.geoGraticule10());ctx.strokeStyle="rgba(30,111,232,.13)";ctx.lineWidth=.6;ctx.stroke();
+  const active=hover||sel;
+  for(const f of features){ctx.beginPath();gpath(f);ctx.globalAlpha=!f.region?1:active?(active===f.region?1:.3):.82;ctx.fillStyle=f.region?RC[f.region]:"#DCE8F5";ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle="rgba(255,255,255,.75)";ctx.lineWidth=.5;ctx.stroke()}
+  ctx.beginPath();gpath({type:"Sphere"});ctx.strokeStyle="rgba(30,111,232,.35)";ctx.lineWidth=1.5;ctx.stroke();
+  for(const r of regs){const c=RCENTER[r.k];if(!c||!visibleAt(c))continue;const[x,y]=proj(c),rad=radiusOf(r.n)+(active===r.k?3:0);
+    ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.fillStyle="#fff";ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=RC[r.k];ctx.stroke();
+    ctx.fillStyle="#0A2540";ctx.font="600 13px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(r.n,x,y)}}
+function sizeGlobe(){if(!proj)return;const s=Math.min($("#globebox").clientWidth,500),ratio=window.devicePixelRatio||1;if(!s)return;gsize=s;
+  cv.style.width=cv.style.height=s+"px";cv.width=cv.height=Math.round(s*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);proj.translate([s/2,s/2]).scale(s/2-4);drawGlobe()}
+function regionAt(x,y){for(const r of regs){const c=RCENTER[r.k];if(!c||!visibleAt(c))continue;const[bx,by]=proj(c);if(Math.hypot(x-bx,y-by)<=radiusOf(r.n)+4)return r.k}
+  if(Math.hypot(x-gsize/2,y-gsize/2)>gsize/2-4)return null;const ll=proj.invert([x,y]);const f=features.find(f=>f.region&&d3.geoContains(f,ll));
+  return f&&regs.some(r=>r.k===f.region)?f.region:null}
+function turnTo(k){hover=null;$("#gtip")?.classList.remove("on");const c=RCENTER[k];if(!c||!proj){drawGlobe();return}
+  const from=rot.slice(),d=((-c[0]-from[0])%360+540)%360-180,to=[from[0]+d,-c[1]*.7],t0=performance.now(),dur=gCalm?0:800;
+  const step=t=>{const p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3);rot=[from[0]+(to[0]-from[0])*e,from[1]+(to[1]-from[1])*e];drawGlobe();if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+const point=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+function tip(k,x,y){const t=$("#gtip");if(!k){t.classList.remove("on");return}const r=regs.find(q=>q.k===k);t.textContent=`${RG[k]}: ${r.n} xəbər`;
+  t.style.left=(cv.offsetLeft+x)+"px";t.style.top=(cv.offsetTop+y)+"px";t.classList.add("on")}
+cv.addEventListener("pointerdown",e=>{if(!proj)return;const[x,y]=point(e);drag={x,y,moved:false};spin=false});
+cv.addEventListener("pointermove",e=>{if(!proj)return;const[x,y]=point(e);
+  if(drag){const dx=x-drag.x,dy=y-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;
+    if(drag.moved){if(!cv.hasPointerCapture(e.pointerId))cv.setPointerCapture(e.pointerId);rot=[rot[0]+dx*.35,Math.max(-65,Math.min(65,rot[1]-dy*.35))];drag.x=x;drag.y=y;tip(null);drawGlobe()}return}
+  if(e.pointerType!=="mouse")return;const k=regionAt(x,y);cv.style.cursor=k?"pointer":"grab";tip(k,x,y);if(k!==hover){hover=k;if(k)showRegion(k);drawGlobe()}});
+cv.addEventListener("pointerup",e=>{if(!drag)return;const[x,y]=point(e),moved=drag.moved;drag=null;if(moved)return;const k=regionAt(x,y);if(k){sel=k;showRegion(k);drawGlobe()}});
+cv.addEventListener("pointercancel",()=>{drag=null});
+cv.addEventListener("pointerleave",()=>{tip(null);if(hover){hover=null;drawGlobe()}});
+let frame=0;
+function spinGlobe(){if(spin&&seen&&!hover&&!drag&&(frame++%2===0)){rot=[rot[0]+.35,rot[1]];drawGlobe()}requestAnimationFrame(spinGlobe)}
+new IntersectionObserver(es=>es.forEach(e=>seen=e.isIntersecting)).observe(cv);
+new ResizeObserver(()=>{const w=Math.min($("#globebox").clientWidth,500);if(w&&w!==gsize)sizeGlobe()}).observe($("#globebox"));
+const noGlobe=()=>{$("#globebox").innerHTML='<p class="cap">Qlobus yüklənmədi. Regionu aşağıdakı düymələrdən seçin.</p>'};
+if(window.d3&&window.topojson){fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(w=>{
+  features=topojson.feature(w,w.objects.countries).features;features.forEach(f=>f.region=regionOf(f));
+  proj=d3.geoOrthographic().clipAngle(90);gpath=d3.geoPath(proj,ctx);sizeGlobe();spinGlobe()}).catch(noGlobe)}else noGlobe();
 
 /* theme by company type */
 const hmax=Math.max(...themes.map(c=>Math.max(...Object.keys(TYPE).map(t=>DATA.items.filter(i=>i.cat===c&&i.type===t).length))));
@@ -1025,7 +1109,6 @@ coMore.hidden=byCo.length<=12;coLabel();
 coMore.addEventListener("click",()=>{$("#companies").classList.toggle("all");coLabel()});
 $("#cos").addEventListener("click",e=>{const b=e.target.closest(".cob");if(!b)return;if(b.dataset.co===st.co)setFilter({});else setFilter({co:b.dataset.co},true)});
 $("#types").addEventListener("click",e=>{const b=e.target.closest(".tcard");if(b)setFilter({type:b.dataset.type},true)});
-$("#regs").addEventListener("click",e=>{const b=e.target.closest(".rg");if(b)setFilter({region:b.dataset.region},true)});
 $("#heat").addEventListener("click",e=>{const b=e.target.closest("button[data-theme]");if(b)setFilter({cat:b.dataset.theme,type:b.dataset.type},true)});
 renderTable();
 
