@@ -138,7 +138,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .dash{padding:100px 0 60px}
 .dash-head{margin-bottom:40px}
 .dash-head h2{margin:12px 0 12px}
-.app{display:grid;grid-template-columns:220px minmax(0,1fr);background:#F7FAFE;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(30,111,232,.45)}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);background:#F7FAFE;border:1px solid var(--line);border-radius:26px;overflow:clip;box-shadow:0 40px 90px -40px rgba(30,111,232,.45)}
 .side{background:#fff;border-right:1px solid var(--line);padding:22px 14px}
 .side .logo{padding:0 10px 22px;font-size:16px}
 .nv{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-size:14px;color:var(--muted);margin-bottom:4px;cursor:default}
@@ -213,7 +213,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 
 @media (max-width:980px){
   .hero-grid,.story-grid,.row2{grid-template-columns:1fr!important}
-  .app{grid-template-columns:1fr}.side{display:none}
+  .app{grid-template-columns:1fr}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
   .links{display:none}
   .stage{top:68px;height:54vh;min-height:0;margin-bottom:10px;z-index:5}
@@ -253,6 +253,32 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .story{padding-top:50px}
 .panel .eyebrow{text-transform:none;letter-spacing:.02em;font-size:13px}
 @media (max-width:980px){.app{grid-template-columns:minmax(0,1fr)}.main{min-width:0;padding:14px}.hero-grid,.row2{grid-template-columns:minmax(0,1fr)!important}.tools{width:100%}.search{min-width:0;flex:1}.user{display:none}.pc{padding:14px}.tbl th,.tbl td{padding:10px 5px}.tbl .dt{white-space:normal}.cov{grid-template-columns:minmax(0,1fr)}}
+.side-in{position:sticky;top:84px}
+button.nv{width:100%;border:0;background:none;font:inherit;font-size:14px;text-align:left;cursor:pointer}
+button.nv:hover{background:#F2F8FF;color:var(--brand-d)}
+button.nv.on{background:#E6F1FF;color:var(--brand-d);font-weight:600}
+button.bell{font:inherit;color:inherit;cursor:pointer}
+#kpis,#newsCard,#companies,#plansCard,#srcCard{scroll-margin-top:84px;border-radius:18px}
+.flash{animation:flash 1.8s ease}
+@keyframes flash{0%,60%{box-shadow:0 0 0 4px rgba(30,111,232,.45)}100%{box-shadow:0 0 0 4px rgba(30,111,232,0)}}
+.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.cob{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;text-align:left;color:var(--ink);cursor:pointer;transition:transform .2s,border-color .2s}
+.cob:hover{transform:translateY(-2px);border-color:var(--brand)}
+.cob.on{border-color:var(--brand);background:#E6F1FF}
+.cob .av{width:32px;height:32px;font-size:11px}
+.cob b{display:block;font-size:13px;line-height:1.3}
+.cob small{font-size:12px;color:var(--muted)}
+.cofilter{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;margin-bottom:12px;padding:8px 12px;background:#E6F1FF;border-radius:12px}
+.cofilter[hidden]{display:none}
+.cofilter button{border:0;background:none;color:var(--brand-d);font:inherit;font-weight:600;text-decoration:underline;cursor:pointer}
+@media (max-width:980px){
+  .app{display:block}
+  .side{position:sticky;top:66px;z-index:4;border-right:0;border-bottom:1px solid var(--line);padding:8px 10px}
+  .side .logo{display:none}
+  .side-in{position:static;display:flex;gap:4px;overflow-x:auto}
+  button.nv{width:auto;flex:none;white-space:nowrap;margin:0;padding:8px 11px;font-size:13px}
+  #kpis,#newsCard,#companies,#plansCard,#srcCard{scroll-margin-top:136px}
+}
 </style>
 </head>
 <body>
@@ -291,29 +317,31 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
   <div class="wrap">
     <div class="dash-head rv"><h2>Son üç ayın yenilikləri bir baxışda</h2><p class="lead">Xəbərləri mövzu üzrə süzün, ətraflı izahlarını oxuyun və mənbə səhifəsinə keçin.</p></div>
     <div class="app">
-      <aside class="side">
+      <aside class="side"><div class="side-in">
         <div class="logo"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Radar</span></div>
-        <div class="nv on" data-ic="grid">Panel</div><div class="nv" data-ic="pulse">Xəbərlər</div><div class="nv" data-ic="globe">Şirkətlər</div><div class="nv" data-ic="file">Mənbələr</div><div class="nv" data-ic="shield">Tənzimləmə</div><div class="nv" data-ic="sliders">Parametrlər</div>
-      </aside>
+        <button type="button" class="nv on" data-ic="grid" data-go="panel">Panel</button><button type="button" class="nv" data-ic="pulse" data-go="news">Xəbərlər</button><button type="button" class="nv" data-ic="globe" data-go="companies">Şirkətlər</button><button type="button" class="nv" data-ic="bolt" data-go="plans">Planlar</button><button type="button" class="nv" data-ic="file" data-go="sources">Mənbələr</button>
+      </div></aside>
       <div class="main">
         <div class="topbar">
           <div><h3>Payments Radar</h3><p id="dwin"></p></div>
-          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtarın..." aria-label="Xəbər axtarışı"></label><div class="bell"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></div><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Daxili panel</small></div></div></div>
+          <div class="tools"><label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Xəbər axtarın..." aria-label="Xəbər axtarışı"></label><button type="button" class="bell" data-go="plans" aria-label="Qarşıdakı planlar" title="Qarşıdakı planlar"><svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i id="bellN"></i></button><div class="user"><div class="av">BE</div><div><b>Bir Ekosistem</b><small>Daxili panel</small></div></div></div>
         </div>
         <div class="kpis" id="kpis"></div>
         <div class="row2">
           <div class="pc"><h4>Xidmətlərin əhatə dairəsi</h4><p class="sub">Şirkətlərin öz açıqlamaları əsasında. “+” işarəsi “ən azı” deməkdir.</p><div class="cv"><canvas id="c1"></canvas></div></div>
           <div class="pc"><h4>Xəbərlərin mövzular üzrə bölgüsü</h4><p class="sub">Son üç ay</p><div class="cv"><canvas id="c2"></canvas></div></div>
         </div>
+        <div class="pc" id="companies" style="margin-bottom:16px"><h4>Şirkətlər</h4><p class="sub">Şirkətin üzərinə klikləyin, yalnız onun xəbərləri göstəriləcək</p><div class="cos" id="cos"></div></div>
         <div class="row2" style="grid-template-columns:minmax(0,1fr)">
-          <div class="pc"><h4>Son xəbərlər</h4><p class="sub">Ətraflı məlumat üçün xəbərin üzərinə klikləyin</p>
+          <div class="pc" id="newsCard"><h4>Son xəbərlər</h4><p class="sub">Ətraflı məlumat üçün xəbərin üzərinə klikləyin</p>
+            <div class="cofilter" id="cofilter" hidden></div>
             <div class="chips" id="fchips" style="margin:0 0 12px"></div>
             <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Xəbər və mənbə</th><th>Şirkət və mövzu</th><th>Tarix</th></tr></thead><tbody id="tb"></tbody></table></div>
           </div>
         </div>
         <div class="row2" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-          <div class="pc"><h4>Növbəti tarixlər</h4><p class="sub" id="upsub"></p><ul class="ul" id="ups"></ul></div>
-          <div class="pc"><h4>İstifadə olunan mənbələr</h4><p class="sub">Xəbərlər bu mənbələr əsasında hazırlanıb</p><div class="cov" id="cov"></div></div>
+          <div class="pc" id="plansCard"><h4>Növbəti tarixlər</h4><p class="sub" id="upsub"></p><ul class="ul" id="ups"></ul></div>
+          <div class="pc" id="srcCard"><h4>İstifadə olunan mənbələr</h4><p class="sub">Xəbərlər bu mənbələr əsasında hazırlanıb</p><div class="cov" id="cov"></div></div>
         </div>
         <div class="pc" id="outside"></div>
       </div>
@@ -577,16 +605,33 @@ $("#kpis").innerHTML=K.map((k,i)=>`<div class="kpi rv" style="--d:${i*.08}s"><di
 $$("#kpis .rv").forEach(el=>{rvIO.observe(el);new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){countUp(el.querySelector("[data-count]"));o.disconnect()}}),{threshold:.4}).observe(el)});
 
 const cats=[...new Set(DATA.items.map(i=>i.cat))];
-const st={cat:"all",q:""},open=new Set();
+const st={cat:"all",q:"",co:"all"},open=new Set();
 $("#fchips").innerHTML=[["all","Hamısı"],...cats.map(c=>[c,c])].map(([k,l])=>`<span class="chip ${k==="all"?"on":""}" data-k="${k}" role="button" tabindex="0" style="cursor:pointer">${l}</span>`).join("");
 function renderTable(){
-  const rows=items.filter(i=>(st.cat==="all"||i.cat===st.cat)&&(st.q===""||(i.title+i.what+i.summary+i.cat+i.co+i.source.name).toLowerCase().includes(st.q)));
+  const rows=items.filter(i=>(st.co==="all"||i.co===st.co)&&(st.cat==="all"||i.cat===st.cat)&&(st.q===""||(i.title+i.what+i.summary+i.cat+i.co+i.source.name).toLowerCase().includes(st.q)));
   $("#tb").innerHTML=rows.length?rows.map(i=>`<tr class="rw" data-id="${i.id}"><td class="ttl">${i.title}<div style="font-weight:400;font-size:12px;color:var(--muted);margin-top:4px">${i.source.name} · <span class="badge bg-n" style="font-size:10px;padding:1px 8px">${i.source.type}</span></div></td><td><span class="badge" style="background:${CO[i.co].c}1F;color:${CO[i.co].c}">${i.co}</span><div style="font-size:12px;color:var(--muted);margin-top:6px">${i.cat}</div></td><td class="dt">${fd(i.date)}</td></tr>
   <tr class="detail" data-for="${i.id}" style="display:${open.has(i.id)?"table-row":"none"}"><td colspan="3"><p><b>Nə baş verib?</b> ${i.what}</p><p><b>Ətraflı:</b> ${i.summary}</p><p><b>Bir Ekosistem üçün əhəmiyyəti</b> (dərəcə: ${LV[i.level]}): ${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">${ico("ext")} ${i.source.name}</a></td></tr>`).join(""):`<tr><td colspan="3" style="padding:24px;color:var(--muted)">Axtarışa uyğun xəbər tapılmadı.</td></tr>`}
 renderTable();
 $("#tb").addEventListener("click",e=>{if(e.target.closest("a"))return;const r=e.target.closest("tr.rw");if(!r)return;const id=r.dataset.id,d=$(`tr.detail[data-for="${id}"]`);const show=d.style.display==="none";d.style.display=show?"table-row":"none";show?open.add(id):open.delete(id)});
-$("#fchips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;st.cat=c.dataset.k;$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x===c));renderTable()});
+$("#fchips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;st.cat=c.dataset.k;$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x===c));if(st.cat==="all"&&st.co!=="all")setCompany("all");else renderTable()});
 $("#q").addEventListener("input",e=>{st.q=e.target.value.trim().toLowerCase();renderTable()});
+
+/* panel menu */
+const GO={panel:"#kpis",news:"#newsCard",companies:"#companies",plans:"#plansCard",sources:"#srcCard"};
+const calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function goTo(key){const el=$(GO[key]);$$(".nv").forEach(b=>b.classList.toggle("on",b.dataset.go===key));
+  el.scrollIntoView({behavior:calm?"auto":"smooth",block:"start"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash")}
+$$("[data-go]").forEach(b=>b.addEventListener("click",()=>goTo(b.dataset.go)));
+
+/* company filter */
+$("#cos").innerHTML=companies.map(c=>`<button type="button" class="cob" data-co="${c}" aria-pressed="false"><span class="av" style="background:${CO[c].c}">${CO[c].code}</span><span><b>${c}</b><small>${DATA.items.filter(i=>i.co===c).length} xəbər</small></span></button>`).join("");
+function setCompany(co){st.co=co;
+  if(co!=="all"){st.cat="all";st.q="";$("#q").value="";$$("#fchips .chip").forEach(x=>x.classList.toggle("on",x.dataset.k==="all"))}
+  $$(".cob").forEach(b=>{const on=b.dataset.co===co;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
+  const f=$("#cofilter");f.hidden=co==="all";f.innerHTML=co==="all"?"":`<span>Seçilmiş şirkət: <b>${co}</b></span><button type="button">Filtri ləğv edin</button>`;
+  renderTable()}
+$("#cos").addEventListener("click",e=>{const b=e.target.closest(".cob");if(!b)return;const co=b.dataset.co===st.co?"all":b.dataset.co;setCompany(co);if(co!=="all")goTo("news")});
+$("#cofilter").addEventListener("click",e=>{if(e.target.closest("button"))setCompany("all")});
 
 $("#upsub").textContent="Şirkətlərin özlərinin açıqladığı planlar";
 const now=new Date(),todayISO=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-");
