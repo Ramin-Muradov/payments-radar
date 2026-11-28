@@ -366,27 +366,30 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
 .ct-ai{margin-left:auto;font-size:11px;color:var(--muted)}
 .dd-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;margin-bottom:8px}
 .seg{display:inline-flex;background:#EEF5FD;border:1px solid var(--line);border-radius:10px;padding:3px}
-.seg button{font:inherit;font-size:12px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:8px;padding:6px 12px;cursor:pointer}
+.seg button{font:inherit;font-size:12px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:8px;padding:6px 9px;white-space:nowrap;cursor:pointer}
 .seg button.on{background:#fff;color:var(--brand-d);box-shadow:0 1px 4px rgba(10,37,64,.14)}
-.dd-leg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:var(--muted)}
-.dd-leg i{display:inline-block;width:16px;border-top:2px solid #1E6FE8;vertical-align:middle;margin-right:6px}
-.dd-leg i.old{border-top:2px dashed #7F93AD}
 .dd-plot{position:relative;min-width:0}
 .dd-plot svg{display:block;width:100%;height:220px;touch-action:pan-y;cursor:crosshair}
 .dd-plot text{font:11px var(--mono);fill:var(--muted)}
 .dd-tip{position:absolute;top:4px;pointer-events:none;background:#0A2540;color:#fff;font-size:12px;line-height:1.45;padding:8px 10px;border-radius:10px;white-space:nowrap;opacity:0;z-index:2}
 .dd-tip.on{opacity:1}
-.dd-h{font-size:13px;margin:14px 0 8px}
-.dd-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;height:118px}
-.dw{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;min-height:0}
-.dw b{font:600 11px var(--mono)}
-.dw .col{flex:1;min-height:0;width:100%;max-width:34px;display:flex;align-items:flex-end}
-.dw .col i{display:block;width:100%;background:#1E6FE8;border-radius:4px 4px 0 0}
-.dw span{font-size:11px;color:var(--muted)}
-.dd-ins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
-.dd-in{background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:12px;min-width:0}
-.dd-in b{display:block;font:600 18px var(--mono);line-height:1.25;white-space:nowrap}
-.dd-in span{display:block;font-size:12px;color:var(--muted);line-height:1.45;margin-top:4px}
+.az-kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.az-k{background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:12px;min-width:0}
+.az-k b{display:block;font:600 18px var(--mono);line-height:1.25;white-space:nowrap}
+.az-k span{display:block;font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+.az-k em{display:block;font:600 12px var(--mono);font-style:normal;line-height:1.4;margin-top:6px}
+.az-leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11px;color:var(--muted);margin-top:4px}
+.az-leg i,.az-100l i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+.az-key{margin-top:12px}
+.az-h{font-size:13px;margin:18px 0 8px}
+.az-100{display:flex;height:18px;border-radius:6px;overflow:hidden}
+.az-100 i{display:block;height:100%;box-sizing:border-box;border-right:2px solid #fff}
+.az-100 i:last-child{border-right:0}
+.az-100l{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;margin-top:8px}
+.az-tab{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+.az-tab th{font-weight:600;color:var(--muted);font-size:11px;text-align:right;padding:4px 0 6px;border-bottom:2px solid var(--line)}
+.az-tab td{text-align:right;padding:7px 0;border-bottom:1px solid #E6F0FB;font-family:var(--mono)}
+.az-tab th:first-child,.az-tab td:first-child{text-align:left;width:56%;padding-right:8px;font-family:var(--sans);line-height:1.35}
 .dd-ai{font-size:12.5px;margin-top:8px;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:10px 12px}
 .prio{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .prio li{background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
@@ -485,7 +488,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
         <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Qlobusu fırladın, regionun üzərinə klikləyin (telefonda toxunun) və maraqlandığınız xəbərlərə keçin</p><div class="globe-wrap"><div class="globe-box" id="globebox"><canvas id="globe" role="img" aria-label="Xəbərlərin regionlar üzrə bölgüsünü göstərən qlobus"></canvas><div class="gtip" id="gtip"></div><p class="note">Dairədəki rəqəm regiondakı xəbərlərin sayıdır. Qlobal xəbərlər xəritədə göstərilmir.</p></div><div class="ginfo" id="ginfo"></div></div><div class="gchips" id="gchips"></div></div>
         <div class="row2 pair">
           <div class="pc" id="catCard"><h4>Məhsul kateqoriyaları: kim nə üzərində işləyir?</h4><p class="sub">Xəbərləri görmək üçün kateqoriyanın üzərinə klikləyin. Hər kvadrat bir xəbərdir, rəngi isə şirkətin növünü göstərir.</p><div class="ct-leg" id="cleg"></div><div id="cats"></div><p class="note">Üç böyük qrup <a href="https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000134/v-20260930.htm" target="_blank" rel="noopener">Visa</a> və <a href="https://s25.q4cdn.com/479285134/files/doc_financials/2025/q4/MA-12-31-2025-10-K-as-filed-with-standard-exhibits.pdf" target="_blank" rel="noopener">Mastercard</a> şirkətlərinin illik hesabatlarındakı bölgü əsasında qurulub, daxili kateqoriyalar isə digər ödəniş şirkətlərinin məhsul siyahılarına uyğunlaşdırılıb. Süni intellekt ayrıca məhsul olmadığı üçün hər kateqoriyanın altında qeyd olunur.</p></div>
-          <div class="pc" id="dailyCard"><h4>Gündəlik dinamika: ani ödənişlər</h4><p class="sub" id="dsub"></p><div class="dd-bar"><div class="seg" id="dseg" role="group" aria-label="Göstərici"><button type="button" data-m="q" class="on" aria-pressed="true">Ödəniş sayı</button><button type="button" data-m="t" aria-pressed="false">Orta məbləğ</button></div><div class="dd-leg"><span><i></i>Son 15 həftə</span><span><i class="old"></i>Bir il əvvəl</span></div></div><div class="dd-plot" id="dplot"><svg id="dsvg" role="img"></svg><div class="dd-tip" id="dtip"></div></div><h5 class="dd-h" id="dwh"></h5><div class="dd-week" id="dweek"></div><div class="dd-ins" id="dins"></div><p class="dd-ai" id="dai"></p><p class="note" id="dnote"></p></div>
+          <div class="pc" id="azCard"><h4>Bazarımız: Azərbaycanda kart ödənişləri</h4><p class="sub" id="azsub"></p><div class="az-kpi" id="azkpi"></div><div class="dd-bar"><div class="seg" id="azseg" role="group" aria-label="Göstərici"><button type="button" data-m="v" class="on" aria-pressed="true">Dövriyyə</button><button type="button" data-m="n" aria-pressed="false">Əməliyyat sayı</button><button type="button" data-m="s" aria-pressed="false">Nağdsız pay</button></div></div><div class="dd-plot" id="azplot"><svg id="azsvg" role="img"></svg><div class="dd-tip" id="aztip"></div></div><div class="az-leg" id="azleg"></div><p class="dd-ai az-key" id="azkey"></p><h5 class="az-h">Kart dövriyyəsinin hər 100 manatı hara gedir?</h5><div id="azhund"></div><h5 class="az-h">Bir il ərzində nə dəyişib?</h5><table class="az-tab" id="aztab"></table><p class="dd-ai" id="azai"></p><p class="note" id="aznote"></p></div>
         </div>
         <div class="pc"><h4>Diqqət tələb edən yeniliklər</h4><p class="sub">Bir Ekosistem üçün yüksək əhəmiyyətli sayılanlar (süni intellektin qiymətləndirməsi)</p><ul class="prio" id="prio"></ul></div>
         <div class="pc" id="companies"><h4>Şirkətlər</h4><p class="sub">Şirkətin üzərinə klikləyin, yalnız onun xəbərləri göstəriləcək</p><div class="cos" id="cos"></div><button type="button" class="more" id="coMore"></button></div>
@@ -1083,79 +1086,101 @@ $("#cats").innerHTML=GROUPS.map(g=>{
   return `<div class="ct-ghead"><b>${g.n}</b><span>${total} xəbər · ${pct(total)}%</span></div>`+rows.map(r=>{const t=countBy(r.a,i=>i.type),ai=r.a.filter(i=>i.ai).length,seg=Object.keys(TYPE).filter(k=>t[k]);
     return `<div class="ct"><button type="button" class="ct-main" data-cat="${r.c}"><span class="ct-head"><b>${r.c}</b><em>${r.a.length} · ${pct(r.a.length)}%</em></span><span class="ct-desc">${r.d}</span><span class="ct-units" aria-hidden="true">${seg.map(k=>`<i style="background:${TYPE[k].c}"></i>`.repeat(t[k])).join("")}</span></button><div class="ct-types">${Object.keys(TYPE).map(k=>`<button type="button" data-cat="${r.c}" data-type="${k}" ${t[k]?"":"disabled"}><i style="background:${TYPE[k].c}"></i>${TYPE_ONE[k]} <b>${t[k]||0}</b></button>`).join("")}${ai?`<span class="ct-ai">süni intellektlə bağlı: ${ai}</span>`:""}</div></div>`}).join("")}).join("");
 
-/* daily instant payments: Banco Central do Brasil open data (SPI).
-   A snapshot is built in; the page replaces it with the live feed when the bank answers. */
-const PIX={from:"2025-08-01",peak:{d:"2026-11-06",q:319679},
-  q:[238058,211171,152896,202895,223324,257095,244404,244186,218173,155819,209736,194549,192399,190582,223434,204224,149442,189593,190009,224796,203233,212592,199374,146055,189090,185434,190420,192263,236612,212817,154934,217275,209260,208797,215018,289964,244011,172587,223623,216418,225513,205010,215457,202304,151162,208420,194465,198089,196308,231143,214278,155555,194156,190914,192996,195871,210495,197411,144737,184773,227267,235573,221705,247728,229127,171325,255109,252460,229881,218323,248030,214198,155496,198970,194103,215211,201425,215248,204823,150732,207398,204960,201295,197761,215551,206816,150313,187375,188497,191598,201653,240320,221980,159333,219255,215841,244228,268048,276199,236251,173692,242006,215941,205979,201528,238347,204728,157776,207751,200923,229385,188630,227944,209109,153797,199368,209310,208072,217113,297388,251640,179337,247171,234209,232292,230680,313340,263648,190376,233791,228448,248593,231043,236378,227287,171723,234980,225892,227542,232591,296018,265045,194573,250666,259497,231726,130584,204716,199194,157543,227092,248410,223584,131522,201186,189247,153430,223836,222247,260698,247079,246862,228593,167907,218393,202695,202216,215982,219702,207875,154597,193666,226964,210982,200967,215431,206567,155230,195235,192553,200335,199614,248182,224384,169851,225084,216762,220126,242106,295908,243994,182662,233369,239498,220299,218803,243361,216398,166873,179472,158571,191646,201568,250523,218934,159122,200568,197845,207920,203979,250771,230258,177376,234996,223652,224374,247677,297309,258322,188467,237384,242966,221601,210398,233938,220968,170158,215961,203033,205121,204381,256789,225644,165070,204650,198880,209849,207372,229196,217125,159179,211064,239094,253891,265326,188056,220012,166919,243029,274610,264314,241327,266831,233093,170931,215893,209475,240259,225447,240866,226979,168514,236615,179735,216350,208676,230091,221987,165197,207876,208776,216999,272824,218397,226357,169378,243599,257075,259223,287739,299448,265980,188151,244577,222694,219883,215839,258629,235700,174046,214467,212954,252060,224303,234196,227251,167587,228405,218088,217808,222989,285249,249309,180498,255058,239865,257805,209871,307347,270905,195776,266197,246593,258815,239210,254529,235796,175682,245195,222667,226496,223313,264609,241696,176264,228986,217412,207522,216247,235496,225028,166369,207388,264134,272631,249181,276454,255270,187895,283414,277686,255631,236738,275348,239506,174153,222649,213773,246777,227721,241280,232502,173768,247019,226777,223430,218731,235630,227688,170752,212846,212060,214402,229229,277433,258000,185001,249201,242910,271093,299689,309833,273065,192760,269564,236340,231712,224574,253958,242092,181806,232986,223010,228933,262008,256762,235714,171644,220257,225728,219155,226360,263057,247461,182513,249799,266688,253675,252519,318117,296255,204778,202831,271321,261104,268405,261360,240509,179533,228058,245449,232815,231481,267489,247575,187343,239069,222676,222982,227231,257793,229646,165885,213074,213325,260738,275126,276183,248520,170510,259888,294937,284746,261886,274146,264200,187914,191943,243432,239918,252980,245974,232573,170038,216100,256335,269581,236763,249736,231786,162947,211042,209956,217473,214360,270342,245929,189578,180294,249151,249803,268878,319679,282362,199127,267383,268539,252186,229736,263434,247089,184474,241331,230369,271165,277833,233720,236039,178031,238875,229509,238264,233652],
-  v:[122868,33483,19108,121990,123244,127436,110296,116195,34893,21350,133790,98416,92548,89124,114108,29990,17189,111424,91038,132290,90530,96191,27681,16255,117544,89385,88152,93139,136235,34722,19659,135492,103046,99688,105036,164847,41000,22232,119628,99775,125378,93305,101458,29584,17769,134238,94681,90759,92891,120665,32084,17698,123126,87629,87248,102058,101075,28163,16245,117381,147446,125997,101766,123053,37891,22725,158559,123431,109848,99791,136724,33149,18253,117661,98019,121350,95048,103779,29971,18023,142560,94796,90932,83408,100588,29496,16649,111493,92074,90195,108711,130846,38488,20381,134706,104528,132941,129731,130871,38514,23325,158867,106873,97387,91940,117777,30808,18997,129700,97887,130979,34198,123445,29767,17981,118365,114183,99422,103402,166158,41673,24493,156916,110344,109805,109235,179934,46449,25734,127964,117613,150871,110609,122989,37262,22054,166341,118711,118785,125638,193474,46823,25855,162432,147392,73155,17577,116827,30285,19148,145472,158278,52794,18689,112790,29705,20730,150306,115387,134531,115658,124528,39834,21762,143979,99484,98822,120477,108493,30438,17986,117899,139112,103037,92902,105240,30035,18234,116493,92146,97267,100558,146312,37169,22532,132226,110459,109162,130365,156465,41797,24941,136902,143149,112806,107595,130650,34333,20779,36518,22617,136611,113211,162116,32680,18527,116580,97134,115795,104749,152142,40600,25115,151038,119790,116193,139600,162736,44639,25184,142988,147913,115661,103800,118730,33280,21607,138667,105886,99002,94024,159441,32454,18669,119368,99122,111455,96958,116938,32421,18190,148160,153711,146378,143968,31453,32596,22027,163752,147649,127449,115878,154815,36841,20973,123878,105179,137929,107230,122309,33769,19843,156259,28153,119276,94641,115030,32553,19050,127981,111093,113988,184736,42039,34135,21521,168075,147389,133519,144065,148058,44856,27511,160332,112541,105603,102231,146974,35616,20786,128118,105468,157816,100436,108813,32880,19789,134459,106032,105076,116196,181665,41754,23734,157646,120100,139227,40179,176078,47787,27062,156298,125545,154645,114905,120941,34999,22445,156015,111567,107734,103587,139402,37639,21257,142223,102784,94616,115941,120069,33162,19556,120577,180144,155423,116820,141634,43948,25140,185422,140830,129122,92173,163551,37451,21575,133029,114933,145125,110334,117856,34412,20748,182396,108540,106066,98588,116518,33731,19948,128613,103400,104346,129451,162169,44875,24049,159060,122221,152554,150682,151995,44670,25971,184787,122380,115632,107233,131583,38517,22450,154868,112094,114273,164655,126601,33362,19898,123866,127741,108008,107113,136763,38529,23157,184896,158037,126472,130620,186905,56273,27958,35015,175970,143546,166738,137376,36536,21858,137414,144933,118483,110735,146375,37082,23753,156614,110901,106830,109401,136558,33366,18867,131488,122398,176646,157213,144189,42705,21505,180436,165863,147678,124539,146771,46040,22733,29089,171212,132960,145902,131468,34951,19671,130439,170556,123053,107370,122972,32821,19229,134359,110654,121780,119895,179718,41790,25002,30083,180388,139918,158540,180531,52507,28759,163024,168385,127363,121186,135936,39065,24465,161918,121390,127731,166902,42052,33113,21041,176265,120994,139438,123294]};
-const PIX_URL="https://olinda.bcb.gov.br/olinda/servico/SPI/versao/v1/odata/PixLiquidadosAtual?$top=480&$orderby=Data%20desc&$format=json";
-const DAY=864e5,SPAN=105,YEAR=364;
-const isoDay=t=>new Date(t).toISOString().slice(0,10),shift=(d,n)=>isoDay(Date.parse(d)+n*DAY);
-const WD=["bazar","bazar ertəsi","çərşənbə axşamı","çərşənbə","cümə axşamı","cümə","şənbə"],WDS=["B.","B.e.","Ç.a.","Ç.","C.a.","C.","Ş."];
-const wd=d=>new Date(d+"T00:00:00Z").getUTCDay(),dm=d=>{const[,m,n]=d.split("-").map(Number);return n+" "+MON[m-1]};
-const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
-const cap1=s=>(s[0]==="i"?"İ":s[0].toUpperCase())+s.slice(1);
-const METRIC={q:{get:r=>r.q,f:v=>nf(v/1e6,1)+" mln",ax:v=>nf(v/1e6)+" mln",unit:" ödəniş",week:v=>nf(v/1e6),wh:"Həftənin günləri üzrə orta ödəniş sayı (mln)"},
-  t:{get:r=>r.t,f:v=>nf(v)+" real",ax:v=>nf(v),unit:" (orta məbləğ)",week:v=>nf(v),wh:"Həftənin günləri üzrə orta məbləğ (real)"}};
-let pix=PIX.q.map((q,k)=>({d:shift(PIX.from,k),q:q*1e3,t:PIX.v[k]*1e3/q})),dmet="q",dcur=[],dprev=[],dgeo=null,live=false;
+/* Azerbaijan card market: Central Bank of Azerbaijan, tables 4.5 and 4.6.
+   Monthly, cards of Azerbaijani issuers, operations inside the country.
+   Volumes in million manat, counts in thousands, perPos = thousand people per POS terminal. */
+const AZ_UPDATED="2026-10-27";
+const AZ=[
+  {m:"2024-09",cards:18923,contactless:15455,credit:2273,ecomV:6069.4,ecomN:94654,posV:1076.1,posN:55557,othV:8.6,othN:104,cashV:3724.1,perPos:0.099},
+  {m:"2024-10",cards:19162,contactless:15753,credit:2227,ecomV:6358.6,ecomN:103172,posV:1138.8,posN:59771,othV:8.3,othN:102,cashV:3822.3,perPos:0.095},
+  {m:"2024-11",cards:19463,contactless:16030,credit:2248,ecomV:5978.2,ecomN:96213,posV:956.9,posN:49337,othV:4.1,othN:72,cashV:3543.9,perPos:0.095},
+  {m:"2024-12",cards:19899,contactless:16271,credit:2256,ecomV:7360.3,ecomN:115571,posV:1120.9,posN:56795,othV:5.0,othN:90,cashV:4387.6,perPos:0.086},
+  {m:"2025-01",cards:19965,contactless:16353,credit:2244,ecomV:5845.5,ecomN:102658,posV:1052.0,posN:56928,othV:4.2,othN:79,cashV:3172.0,perPos:0.084},
+  {m:"2025-02",cards:20239,contactless:16548,credit:2264,ecomV:6210.0,ecomN:100717,posV:918.2,posN:50592,othV:4.4,othN:78,cashV:3584.8,perPos:0.082},
+  {m:"2025-03",cards:20460,contactless:16746,credit:2278,ecomV:5667.8,ecomN:91968,posV:890.3,posN:46497,othV:3.6,othN:59,cashV:3370.1,perPos:0.081},
+  {m:"2025-04",cards:20675,contactless:16960,credit:2288,ecomV:8070.6,ecomN:141416,posV:1224.2,posN:71981,othV:6.0,othN:101,cashV:4510.1,perPos:0.079},
+  {m:"2025-05",cards:20461,contactless:16899,credit:2117,ecomV:7053.1,ecomN:122151,posV:1016.0,posN:62370,othV:4.7,othN:70,cashV:4015.4,perPos:0.076},
+  {m:"2025-06",cards:20642,contactless:17084,credit:2118,ecomV:7373.0,ecomN:124096,posV:1060.7,posN:64706,othV:5.0,othN:60,cashV:4146.2,perPos:0.07},
+  {m:"2025-07",cards:20913,contactless:17286,credit:2123,ecomV:7628.5,ecomN:125974,posV:1119.6,posN:68785,othV:5.3,othN:75,cashV:4202.0,perPos:0.069},
+  {m:"2025-08",cards:21129,contactless:17388,credit:2113,ecomV:7153.1,ecomN:121049,posV:1015.2,posN:62895,othV:4.2,othN:59,cashV:3826.2,perPos:0.067},
+  {m:"2025-09",cards:21368,contactless:17567,credit:2116,ecomV:7808.0,ecomN:136884,posV:1086.2,posN:67207,othV:4.0,othN:65,cashV:4086.2,perPos:0.063},
+  {m:"2025-10",cards:21701,contactless:17815,credit:2111,ecomV:7776.2,ecomN:137966,posV:1044.8,posN:67716,othV:4.0,othN:65,cashV:4102.3,perPos:0.059},
+  {m:"2025-11",cards:21835,contactless:17931,credit:2097,ecomV:6947.7,ecomN:124759,posV:990.2,posN:62467,othV:2.4,othN:46,cashV:3754.3,perPos:0.057},
+  {m:"2025-12",cards:21980,contactless:17992,credit:2077,ecomV:8833.3,ecomN:152471,posV:1260.5,posN:78380,othV:2.8,othN:65,cashV:4805.5,perPos:0.056},
+  {m:"2026-01",cards:22156,contactless:18121,credit:2074,ecomV:6599.9,ecomN:124531,posV:1084.8,posN:73158,othV:2.2,othN:51,cashV:3197.3,perPos:0.056},
+  {m:"2026-02",cards:22347,contactless:18279,credit:2072,ecomV:7171.3,ecomN:127428,posV:1026.4,posN:75275,othV:2.4,othN:44,cashV:3719.4,perPos:0.055},
+  {m:"2026-03",cards:22409,contactless:18332,credit:2071,ecomV:8290.6,ecomN:147970,posV:1266.8,posN:88654,othV:2.4,othN:39,cashV:4159.4,perPos:0.056},
+  {m:"2026-04",cards:22518,contactless:18399,credit:2045,ecomV:7968.7,ecomN:145508,posV:1122.7,posN:90030,othV:2.5,othN:50,cashV:3827.5,perPos:0.056},
+  {m:"2026-05",cards:22827,contactless:18620,credit:2064,ecomV:7620.4,ecomN:138180,posV:1057.7,posN:84403,othV:2.2,othN:38,cashV:3847.6,perPos:0.064},
+  {m:"2026-06",cards:22798,contactless:18573,credit:2045,ecomV:8574.9,ecomN:158025,posV:1324.6,posN:108229,othV:2.5,othN:45,cashV:4261.7,perPos:0.064},
+  {m:"2026-07",cards:22785,contactless:18524,credit:2024,ecomV:8457.9,ecomN:149722,posV:1251.9,posN:101119,othV:2.4,othN:49,cashV:4117.9,perPos:0.064},
+  {m:"2026-08",cards:22974,contactless:18662,credit:2022,ecomV:7682.6,ecomN:136854,posV:1203.7,posN:97832,othV:2.0,othN:46,cashV:3933.3,perPos:0.07},
+  {m:"2026-09",cards:23388,contactless:19044,credit:2035,ecomV:7755.4,ecomN:138437,posV:1219.7,posN:105037,othV:1.9,othN:45,cashV:3940.6,perPos:0.076}];
+const azSum=d=>d.ecomV+d.posV+d.othV,azCnt=d=>d.ecomN+d.posN+d.othN,azShare=d=>azSum(d)/(azSum(d)+d.cashV)*100;
+const AZM=["yan","fev","mar","apr","may","iyn","iyl","avq","sent","okt","noy","dek"];
+const monName=d=>MON[+d.m.slice(5)-1],monYear=d=>monName(d)+" "+d.m.slice(0,4);
+const azAxis=v=>String(Math.round(v*10)/10).replace(".",","),bn=v=>nf(v/1000,2),chg=(a,b)=>(a/b-1)*100,signed=(v,p=1)=>(Number(v.toFixed(p))<0?"−":"+")+nf(Math.abs(v),p);
+const azL=AZ.length-1,azNow=AZ[azL],azOld=AZ[azL-12],azShown=AZ.slice(-13);
+let azMetric="v",azGeo=null;
+const AZMET={v:{parts:[["İnternet (elektron ticarət)","#1E6FE8",d=>d.ecomV/1000],["POS-terminal","#0E9F8E",d=>d.posV/1000]],f:v=>nf(v,2)+" mlrd manat",ax:azAxis,total:d=>azSum(d)/1000},
+  n:{parts:[["İnternet (elektron ticarət)","#1E6FE8",d=>d.ecomN/1000],["POS-terminal","#0E9F8E",d=>d.posN/1000]],f:v=>nf(v,1)+" mln əməliyyat",ax:azAxis,total:d=>azCnt(d)/1000},
+  s:{parts:[["Nağdsız ödənişlərin payı","#1E6FE8",azShare]],f:v=>nf(v,1)+"%",ax:v=>azAxis(v)+"%",total:azShare}};
 
-function dailyData(){const by=new Map(pix.map(r=>[r.d,r]));dcur=pix.slice(-SPAN);dprev=dcur.map(r=>by.get(shift(r.d,-YEAR))||null)}
+function drawAz(){const box=$("#azplot"),W=box.clientWidth,H=220;if(!W)return;
+  const m=AZMET[azMetric],M={l:34,r:2,t:20,b:34},n=azShown.length,vals=azShown.map(m.total);
+  const max=azMetric==="s"?100:Math.max(...vals),raw=max/4,p=10**Math.floor(Math.log10(raw)),f=raw/p,step=(f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p,top=Math.ceil(max/step)*step;
+  const slot=(W-M.l-M.r)/n,bw=Math.min(24,slot*.68),x=i=>M.l+i*slot+(slot-bw)/2,y=v=>H-M.b-v/top*(H-M.t-M.b);
+  let g="";for(let v=0;v<=top+step/2;v+=step)g+=`<line x1="${M.l}" x2="${W-M.r}" y1="${y(v)}" y2="${y(v)}" stroke="#E3EEFA"/><text x="${M.l-5}" y="${y(v)+4}" text-anchor="end">${m.ax(v)}</text>`;
+  azShown.forEach((d,i)=>{let base=0;
+    m.parts.forEach((part,k)=>{const v=part[2](d),y0=y(base),y1=y(base+v),gap=k?2:0,h=Math.max(0,y0-y1-gap),r=Math.min(4,h,bw/2),last=k===m.parts.length-1;
+      g+=last?`<path d="M${x(i)} ${y1+h}V${y1+r}Q${x(i)} ${y1} ${x(i)+r} ${y1}H${x(i)+bw-r}Q${x(i)+bw} ${y1} ${x(i)+bw} ${y1+r}V${y1+h}Z" fill="${part[1]}"/>`:`<rect x="${x(i)}" y="${y1}" width="${bw}" height="${h}" fill="${part[1]}"/>`;base+=v});
+    const mon=+d.m.slice(5),every=slot<26?3:1;if((n-1-i)%every===0)g+=`<text x="${x(i)+bw/2}" y="${H-M.b+14}" text-anchor="middle">${AZM[mon-1]}</text>`;
+    if(i===0||(every===1?mon===1:i===n-1))g+=`<text x="${i===n-1?x(i)+bw:x(i)+bw/2}" y="${H-M.b+29}" text-anchor="${i===n-1?"end":"middle"}">${d.m.slice(0,4)}</text>`;
+    if(i===0||i===n-1)g+=`<text x="${x(i)+bw/2}" y="${y(m.total(d))-6}" text-anchor="${i?"end":"start"}" dx="${i?bw/2:-bw/2}" style="fill:#0A2540;font-weight:600">${azMetric==="v"?nf(m.total(d),2):azMetric==="n"?nf(m.total(d)):nf(m.total(d),1)+"%"}</text>`});
+  $("#azsvg").setAttribute("viewBox",`0 0 ${W} ${H}`);$("#azsvg").innerHTML=g;azGeo={W,M,slot,n};
+  $("#azsvg").setAttribute("aria-label",`${monYear(azShown[0])} – ${monYear(azNow)}. Sonuncu ay: ${m.f(m.total(azNow))}`);
+  $("#azleg").innerHTML=m.parts.map(part=>`<span><i style="background:${part[1]}"></i>${part[0]}</span>`).join("")}
 
-function drawDaily(){const box=$("#dplot"),W=box.clientWidth,H=220;if(!W)return;
-  const m=METRIC[dmet],M={l:54,r:6,t:20,b:22},n=dcur.length,now=dcur.map(m.get),old=dprev.map(r=>r?m.get(r):null);
-  const all=now.concat(old.filter(v=>v!=null)),hi=Math.max(...all),low=Math.min(...all),raw=(hi-low)/4,p=10**Math.floor(Math.log10(raw)),f=raw/p,step=(f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;
-  const bot=Math.floor(low/step)*step,top=Math.ceil(hi/step)*step,x=i=>M.l+i*(W-M.l-M.r)/(n-1),y=v=>H-M.b-(v-bot)/(top-bot)*(H-M.t-M.b);
-  const line=a=>a.map((v,i)=>v==null?"":(i&&a[i-1]!=null?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1)).join("");
-  let g="";for(let v=bot;v<=top+step/2;v+=step)g+=`<line x1="${M.l}" x2="${W-M.r}" y1="${y(v)}" y2="${y(v)}" stroke="#E3EEFA"/><text x="${M.l-6}" y="${y(v)+4}" text-anchor="end">${v?m.ax(v):0}</text>`;
-  dcur.forEach((r,i)=>{if(r.d.endsWith("-01"))g+=`<line x1="${x(i)}" x2="${x(i)}" y1="${H-M.b}" y2="${H-M.b+4}" stroke="#9DB4D0"/><text x="${x(i)}" y="${H-6}" text-anchor="middle">${MON[+r.d.slice(5,7)-1]}</text>`});
-  const k=now.indexOf(Math.max(...now)),px=x(k),py=y(now[k]),anchor=px>W-90?"end":px<M.l+60?"start":"middle";
-  $("#dsvg").setAttribute("viewBox",`0 0 ${W} ${H}`);
-  $("#dsvg").innerHTML=`${g}<path d="${line(old)}" fill="none" stroke="#7F93AD" stroke-width="1.3" stroke-dasharray="4 3"/><path d="${line(now)}" fill="none" stroke="#1E6FE8" stroke-width="2" stroke-linejoin="round"/>
-    <circle cx="${px}" cy="${py}" r="4.5" fill="#1E6FE8" stroke="#fff" stroke-width="2"/><text x="${px}" y="${Math.max(12,py-9)}" text-anchor="${anchor}" style="fill:#0A2540;font-weight:600">${dm(dcur[k].d)}: ${m.f(now[k])}</text>
-    <g id="dcross" style="display:none"><line y1="${M.t}" y2="${H-M.b}" stroke="#0A2540" stroke-opacity=".35"/><circle class="o" r="4" fill="#7F93AD" stroke="#fff" stroke-width="2"/><circle class="c" r="4" fill="#1E6FE8" stroke="#fff" stroke-width="2"/></g>`;
-  dgeo={W,n,M,x,y,now,old};
-  $("#dsvg").setAttribute("aria-label",`Gündəlik göstərici, ${dm(dcur[0].d)} – ${dm(dcur[n-1].d)}. Ən yüksək gün: ${dm(dcur[k].d)}, ${m.f(now[k])}`)}
+function azHover(e){if(!azGeo)return;const{W,M,slot,n}=azGeo,b=$("#azsvg").getBoundingClientRect(),px=(e.clientX-b.left)*W/b.width;
+  const i=Math.max(0,Math.min(n-1,Math.floor((px-M.l)/slot))),d=azShown[i],o=AZ[AZ.indexOf(d)-12],m=AZMET[azMetric],t=$("#aztip");
+  const diff=azMetric==="s"?signed(m.total(d)-m.total(o))+" faiz bəndi":signed(chg(m.total(d),m.total(o)))+"%";
+  t.innerHTML=`<b>${monYear(d)}</b><br>${m.parts.length>1?m.parts.map(part=>`${part[0]}: ${m.f(part[2](d))}<br>`).join("")+"Cəmi: ":""}${m.f(m.total(d))}<br>İllik dəyişiklik: ${diff}`;
+  t.classList.add("on");const left=(M.l+(i+.5)*slot)*b.width/W;t.style.left=Math.max(0,Math.min(b.width-t.offsetWidth,left>b.width/2?left-t.offsetWidth-10:left+10))+"px"}
 
-function dailyHover(e){if(!dgeo)return;const{W,n,M,x,y,now,old}=dgeo,b=$("#dsvg").getBoundingClientRect(),px=(e.clientX-b.left)*W/b.width;
-  const i=Math.max(0,Math.min(n-1,Math.round((px-M.l)/(W-M.l-M.r)*(n-1)))),g=$("#dcross"),m=METRIC[dmet],r=dcur[i],q=dprev[i],t=$("#dtip");
-  g.style.display="";const l=g.querySelector("line");l.setAttribute("x1",x(i));l.setAttribute("x2",x(i));
-  const c=g.querySelector(".c"),o=g.querySelector(".o");c.setAttribute("cx",x(i));c.setAttribute("cy",y(now[i]));o.style.display=q?"":"none";if(q){o.setAttribute("cx",x(i));o.setAttribute("cy",y(old[i]))}
-  const ch=q?(now[i]/old[i]-1)*100:null;
-  t.innerHTML=`<b>${dm(r.d)} ${r.d.slice(0,4)}, ${WD[wd(r.d)]}</b><br>${m.f(now[i])}${m.unit}${q?`<br>Bir il əvvəl: ${m.f(old[i])} (${ch>=0?"+":"−"}${nf(Math.abs(ch))}%)`:""}`;
-  t.classList.add("on");const left=x(i)*b.width/W;t.style.left=Math.max(0,Math.min(b.width-t.offsetWidth,left>b.width/2?left-t.offsetWidth-12:left+12))+"px"}
-function dailyLeave(){$("#dtip").classList.remove("on");const g=$("#dcross");if(g)g.style.display="none"}
+function renderAzText(){const yearSum=(from,f)=>AZ.slice(from,from+(+azNow.m.slice(5))).reduce((s,d)=>s+f(d),0),k=+azNow.m.slice(5);
+  const ytd=chg(yearSum(AZ.length-k,azSum),yearSum(AZ.length-k-12,azSum)),vol=chg(azSum(azNow),azSum(azOld)),cnt=chg(azCnt(azNow),azCnt(azOld));
+  $("#azsub").textContent=`Mərkəzi Bankın rəsmi statistikası · ${monYear(azNow)} · bir il əvvəlki ${monName(azOld)} ayı ilə müqayisə`;
+  $("#azkpi").innerHTML=[
+    [bn(azSum(azNow))+" mlrd","manat nağdsız kart ödənişi",signed(vol)+"%"],
+    [nf(azShare(azNow),1)+"%","kart dövriyyəsində nağdsız ödənişlərin payı",signed(azShare(azNow)-azShare(azOld))+" faiz bəndi"],
+    [nf(azCnt(azNow)/1000,1)+" mln","nağdsız əməliyyat",signed(cnt)+"%"],
+    [nf(azNow.cards/1000,1)+" mln","ödəniş kartı",signed(chg(azNow.cards,azOld.cards))+"%"]
+  ].map(([v,l,c])=>`<div class="az-k"><b>${v}</b><span>${l}</span><em>${c}</em></div>`).join("");
+  $("#azkey").innerHTML=`<b>${vol<ytd?"Dövriyyənin artımı yavaşlayır":"Dövriyyənin artımı sürətlənir"}:</b> ${monName(azNow)} ayında nağdsız dövriyyədəki illik dəyişiklik ${signed(vol)}%, yanvar–${monName(azNow)} dövründə isə ${signed(ytd)}% təşkil edib.${cnt>vol?` Əməliyyat sayı daha sürətlə artır (${signed(cnt,0)}%), yəni orta ödəniş məbləği azalır.`:""}`;
+  /* every 100 manat moved by cards inside the country */
+  const raw=[["İnternet ödənişi","#1E6FE8",azNow.ecomV],["POS-terminalla ödəniş","#0E9F8E",azNow.posV+azNow.othV],["Nağd pulun çıxarılması","#7F93AD",azNow.cashV]],all=raw.reduce((s,r)=>s+r[2],0);
+  const parts=raw.map(([l,c,v])=>({l,c,x:v/all*100,r:Math.floor(v/all*100)}));let left=100-parts.reduce((s,q)=>s+q.r,0);
+  parts.slice().sort((a,b)=>(b.x%1)-(a.x%1)).forEach(q=>{if(left>0){q.r++;left--}});
+  $("#azhund").innerHTML=`<div class="az-100">${parts.map(q=>`<i style="width:${q.x.toFixed(2)}%;background:${q.c}"></i>`).join("")}</div><div class="az-100l">${parts.map(q=>`<span><i style="background:${q.c}"></i>${q.l}: <b>${q.r} manat</b></span>`).join("")}</div>`;
+  const people=d=>Math.round(d.perPos*1000),avg=(v,c)=>v*1000/c;
+  $("#aztab").innerHTML=`<thead><tr><th>Göstərici</th><th>${monYear(azOld)}</th><th>${monYear(azNow)}</th></tr></thead><tbody>`+[
+    ["POS-terminalda orta ödəniş, manat",d=>nf(avg(d.posV,d.posN),1)],
+    ["İnternetdə orta ödəniş, manat",d=>nf(avg(d.ecomV,d.ecomN),1)],
+    ["Nağd pulun çıxarılması, mlrd manat",d=>bn(d.cashV)],
+    ["Kredit kartları, mln ədəd",d=>nf(d.credit/1000,2)],
+    ["Təmassız kartların payı",d=>nf(d.contactless/d.cards*100)+"%"],
+    ["Bir POS-terminala düşən əhali, nəfər",d=>people(d)]
+  ].map(([l,f])=>`<tr><td>${l}</td><td>${f(azOld)}</td><td><b>${f(azNow)}</b></td></tr>`).join("")+"</tbody>";
+  $("#azai").innerHTML=`<b>Süni intellektin təklifi:</b> ${cnt>vol?"artım əsasən əməliyyat sayı üzrədir, buna görə xırda gündəlik ödənişlərə uyğun məhsul və tariflərə üstünlük verilməlidir.":"dövriyyə əməliyyat sayından sürətlə artır, buna görə iri məbləğli ödənişlər üçün təhlükəsizlik və limit şərtləri nəzərdən keçirilməlidir."}`;
+  const[uy,um,ud]=AZ_UPDATED.split("-").map(Number);
+  $("#aznote").innerHTML=`Mənbə: <a href="https://www.cbar.az/page-45/payment-system-indicators" target="_blank" rel="noopener">Azərbaycan Respublikasının Mərkəzi Bankı</a> (${ud} ${MON[um-1]} ${uy} tarixində yenilənib). Məlumatlar aylıqdır və yalnız ölkə daxilindəki kart əməliyyatlarını əhatə edir.`}
 
-function dailyWeek(){const m=METRIC[dmet],order=[1,2,3,4,5,6,0],vals=order.map(k=>{const a=dcur.filter(r=>wd(r.d)===k);return dmet==="q"?mean(a.map(r=>r.q)):a.reduce((s,r)=>s+r.q*r.t,0)/a.reduce((s,r)=>s+r.q,0)}),hi=Math.max(...vals);
-  $("#dwh").textContent=m.wh;
-  $("#dweek").innerHTML=order.map((k,i)=>`<div class="dw" title="${cap1(WD[k])}: ${m.f(vals[i])}"><b>${m.week(vals[i])}</b><div class="col"><i style="height:${(vals[i]/hi*100).toFixed(1)}%"></i></div><span>${WDS[k]}</span></div>`).join("")}
-
-function dailyText(){const n=dcur.length,first=dcur[0].d,last=dcur[n-1].d,pairs=dcur.map((r,i)=>[r,dprev[i]]).filter(p=>p[1]);
-  const qNow=mean(pairs.map(p=>p[0].q)),qOld=mean(pairs.map(p=>p[1].q)),vNow=mean(pairs.map(p=>p[0].q*p[0].t)),vOld=mean(pairs.map(p=>p[1].q*p[1].t));
-  const avgQ=mean(dcur.map(r=>r.q)),peak=dcur.reduce((a,r)=>r.q>a.q?r:a),record=peak.q>=PIX.peak.q*1e3-1e3;
-  const byDay=[0,1,2,3,4,5,6].map(k=>({k,v:mean(dcur.filter(r=>wd(r.d)===k).map(r=>r.q))})).sort((a,b)=>b.v-a.v),busy=byDay[0],quiet=byDay[6];
-  const ticket=a=>a.reduce((s,r)=>s+r.q*r.t,0)/a.reduce((s,r)=>s+r.q,0),week=ticket(dcur.filter(r=>wd(r.d)%6!==0)),end=ticket(dcur.filter(r=>wd(r.d)%6===0));
-  const early=dcur.slice().sort((a,b)=>b.q-a.q).slice(0,6).filter(r=>+r.d.slice(8)<=8).length>=4;
-  const up=v=>(v>=0?"+":"−")+nf(Math.abs(v))+"%";
-  $("#dsub").textContent=`Braziliya Mərkəzi Bankının Pix sistemi · ${dm(first)} – ${dm(last)} ${last.slice(0,4)} · Azərbaycanın Ani Ödənişlər Sistemi üçün müqayisə nümunəsi`;
-  $("#dins").innerHTML=[
-    [up((qNow/qOld-1)*100),`Gündəlik ödəniş sayı bir ildə ${qNow>=qOld?"artıb":"azalıb"} (orta hesabla ${nf(qNow/1e6)} mln). Ödənişlərin ümumi məbləği isə ${nf(Math.abs((vNow/vOld-1)*100))}% ${vNow>=vOld?"artıb":"azalıb"}.`],
-    [nf(peak.q/1e6,1)+" mln",`${record?"Sistemin tarixində ən yüklü gün":"Dövrün ən yüklü günü"}: ${dm(peak.d)}, ${WD[wd(peak.d)]}. Orta gündəlik göstəricidən ${nf((peak.q/avgQ-1)*100)}% çoxdur.`],
-    [up((busy.v/quiet.v-1)*100),`${cap1(WD[busy.k])} günləri ${WD[quiet.k]} günləri ilə müqayisədə daha çox ödəniş edilir.`],
-    [nf(week/end,1)+" dəfə",`Həftə sonu orta ödəniş məbləği iş günlərinə nisbətən azdır: ${nf(end)} real, iş günlərində isə ${nf(week)} real.`]
-  ].map(([b,t])=>`<div class="dd-in"><b>${b}</b><span>${t}</span></div>`).join("");
-  $("#dai").innerHTML=`<b>Süni intellektin təklifi:</b> sistemin tutumu və dəstək komandasının qrafiki orta günə deyil, ən yüklü günlərə${early?" (ayın ilk həftəsinə)":""} görə planlaşdırılmalıdır.`;
-  $("#dnote").innerHTML=`Mənbə: <a href="https://dadosabertos.bcb.gov.br/dataset/estatisticas-do-spi-sistema-de-pagamentos-instantaneos" target="_blank" rel="noopener">Braziliya Mərkəzi Bankının açıq məlumatları</a>. Yalnız Mərkəzi Bankın sistemindən keçən ödənişlər nəzərə alınır. Rəqəmlər ${dm(last)} ${last.slice(0,4)} tarixinədək olan dövrü əhatə edir${live?"":" (səhifədə saxlanmış nüsxə)"}.`}
-
-function renderDaily(){dailyData();dailyText();dailyWeek();drawDaily()}
-$("#dseg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;dmet=b.dataset.m;
-  $$("#dseg button").forEach(x=>{const on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on)});dailyLeave();dailyWeek();drawDaily()});
-["pointermove","pointerdown"].forEach(t=>$("#dsvg").addEventListener(t,dailyHover));
-$("#dsvg").addEventListener("pointerleave",dailyLeave);
-let dwidth=0;new ResizeObserver(()=>{const w=$("#dplot").clientWidth;if(w&&w!==dwidth){dwidth=w;dailyLeave();drawDaily()}}).observe($("#dplot"));
-renderDaily();
-fetch(PIX_URL,{signal:AbortSignal.timeout?AbortSignal.timeout(20000):undefined}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{
-  const rows=j.value.map(r=>({d:r.Data,q:r.Quantidade,t:r.Total*1000/r.Quantidade})).filter(r=>r.q>0&&r.t>0).sort((a,b)=>a.d.localeCompare(b.d));
-  if(rows.length<SPAN+YEAR||rows[rows.length-1].d<pix[pix.length-1].d)return;pix=rows;live=true;renderDaily()}).catch(()=>{});
+$("#azseg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;azMetric=b.dataset.m;
+  $$("#azseg button").forEach(x=>{const on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on)});$("#aztip").classList.remove("on");drawAz()});
+["pointermove","pointerdown"].forEach(t=>$("#azsvg").addEventListener(t,azHover));
+$("#azsvg").addEventListener("pointerleave",()=>$("#aztip").classList.remove("on"));
+let azWidth=0;new ResizeObserver(()=>{const w=$("#azplot").clientWidth;if(w&&w!==azWidth){azWidth=w;$("#aztip").classList.remove("on");drawAz()}}).observe($("#azplot"));
+renderAzText();drawAz();
 
 /* what deserves attention */
 $("#prio").innerHTML=items.filter(i=>i.level==="Yüksək").slice(0,6).map(i=>`<li><span class="badge" style="background:${TYPE[i.type].c}1F;color:${TYPE[i.type].c}">${TYPE[i.type].one}</span><b>${i.title}</b><small>${i.co} · ${RG[i.region]} · ${fd(i.date)}</small><p>${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">Mənbəyə baxın</a></li>`).join("");
