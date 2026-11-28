@@ -458,7 +458,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
         </div>
         <div class="kpis" id="kpis"></div>
         <div class="types" id="types"></div>
-        <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Qlobusu fırladın, regionun üzərinə gəlin (telefonda toxunun) və maraqlandığınız xəbərlərə keçin</p><div class="globe-wrap"><div class="globe-box" id="globebox"><canvas id="globe" role="img" aria-label="Xəbərlərin regionlar üzrə bölgüsünü göstərən qlobus"></canvas><div class="gtip" id="gtip"></div><p class="note">Dairədəki rəqəm regiondakı xəbərlərin sayıdır. Qlobal xəbərlər xəritədə göstərilmir.</p></div><div class="ginfo" id="ginfo"></div></div><div class="gchips" id="gchips"></div></div>
+        <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Qlobusu fırladın, regionun üzərinə klikləyin (telefonda toxunun) və maraqlandığınız xəbərlərə keçin</p><div class="globe-wrap"><div class="globe-box" id="globebox"><canvas id="globe" role="img" aria-label="Xəbərlərin regionlar üzrə bölgüsünü göstərən qlobus"></canvas><div class="gtip" id="gtip"></div><p class="note">Dairədəki rəqəm regiondakı xəbərlərin sayıdır. Qlobal xəbərlər xəritədə göstərilmir.</p></div><div class="ginfo" id="ginfo"></div></div><div class="gchips" id="gchips"></div></div>
         <div class="row2 uneven">
           <div class="pc"><h4>Kim hansı mövzu üzərində işləyir?</h4><p class="sub">Rəng nə qədər tünddürsə, xəbər sayı o qədər çoxdur</p><table class="heat" id="heat"></table></div>
           <div class="pc"><h4>Aylar üzrə dinamika</h4><p class="sub" id="msub"></p><div class="months" id="months"></div></div>
@@ -1013,10 +1013,10 @@ const radiusOf=n=>11+Math.sqrt(n)*2.4;
 function drawGlobe(){if(!proj)return;proj.rotate(rot);ctx.clearRect(0,0,gsize,gsize);
   ctx.beginPath();gpath({type:"Sphere"});const sea=ctx.createRadialGradient(gsize*.35,gsize*.3,gsize*.05,gsize/2,gsize/2,gsize/2);sea.addColorStop(0,"#F6FBFF");sea.addColorStop(1,"#C4DFFB");ctx.fillStyle=sea;ctx.fill();
   ctx.beginPath();gpath(d3.geoGraticule10());ctx.strokeStyle="rgba(30,111,232,.13)";ctx.lineWidth=.6;ctx.stroke();
-  const active=hover||sel;
-  for(const f of features){ctx.beginPath();gpath(f);ctx.globalAlpha=!f.region?1:active?(active===f.region?1:.3):.82;ctx.fillStyle=f.region?RC[f.region]:"#DCE8F5";ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle="rgba(255,255,255,.75)";ctx.lineWidth=.5;ctx.stroke()}
+  const lit=k=>k===sel||k===hover;
+  for(const f of features){ctx.beginPath();gpath(f);ctx.globalAlpha=!f.region?1:(hover||sel)?(lit(f.region)?1:.3):.82;ctx.fillStyle=f.region?RC[f.region]:"#DCE8F5";ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle="rgba(255,255,255,.75)";ctx.lineWidth=.5;ctx.stroke()}
   ctx.beginPath();gpath({type:"Sphere"});ctx.strokeStyle="rgba(30,111,232,.35)";ctx.lineWidth=1.5;ctx.stroke();
-  for(const r of regs){const c=RCENTER[r.k];if(!c||!visibleAt(c))continue;const[x,y]=proj(c),rad=radiusOf(r.n)+(active===r.k?3:0);
+  for(const r of regs){const c=RCENTER[r.k];if(!c||!visibleAt(c))continue;const[x,y]=proj(c),rad=radiusOf(r.n)+(lit(r.k)?3:0);
     ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.fillStyle="#fff";ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=RC[r.k];ctx.stroke();
     ctx.fillStyle="#0A2540";ctx.font="600 13px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(r.n,x,y)}}
 function sizeGlobe(){if(!proj)return;const s=Math.min($("#globebox").clientWidth,500),ratio=window.devicePixelRatio||1;if(!s)return;gsize=s;
@@ -1030,11 +1030,11 @@ function turnTo(k){hover=null;$("#gtip")?.classList.remove("on");const c=RCENTER
 const point=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
 function tip(k,x,y){const t=$("#gtip");if(!k){t.classList.remove("on");return}const r=regs.find(q=>q.k===k);t.textContent=`${RG[k]}: ${r.n} xəbər`;
   t.style.left=(cv.offsetLeft+x)+"px";t.style.top=(cv.offsetTop+y)+"px";t.classList.add("on")}
-cv.addEventListener("pointerdown",e=>{if(!proj)return;const[x,y]=point(e);drag={x,y,moved:false};spin=false});
+cv.addEventListener("pointerdown",e=>{if(!proj||e.button!==0)return;const[x,y]=point(e);drag={x,y,moved:false};spin=false});
 cv.addEventListener("pointermove",e=>{if(!proj)return;const[x,y]=point(e);
   if(drag){const dx=x-drag.x,dy=y-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;
     if(drag.moved){if(!cv.hasPointerCapture(e.pointerId))cv.setPointerCapture(e.pointerId);rot=[rot[0]+dx*.35,Math.max(-65,Math.min(65,rot[1]-dy*.35))];drag.x=x;drag.y=y;tip(null);drawGlobe()}return}
-  if(e.pointerType!=="mouse")return;const k=regionAt(x,y);cv.style.cursor=k?"pointer":"grab";tip(k,x,y);if(k!==hover){hover=k;if(k)showRegion(k);drawGlobe()}});
+  if(e.pointerType!=="mouse")return;const k=regionAt(x,y);cv.style.cursor=k?"pointer":"grab";tip(k,x,y);if(k!==hover){hover=k;drawGlobe()}});
 cv.addEventListener("pointerup",e=>{if(!drag)return;const[x,y]=point(e),moved=drag.moved;drag=null;if(moved)return;const k=regionAt(x,y);if(k){sel=k;showRegion(k);drawGlobe()}});
 cv.addEventListener("pointercancel",()=>{drag=null});
 cv.addEventListener("pointerleave",()=>{tip(null);if(hover){hover=null;drawGlobe()}});
