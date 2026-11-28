@@ -329,6 +329,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
 }
 .cv{min-width:0}
 .cv canvas{max-width:100%!important}
+@media (max-width:560px){button.nv{padding:7px 10px}button.nv .i{display:none}}
 @media (max-width:980px){
   .side-in{flex-wrap:wrap;overflow:visible;justify-content:center}
   .tools{display:none}
@@ -390,6 +391,24 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
 .az-tab th{font-weight:600;color:var(--muted);font-size:11px;text-align:right;padding:4px 0 6px;border-bottom:2px solid var(--line)}
 .az-tab td{text-align:right;padding:7px 0;border-bottom:1px solid #E6F0FB;font-family:var(--mono)}
 .az-tab th:first-child,.az-tab td:first-child{text-align:left;width:56%;padding-right:8px;font-family:var(--sans);line-height:1.35}
+#bmCard{scroll-margin-top:84px}
+#bmseg{flex-wrap:wrap}
+.bm-use{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.bm-use p{background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:0}
+.bm-use span{display:block;font-size:11px;font-weight:600;color:var(--brand-d);margin-bottom:2px}
+.bm-use b{display:block;font-size:14px;line-height:1.45}
+.bm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.bm-item{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
+.bm-item b{font:600 22px var(--mono);line-height:1.2;color:var(--brand-d);white-space:nowrap}
+.bm-item p{font-size:12.5px;line-height:1.5}
+.bm-item small{margin-top:auto;font-size:11px;line-height:1.5;color:var(--muted)}
+.bm-item a,.bm-az a,.az-cav a{color:var(--brand-d);font-weight:600}
+.bm-az{margin-top:12px;background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.bm-az h5{font-size:13px;margin-bottom:6px}
+.bm-az li{font-size:12.5px;line-height:1.55;margin:0 0 4px 16px}
+.bm-az a{font-size:11.5px}
+.az-cav{font-size:11.5px;line-height:1.5;color:var(--muted);margin-top:8px}
+@media (max-width:980px){.bm-use{grid-template-columns:minmax(0,1fr)}#bmCard{scroll-margin-top:80px}}
 .dd-ai{font-size:12.5px;margin-top:8px;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:10px 12px}
 .prio{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .prio li{background:#F5F9FE;border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
@@ -476,7 +495,7 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
     <div class="app">
       <aside class="side"><div class="side-in">
         <div class="logo"><b><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 19 5"/></svg></b><span>Radar</span></div>
-        <button type="button" class="nv on" data-ic="grid" data-go="panel">Panel</button><button type="button" class="nv" data-ic="pin" data-go="regions">Regionlar</button><button type="button" class="nv" data-ic="pulse" data-go="news">Xəbərlər</button><button type="button" class="nv" data-ic="globe" data-go="companies">Şirkətlər</button><button type="button" class="nv" data-ic="bolt" data-go="plans">Planlar</button><button type="button" class="nv" data-ic="file" data-go="sources">Mənbələr</button>
+        <button type="button" class="nv on" data-ic="grid" data-go="panel">Panel</button><button type="button" class="nv" data-ic="pin" data-go="regions">Regionlar</button><button type="button" class="nv" data-ic="bars" data-go="bench">Benchmark</button><button type="button" class="nv" data-ic="pulse" data-go="news">Xəbərlər</button><button type="button" class="nv" data-ic="globe" data-go="companies">Şirkətlər</button><button type="button" class="nv" data-ic="bolt" data-go="plans">Planlar</button><button type="button" class="nv" data-ic="file" data-go="sources">Mənbələr</button>
       </div></aside>
       <div class="main">
         <div class="topbar">
@@ -488,8 +507,9 @@ button.bell{font:inherit;color:inherit;cursor:pointer}
         <div class="pc" id="regCard"><h4>Regionlar üzrə bölgü</h4><p class="sub">Qlobusu fırladın, regionun üzərinə klikləyin (telefonda toxunun) və maraqlandığınız xəbərlərə keçin</p><div class="globe-wrap"><div class="globe-box" id="globebox"><canvas id="globe" role="img" aria-label="Xəbərlərin regionlar üzrə bölgüsünü göstərən qlobus"></canvas><div class="gtip" id="gtip"></div><p class="note">Dairədəki rəqəm regiondakı xəbərlərin sayıdır. Qlobal xəbərlər xəritədə göstərilmir.</p></div><div class="ginfo" id="ginfo"></div></div><div class="gchips" id="gchips"></div></div>
         <div class="row2 pair">
           <div class="pc" id="catCard"><h4>Məhsul kateqoriyaları: kim nə üzərində işləyir?</h4><p class="sub">Xəbərləri görmək üçün kateqoriyanın üzərinə klikləyin. Hər kvadrat bir xəbərdir, rəngi isə şirkətin növünü göstərir.</p><div class="ct-leg" id="cleg"></div><div id="cats"></div><p class="note">Üç böyük qrup <a href="https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000134/v-20260930.htm" target="_blank" rel="noopener">Visa</a> və <a href="https://s25.q4cdn.com/479285134/files/doc_financials/2025/q4/MA-12-31-2025-10-K-as-filed-with-standard-exhibits.pdf" target="_blank" rel="noopener">Mastercard</a> şirkətlərinin illik hesabatlarındakı bölgü əsasında qurulub, daxili kateqoriyalar isə digər ödəniş şirkətlərinin məhsul siyahılarına uyğunlaşdırılıb. Süni intellekt ayrıca məhsul olmadığı üçün hər kateqoriyanın altında qeyd olunur.</p></div>
-          <div class="pc" id="azCard"><h4>Bazarımız: Azərbaycanda kart ödənişləri</h4><p class="sub" id="azsub"></p><div class="az-kpi" id="azkpi"></div><div class="dd-bar"><div class="seg" id="azseg" role="group" aria-label="Göstərici"><button type="button" data-m="v" class="on" aria-pressed="true">Dövriyyə</button><button type="button" data-m="n" aria-pressed="false">Əməliyyat sayı</button><button type="button" data-m="s" aria-pressed="false">Nağdsız pay</button></div></div><div class="dd-plot" id="azplot"><svg id="azsvg" role="img"></svg><div class="dd-tip" id="aztip"></div></div><div class="az-leg" id="azleg"></div><p class="dd-ai az-key" id="azkey"></p><h5 class="az-h">Kart dövriyyəsinin hər 100 manatı hara gedir?</h5><div id="azhund"></div><h5 class="az-h">Bir il ərzində nə dəyişib?</h5><table class="az-tab" id="aztab"></table><p class="dd-ai" id="azai"></p><p class="note" id="aznote"></p></div>
+          <div class="pc" id="azCard"><h4>Bazarımız: Azərbaycanda kart ödənişləri</h4><p class="sub" id="azsub"></p><div class="az-kpi" id="azkpi"></div><div class="dd-bar"><div class="seg" id="azseg" role="group" aria-label="Göstərici"><button type="button" data-m="v" class="on" aria-pressed="true">Dövriyyə</button><button type="button" data-m="n" aria-pressed="false">Əməliyyat sayı</button><button type="button" data-m="s" aria-pressed="false">Nağdsız pay</button></div></div><div class="dd-plot" id="azplot"><svg id="azsvg" role="img"></svg><div class="dd-tip" id="aztip"></div></div><div class="az-leg" id="azleg"></div><p class="dd-ai az-key" id="azkey"></p><h5 class="az-h">Kart dövriyyəsinin hər 100 manatı hara gedir?</h5><div id="azhund"></div><p class="az-cav">Qeyd: <a href="https://uploads.cbar.az/assets/4b03440d5e80a48c2e7430c1f.pdf" target="_blank" rel="noopener">Mərkəzi Bankın 2025-ci il icmalına</a> görə, ölkə daxilində kartla nağdsız ödənişlərin 70,9%-i maliyyə xidmətlərinə (pul köçürməsi, kredit ödənişi və s.), yalnız 11,7%-i pərakəndə ticarətə aiddir. Yəni “internet ödənişi” təkcə onlayn alış-veriş deyil.</p><h5 class="az-h">Bir il ərzində nə dəyişib?</h5><table class="az-tab" id="aztab"></table><p class="dd-ai" id="azai"></p><p class="note" id="aznote"></p></div>
         </div>
+        <div class="pc" id="bmCard"><h4>Benchmark: istiqamətlər üzrə dünya praktikası</h4><p class="sub">Başqa bazarlarda təsdiqlənmiş göstəricilər, Azərbaycandakı vəziyyət və süni intellektin təklifi. Ölkələr fərqli göstəriciləri ölçür, buna görə rəqəmlər birbaşa müqayisə edilməməlidir.</p><div class="seg" id="bmseg" role="group" aria-label="İstiqamət"></div><div id="bmbody"></div></div>
         <div class="pc"><h4>Diqqət tələb edən yeniliklər</h4><p class="sub">Bir Ekosistem üçün yüksək əhəmiyyətli sayılanlar (süni intellektin qiymətləndirməsi)</p><ul class="prio" id="prio"></ul></div>
         <div class="pc" id="companies"><h4>Şirkətlər</h4><p class="sub">Şirkətin üzərinə klikləyin, yalnız onun xəbərləri göstəriləcək</p><div class="cos" id="cos"></div><button type="button" class="more" id="coMore"></button></div>
         <div class="pc" id="newsCard"><h4>Xəbərlər</h4><p class="sub">Ətraflı məlumat üçün xəbərin üzərinə klikləyin</p>
@@ -887,7 +907,7 @@ const nf=(n,d=0)=>n.toFixed(d).replace(".",",");
 const mq=matchMedia("(max-width:980px)");
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const days=(a,b)=>{const p=s=>{const[y,m,d]=s.split("-").map(Number);return Date.UTC(y,m-1,d)};return Math.round((p(b)-p(a))/864e5)};
-const IC={grid:'<rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>',pulse:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',sliders:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',ext:'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>',check:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>'};
+const IC={bars:'<path d="M5 21V11M12 21V4M19 21v-7M3 21h18"/>',grid:'<rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>',pulse:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',sliders:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',ext:'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/>',check:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>'};
 const ico=n=>`<svg class="i" viewBox="0 0 24 24">${IC[n]}</svg>`;
 const items=DATA.items.slice().sort((a,b)=>b.date.localeCompare(a.date));
 const I=id=>DATA.items.find(x=>x.id===id),F=DATA.facts;
@@ -1182,6 +1202,65 @@ $("#azsvg").addEventListener("pointerleave",()=>$("#aztip").classList.remove("on
 let azWidth=0;new ResizeObserver(()=>{const w=$("#azplot").clientWidth;if(w&&w!==azWidth){azWidth=w;$("#aztip").classList.remove("on");drawAz()}}).observe($("#azplot"));
 renderAzText();drawAz();
 
+/* benchmarks by sub-vertical: every figure was read on the linked page */
+const RBA="https://www.rba.gov.au/publications/bulletin/2026/may/pdf/consumer-payment-behaviour-in-australia.pdf",
+ BLIK="https://www.blik.com/en/blik-records-over-800-m-transactions-in-the-third-quarter",
+ CBREV="https://uploads.cbar.az/assets/4b03440d5e80a48c2e7430c1f.pdf",CBSTAT="https://www.cbar.az/page-45/payment-system-indicators";
+const BENCH=[
+ {k:"ecom",n:"E-ticarət",use:"Onlayn alışda kart məlumatını yazmadan telefon tətbiqi ilə ödəniş",
+  trend:"Onlayn ödənişlərdə telefon tətbiqlərinin və e-cüzdanların rolu böyüyür.",
+  items:[
+   {v:"46%",t:"onlayn ödənişlərdə telefon tətbiqinin payı; 2022-ci ildə 37% idi",m:"Avstraliya · 2025",src:"Avstraliya Ehtiyat Bankı",url:RBA},
+   {v:"29%",t:"onlayn əməliyyatlarda e-cüzdan və mobil tətbiqlərin payı; kartların payı 48%-dir",m:"Avrozona · 2024-cü il araşdırması",src:"Avropa Mərkəzi Bankı",url:"https://www.ecb.europa.eu/press/pr/date/2024/html/ecb.pr241219~172b929461.en.html"},
+   {v:"22%",t:"“indi al, sonra ödə” xidmətindən ən azı bir dəfə istifadə edən yetkin əhalinin payı (12,9 mln nəfər)",m:"Böyük Britaniya · 2025",src:"UK Finance",url:"https://www.ukfinance.org.uk/system/files/2026-08/PaymentMarketsReport_2026Summary.pdf"},
+   {v:"384,3 mln",t:"BLIK ilə onlayn mağazalarda ödənişlərin sayı; bir ildə 10% artım",m:"Polşa · 2026, III rüb",src:"BLIK",url:BLIK}],
+  az:[
+   {t:"2025-ci ildə kart əməliyyatlarında internet ödənişlərinin payı say üzrə 61,2%, məbləğ üzrə 58,9% olub.",src:"Mərkəzi Bankın icmalı",url:CBREV},
+   {t:"Bu, yalnız onlayn alış-veriş deyil: ölkə daxilində kartla nağdsız ödənişlərin 70,9%-i maliyyə xidmətlərinə (pul köçürməsi, kredit ödənişi və s.), 11,7%-i pərakəndə ticarətə aiddir.",src:"Mərkəzi Bankın icmalı",url:CBREV}],
+  ai:"onlayn pərakəndə alışlar ayrıca ölçülsün və Birbank ilə M10 vasitəsilə kart məlumatı yazmadan bir toxunuşla ödəniş onlayn mağazalarda genişləndirilsin."},
+ {k:"qr",n:"QR ödənişlər",use:"Kiçik biznesin POS aparatı olmadan dinamik QR ilə ödəniş qəbul etməsi",
+  trend:"Dinamik QR (hər ödəniş üçün məbləği ilə birlikdə yaradılan kod) ticarətdə sürətlə yayılır.",
+  items:[
+   {v:"96%",t:"Braziliyanın Pix ani ödəniş sistemi ilə ödəniş qəbul edən kiçik müəssisələrin payı; təxminən hər 10 sahibkardan 6-sı üçün bu, əsas üsuldur (sorğu)",m:"Braziliya · 2026",src:"Sebrae",url:"https://agenciasebrae.com.br/economia-e-politica/pix-e-a-principal-forma-de-pagamento-adotada-pelos-pequenos-negocios/"},
+   {v:"40%",t:"dinamik QR ilə başladılan Pix əməliyyatlarının payı; 2021-ci ildə 5% idi",m:"Braziliya · 2025",src:"Braziliya Mərkəzi Bankı",url:"https://www.bcb.gov.br/content/estabilidadefinanceira/pix/relatorio_de_gestao_pix/relatorio_gestao_pix_2026.pdf"},
+   {v:"+71%",t:"İndoneziyanın milli QR sistemi QRIS-də əməliyyatların illik artımı; 71,9 mln istifadəçi və 51,3 mln satıcı",m:"İndoneziya · oktyabr 2026",src:"İndoneziya Bankı",url:"https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2825426.aspx"}],
+  az:[
+   {t:"QR ödənişlərinin dövriyyəsi 22 mln manata çatıb, əməliyyat sayı 8,8 dəfə artıb (müqayisə dövrü açıqlanmayıb); POS-terminalların 71%-i QR ilə ödəniş qəbul edir (Mərkəzi Bankın nümayəndəsi, iyun 2026).",src:"Report",url:"https://report.az/en/ict/azerbaijan-s-qr-payment-systems-to-be-integrated-with-foreign-platforms"}],
+  ai:"kiçik satıcılara aparat tələb etməyən, telefonda dinamik QR ilə ödəniş qəbulu təklif edilsin və əvvəlcə bir neçə ticarət nöqtəsində sınaqdan keçirilsin."},
+ {k:"mpos",n:"mPOS",use:"Kiçik sahibkarın smartfonunun ödəniş terminalı kimi işləməsi (SoftPOS, “Tap to Phone”)",
+  trend:"Telefonun terminal kimi istifadəsi sürətlə artır, lakin ümumi terminal sayında payı hələ kiçikdir.",
+  items:[
+   {v:"3,5 mln",t:"“Tap to Phone” funksiyası aktiv olan cihaz; 2026-cı ilin birinci yarısında əməliyyat sayı 165% artıb (Visa-nın açıqlaması)",m:"Braziliya · 2026",src:"Mobile Time",url:"https://www.mobiletime.com.br/noticias/26/11/2026/visa-esforcos-agenticos/"},
+   {v:"165 min",t:"proqram əsaslı terminal; ümumi POS-terminal sayı 3,6 mln-dur",m:"İtaliya · 2025",src:"Politecnico di Milano",url:"https://www.osservatori.net/comunicato/innovative-payments/pagamenti-digitali-in-italia-mercato/"},
+   {v:"+200%",t:"“Tap to Phone” istifadəsinin bir ildə artımı; bu üsuldan istifadə edən satıcıların təxminən 30%-i yeni kiçik müəssisələrdir",m:"Dünya üzrə · mart 2025",src:"Visa",url:"https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.21271.html"},
+   {v:"20 dəfə",t:"UZCARD kartları ilə SoftPOS ödənişlərinin artımı; həcmi 9 mlrd sumu keçib",m:"Özbəkistan · 2025",src:"UZCARD",url:"https://api.uzcard.uz/en/?p=20872"}],
+  az:[
+   {t:"POS-terminalların sayı 2025-ci ilin sentyabrında 161,9 min, 2026-cı ilin sentyabrında isə 135,2 min olub.",src:"Banker.az",url:"https://banker.az/az%C9%99rbaycanda-pos-terminallarin-sayi-bir-ild%C9%99-27-min%C9%99-yaxin-azalib/"},
+   {t:"Bu müddətdə say əvvəlcə artıb, 2026-cı ilin aprelində isə 184 mindən 160 minə düşüb: əsas səbəb dövriyyəsi olmayan mobil POS-terminalların istifadədən çıxarılmasıdır (Mərkəzi Bankın izahı).",src:"Muhasibat.az",url:"https://www.muhasibat.az/azerbaycanda-pos-terminallarin-sayi/"}],
+  ai:"təkcə terminal paylanması deyil, aktiv istifadə də izlənsin və kiçik satıcılara aparatsız SoftPOS və dinamik QR təklif edilsin."},
+ {k:"p2p",n:"Köçürmələr",use:"Kart nömrəsi və ya IBAN yazmadan telefon nömrəsi ilə pul köçürməsi",
+  trend:"İnsanlar arasında köçürmələrdə rekvizit əvəzinə telefon nömrəsi kimi sadə məlumatlar üstünlük qazanır.",
+  items:[
+   {v:"67,3%",t:"“açar”la (telefon, e-poçt, vergi nömrəsi və ya kod) başladılan şəxslərarası Pix köçürmələrinin payı; rekvizitin əl ilə yazıldığı köçürmələrin payı bir ildə 20,2%-dən 15,4%-ə düşüb",m:"Braziliya · oktyabr 2026",src:"Braziliya Mərkəzi Bankının açıq məlumatı",url:"https://dadosabertos.bcb.gov.br/dataset/pix"},
+   {v:"206,5 mln",t:"BLIK ilə telefon nömrəsinə köçürmələrin sayı; bir ildə 11% artım",m:"Polşa · 2026, III rüb",src:"BLIK",url:BLIK},
+   {v:"50%",t:"son bir ildə PayID-dən (telefon və ya e-poçtla köçürmə) istifadə edən sorğu iştirakçılarının payı; 2022-ci ildə 32% idi",m:"Avstraliya · 2025",src:"Avstraliya Ehtiyat Bankı",url:RBA},
+   {v:"$1,2 trln",t:"Zelle ilə e-poçt və ya mobil nömrə ilə göndərilən illik məbləğ; 20% artım",m:"ABŞ · 2025",src:"Early Warning",url:"https://www.earlywarning.com/press-release/zelle-posts-20-growth-12-trillion-sent-far-outpacing-consumer-spending-and-cementing"}],
+  az:[
+   {t:"Ani Ödənişlər Sistemi mobil nömrə, FİN kodu, VÖEN və e-poçt ilə köçürməyə imkan verir.",src:"Mərkəzi Bank",url:"https://www.cbar.az/page-479/instant-payments-system-ips"},
+   {t:"2026-cı ilin sentyabrında sistemdə 28,7 mln ödəniş aparılıb (bir il əvvəl 1,4 mln), məbləği 2,13 mlrd manat olub. Telefon nömrəsi ilə köçürmələrin ayrıca sayı açıqlanmır.",src:"Mərkəzi Bankın statistikası",url:CBSTAT},
+   {t:"2025-ci ildə bank müştərilərinin hesabdan köçürmələrinin say üzrə 94,4%-i internet və mobil bankçılıq vasitəsilə aparılıb.",src:"Mərkəzi Bankın icmalı",url:CBREV}],
+  ai:"Birbank və M10-da köçürmə zamanı ilk seçim telefon kitabçasındakı kontakt olsun, telefon nömrəsi ilə köçürmələrin payı ölçülüb hədəf qoyulsun."}];
+let bmKey=BENCH[0].k;
+const bmLink=(u,s)=>`<a href="${u}" target="_blank" rel="noopener">${s}</a>`;
+function renderBench(){const b=BENCH.find(x=>x.k===bmKey);
+  $("#bmseg").innerHTML=BENCH.map(x=>`<button type="button" data-k="${x.k}" class="${x.k===bmKey?"on":""}" aria-pressed="${x.k===bmKey}">${x.n}</button>`).join("");
+  $("#bmbody").innerHTML=`<div class="bm-use"><p><span>İstifadə ssenarisi</span><b>${b.use}</b></p><p><span>Aşkarlanan trend</span><b>${b.trend}</b></p></div>
+  <div class="bm-grid">${b.items.map(i=>`<div class="bm-item"><b>${i.v}</b><p>${i.t}</p><small>${i.m}<br>${bmLink(i.url,i.src)}</small></div>`).join("")}</div>
+  <div class="bm-az"><h5>Azərbaycanda vəziyyət</h5><ul>${b.az.map(a=>`<li>${a.t} ${bmLink(a.url,a.src)}</li>`).join("")}</ul></div>
+  <p class="dd-ai"><b>Süni intellektin təklifi:</b> ${b.ai}</p>`}
+$("#bmseg").addEventListener("click",e=>{const t=e.target.closest("button[data-k]");if(!t)return;bmKey=t.dataset.k;renderBench()});
+renderBench();
+
 /* what deserves attention */
 $("#prio").innerHTML=items.filter(i=>i.level==="Yüksək").slice(0,6).map(i=>`<li><span class="badge" style="background:${TYPE[i.type].c}1F;color:${TYPE[i.type].c}">${TYPE[i.type].one}</span><b>${i.title}</b><small>${i.co} · ${RG[i.region]} · ${fd(i.date)}</small><p>${i.impact}</p><a href="${i.source.url}" target="_blank" rel="noopener">Mənbəyə baxın</a></li>`).join("");
 
@@ -1218,7 +1297,7 @@ $("#cats").addEventListener("click",e=>{const b=e.target.closest("button[data-ca
 renderTable();
 
 /* panel menu */
-const GO={panel:"#kpis",regions:"#regCard",news:"#newsCard",companies:"#companies",plans:"#plansCard",sources:"#srcCard"};
+const GO={panel:"#kpis",regions:"#regCard",bench:"#bmCard",news:"#newsCard",companies:"#companies",plans:"#plansCard",sources:"#srcCard"};
 const calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function goTo(key){const el=$(GO[key]);$$(".nv").forEach(b=>b.classList.toggle("on",b.dataset.go===key));
   el.scrollIntoView({behavior:calm?"auto":"smooth",block:"start"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash")}
